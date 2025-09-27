@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teams Time</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Teams Time</h1>
+    </header>
+    <main>
+      <section aria-labelledby="team-timezones-heading">
+        <h2 id="team-timezones-heading">Team time zones</h2>
+        <ul id="timezone-list" class="timezone-list" aria-live="polite"></ul>
+      </section>
+      <section aria-labelledby="quick-add-heading">
+        <h2 id="quick-add-heading">Quick add</h2>
+        <form id="quick-add-form">
+          <div class="field">
+            <label for="quick-name">Name</label>
+            <input type="text" id="quick-name" name="name" required />
+          </div>
+          <div class="field">
+            <label for="quick-timezone">Time zone</label>
+            <select id="quick-timezone" name="timezone"></select>
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

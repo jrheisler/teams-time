@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teams Time Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Teams Time Options</h1>
+      <p>Manage your team roster and default settings.</p>
+    </header>
+    <main>
+      <section aria-labelledby="team-management-heading">
+        <h2 id="team-management-heading">Team members</h2>
+        <form id="team-member-form">
+          <div class="field">
+            <label for="member-name">Name</label>
+            <input type="text" id="member-name" name="name" required />
+          </div>
+          <div class="field">
+            <label for="member-timezone">Time zone</label>
+            <select id="member-timezone" name="timezone"></select>
+          </div>
+          <button type="submit">Save member</button>
+        </form>
+        <ul id="team-member-list" class="team-member-list"></ul>
+      </section>
+      <section aria-labelledby="preferences-heading">
+        <h2 id="preferences-heading">Preferences</h2>
+        <form id="preferences-form">
+          <div class="field">
+            <label for="default-timezone">Default time zone</label>
+            <select id="default-timezone" name="defaultTimezone"></select>
+          </div>
+          <button type="submit">Save preferences</button>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>
