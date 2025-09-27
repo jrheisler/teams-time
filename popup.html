@@ -7,29 +7,22 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <header>
-      <h1>Teams Time</h1>
-    </header>
-    <main>
-      <section aria-labelledby="team-timezones-heading">
-        <h2 id="team-timezones-heading">Team time zones</h2>
-        <ul id="timezone-list" class="timezone-list" aria-live="polite"></ul>
+    <div class="popup">
+      <header class="popup__header">
+        <h1 class="popup__title">Teams Time</h1>
+        <a class="popup__settings" href="options.html" title="Open settings" aria-label="Open settings">
+          <span aria-hidden="true">⚙️</span>
+        </a>
+      </header>
+      <section class="popup__current" aria-live="polite">
+        <h2 class="popup__section-title">Current time</h2>
+        <p id="current-time" class="current-time" role="status"></p>
       </section>
-      <section aria-labelledby="quick-add-heading">
-        <h2 id="quick-add-heading">Quick add</h2>
-        <form id="quick-add-form">
-          <div class="field">
-            <label for="quick-name">Name</label>
-            <input type="text" id="quick-name" name="name" required />
-          </div>
-          <div class="field">
-            <label for="quick-timezone">Time zone</label>
-            <select id="quick-timezone" name="timezone"></select>
-          </div>
-          <button type="submit">Add</button>
-        </form>
+      <section class="popup__people" aria-labelledby="people-heading">
+        <h2 id="people-heading" class="popup__section-title">Team</h2>
+        <ul id="people-list" class="people-list" aria-live="polite"></ul>
       </section>
-    </main>
+    </div>
     <script type="module" src="popup.js"></script>
   </body>
 </html>
