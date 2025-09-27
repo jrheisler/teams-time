@@ -9,35 +9,61 @@
   <body>
     <header>
       <h1>Teams Time Options</h1>
-      <p>Manage your team roster and default settings.</p>
+      <p>Configure how times are displayed and manage your teammates.</p>
     </header>
     <main>
-      <section aria-labelledby="team-management-heading">
-        <h2 id="team-management-heading">Team members</h2>
-        <form id="team-member-form">
-          <div class="field">
-            <label for="member-name">Name</label>
-            <input type="text" id="member-name" name="name" required />
-          </div>
-          <div class="field">
-            <label for="member-timezone">Time zone</label>
-            <select id="member-timezone" name="timezone"></select>
-          </div>
-          <button type="submit">Save member</button>
-        </form>
-        <ul id="team-member-list" class="team-member-list"></ul>
+      <section aria-labelledby="hour-format-heading" class="card">
+        <h2 id="hour-format-heading">Hour format</h2>
+        <label for="hour-format" class="field">
+          <span>Display hours using</span>
+          <select id="hour-format" name="hourFormat">
+            <option value="12">12-hour clock (1 – 12)</option>
+            <option value="24">24-hour clock (0 – 23)</option>
+          </select>
+        </label>
       </section>
-      <section aria-labelledby="preferences-heading">
-        <h2 id="preferences-heading">Preferences</h2>
-        <form id="preferences-form">
+
+      <section aria-labelledby="add-person-heading" class="card">
+        <h2 id="add-person-heading">Add a teammate</h2>
+        <form id="person-form" autocomplete="off">
           <div class="field">
-            <label for="default-timezone">Default time zone</label>
-            <select id="default-timezone" name="defaultTimezone"></select>
+            <label for="person-name">Name</label>
+            <input type="text" id="person-name" name="name" required />
           </div>
-          <button type="submit">Save preferences</button>
+          <div class="field">
+            <label for="person-note">Note</label>
+            <input
+              type="text"
+              id="person-note"
+              name="note"
+              placeholder="e.g., role, meeting focus"
+            />
+          </div>
+          <div class="field">
+            <label for="person-timezone">Time zone</label>
+            <input
+              type="text"
+              id="person-timezone"
+              name="timezone"
+              list="timezone-list"
+              placeholder="Search by city or zone"
+              required
+            />
+          </div>
+          <button type="submit">Add teammate</button>
         </form>
+        <datalist id="timezone-list"></datalist>
+      </section>
+
+      <section aria-labelledby="people-heading" class="card">
+        <div class="section-header">
+          <h2 id="people-heading">Teammates</h2>
+          <p class="section-subtitle">Remove someone when they no longer need tracking.</p>
+        </div>
+        <div id="people-list" class="people-list" role="list"></div>
       </section>
     </main>
+
     <script type="module" src="options.js"></script>
   </body>
 </html>
