@@ -96,11 +96,9 @@ function populateTimezoneDatalist() {
   timezoneList.innerHTML = '';
   for (const zone of timezones) {
     const option = document.createElement('option');
-    option.value = zone.value;
-    option.textContent = zone.label;
-    if (zone.label) {
-      option.label = zone.label;
-    }
+    option.value = zone;
+    option.textContent = zone;
+    option.label = zone;
     timezoneList.append(option);
   }
 }
