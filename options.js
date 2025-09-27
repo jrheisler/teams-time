@@ -1,8 +1,20 @@
-import timezones from './timezones.json' assert { type: 'json' };
-
 const runtimeChrome = typeof chrome !== 'undefined' ? chrome : undefined;
 const storageArea = runtimeChrome?.storage?.sync;
 const fallbackStore = new Map();
+
+let cachedTimezones = null;
+const FALLBACK_TIMEZONES = [
+  'UTC',
+  'America/Los_Angeles',
+  'America/Denver',
+  'America/Chicago',
+  'America/New_York',
+  'Europe/London',
+  'Europe/Berlin',
+  'Asia/Kolkata',
+  'Asia/Tokyo',
+  'Australia/Sydney'
+];
 
 function getFallbackKey(key) {
   return `teams-time::${key}`;
@@ -72,6 +84,33 @@ function setInStorage(key, value) {
   });
 }
 
+async function loadTimezones() {
+  if (cachedTimezones) {
+    return cachedTimezones;
+  }
+
+  const url = runtimeChrome?.runtime?.getURL
+    ? runtimeChrome.runtime.getURL('timezones.json')
+    : 'timezones.json';
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to load time zones: ${response.status}`);
+    }
+    const zones = await response.json();
+    if (Array.isArray(zones)) {
+      cachedTimezones = zones;
+      return zones;
+    }
+  } catch (error) {
+    console.warn('Unable to load time zone list', error);
+  }
+
+  cachedTimezones = [...FALLBACK_TIMEZONES];
+  return cachedTimezones;
+}
+
 const timezoneList = document.getElementById('timezone-list');
 const personForm = document.getElementById('person-form');
 const nameInput = document.getElementById('person-name');
@@ -92,9 +131,9 @@ const DEFAULT_SETTINGS = {
 let people = [];
 let settings = { ...DEFAULT_SETTINGS };
 
-function populateTimezoneDatalist() {
+function populateTimezoneDatalist(zones) {
   timezoneList.innerHTML = '';
-  for (const zone of timezones) {
+  for (const zone of zones) {
     const option = document.createElement('option');
     option.value = zone;
     option.textContent = zone;
@@ -216,15 +255,16 @@ hourFormatSelect.addEventListener('change', async () => {
 });
 
 async function initialize() {
-  populateTimezoneDatalist();
-
-  const [storedPeople, storedSettings] = await Promise.all([
+  const [zones, storedPeople, storedSettings] = await Promise.all([
+    loadTimezones(),
     getFromStorage(STORAGE_KEYS.people, []),
     getFromStorage(STORAGE_KEYS.settings, DEFAULT_SETTINGS)
   ]);
 
   people = Array.isArray(storedPeople) ? storedPeople : [];
   settings = { ...DEFAULT_SETTINGS, ...(storedSettings ?? {}) };
+
+  populateTimezoneDatalist(Array.isArray(zones) ? zones : []);
 
   hourFormatSelect.value = settings.hour12 ? '12' : '24';
   renderPeople();
