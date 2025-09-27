@@ -1,13 +1,20 @@
 :root {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tt-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tt-color-background: #f4f6fb;
+  --tt-color-text: #1f2933;
+  --tt-color-card: #ffffff;
+  --tt-color-muted-text: #6b7a89;
+  --tt-color-accent: #2563eb;
+  --tt-color-accent-soft: rgba(37, 99, 235, 0.1);
+  font-family: var(--tt-font-family);
   color-scheme: light dark;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #f4f6fb;
-  color: #1f2933;
+  background: var(--tt-color-background);
+  color: var(--tt-color-text);
 }
 
 .popup {
@@ -43,7 +50,7 @@ body {
 
 .popup__settings:hover,
 .popup__settings:focus {
-  background: rgba(37, 99, 235, 0.1);
+  background: var(--tt-color-accent-soft);
   outline: none;
 }
 
@@ -52,7 +59,7 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #546a7b;
+  color: var(--tt-color-muted-text);
 }
 
 .current-time {
@@ -73,10 +80,10 @@ body {
 .people-list__empty {
   padding: 1rem;
   border-radius: 0.75rem;
-  background: #ffffff;
+  background: var(--tt-color-card);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
   font-size: 0.9rem;
-  color: #6b7a89;
+  color: var(--tt-color-muted-text);
 }
 
 .person {
@@ -85,7 +92,7 @@ body {
   gap: 0.25rem;
   padding: 0.85rem 1rem;
   border-radius: 0.75rem;
-  background: #ffffff;
+  background: var(--tt-color-card);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
 }
 
@@ -111,7 +118,7 @@ body {
   display: flex;
   gap: 0.5rem;
   font-size: 0.8rem;
-  color: #6b7a89;
+  color: var(--tt-color-muted-text);
 }
 
 .person__timezone {
@@ -124,9 +131,13 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: #111827;
-    color: #f9fafb;
+  :root {
+    --tt-color-background: #111827;
+    --tt-color-text: #f9fafb;
+    --tt-color-card: #1f2937;
+    --tt-color-muted-text: #9ca3af;
+    --tt-color-accent: #60a5fa;
+    --tt-color-accent-soft: rgba(96, 165, 250, 0.18);
   }
 
   .popup__section-title {
@@ -135,15 +146,6 @@ body {
 
   .people-list__empty,
   .person {
-    background: #1f2937;
     box-shadow: none;
-  }
-
-  .people-list__empty {
-    color: #94a3b8;
-  }
-
-  .person__meta {
-    color: #9ca3af;
   }
 }
