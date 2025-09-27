@@ -1,11 +1,11 @@
-import timezones from './timezones.json' assert { type: 'json' };
+import timezones from './timezones-data.js';
 
 const runtimeChrome = typeof chrome !== 'undefined' ? chrome : undefined;
 const storageArea = runtimeChrome?.storage?.sync;
 const fallbackStore = new Map();
 
 let cachedTimezones = null;
-const FALLBACK_TIMEZONES = [...timezones];
+const FALLBACK_TIMEZONES = timezones;
 
 function getFallbackKey(key) {
   return `teams-time::${key}`;
