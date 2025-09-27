@@ -1,0 +1,1 @@
+This is a chrome extention to allow teams to quickly see time zones of other team members
