@@ -8,6 +8,7 @@ const DEFAULT_SETTINGS = {
 
 const currentTimeElement = document.getElementById('current-time');
 const peopleListElement = document.getElementById('people-list');
+const settingsButton = document.getElementById('open-settings');
 
 let state = {
   people: DEFAULT_PEOPLE,
@@ -151,3 +152,14 @@ window.addEventListener('unload', () => {
 });
 
 document.addEventListener('DOMContentLoaded', hydrate);
+
+if (settingsButton) {
+  settingsButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (chrome.runtime.openOptionsPage) {
+      chrome.runtime.openOptionsPage();
+    } else {
+      window.open(chrome.runtime.getURL('options.html'), '_blank');
+    }
+  });
+}
