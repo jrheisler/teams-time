@@ -134,3 +134,114 @@ export async function loadTimezoneOptions(selectElement, { includeEmpty = false 
     selectElement.append(option);
   }
 }
+
+const formatterCache = new Map();
+
+function getFormatter(prefix, timeZone, options) {
+  const zoneKey = timeZone ?? 'default';
+  const cacheKey = `${prefix}::${zoneKey}`;
+  let formatter = formatterCache.get(cacheKey);
+  if (!formatter) {
+    const resolvedOptions = timeZone ? { ...options, timeZone } : { ...options };
+    formatter = new Intl.DateTimeFormat(undefined, resolvedOptions);
+    formatterCache.set(cacheKey, formatter);
+  }
+  return formatter;
+}
+
+function fmtIso(date, timeZone) {
+  const formatter = getFormatter('iso', timeZone, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hourCycle: 'h23'
+  });
+  const parts = formatter.formatToParts(date);
+  const result = {};
+  for (const part of parts) {
+    if (part.type !== 'literal') {
+      result[part.type] = part.value;
+    }
+  }
+  const year = result.year ?? '0000';
+  const month = result.month ?? '01';
+  const day = result.day ?? '01';
+  const hour = result.hour ?? '00';
+  const minute = result.minute ?? '00';
+  const second = result.second ?? '00';
+  return `${year}-${month}-${day}T${hour}:${minute}:${second}`;
+}
+
+function ymd(date, timeZone) {
+  const iso = fmtIso(date, timeZone);
+  const [ymdPart] = iso.split('T');
+  const [year, month, day] = ymdPart.split('-').map((value) => Number.parseInt(value, 10));
+  return { year, month, day };
+}
+
+export function fmtTime(date, timeZone) {
+  const formatter = getFormatter('time', timeZone, {
+    hour: 'numeric',
+    minute: '2-digit'
+  });
+  const parts = formatter.formatToParts(date);
+  return parts
+    .filter((part) => part.type === 'hour' || part.type === 'minute' || part.type === 'dayPeriod' || part.type === 'literal')
+    .map((part) => part.value)
+    .join('');
+}
+
+export function fmtDate(date, timeZone) {
+  const formatter = getFormatter('date', timeZone, {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric'
+  });
+  const parts = formatter.formatToParts(date);
+  return parts
+    .filter((part) => part.type === 'weekday' || part.type === 'month' || part.type === 'day' || part.type === 'literal')
+    .map((part) => part.value)
+    .join('');
+}
+
+export function dayDelta(date, timeZone, baseTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone) {
+  const target = ymd(date, timeZone);
+  const base = ymd(date, baseTimeZone);
+  const targetUtc = Date.UTC(target.year, target.month - 1, target.day);
+  const baseUtc = Date.UTC(base.year, base.month - 1, base.day);
+  return Math.round((targetUtc - baseUtc) / 86400000);
+}
+
+export function timeValue(date, timeZone) {
+  const formatter = getFormatter('timeValue', timeZone, {
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23'
+  });
+  const parts = formatter.formatToParts(date);
+  const values = {};
+  for (const part of parts) {
+    if (part.type === 'hour' || part.type === 'minute') {
+      values[part.type] = part.value;
+    }
+  }
+  const hour = values.hour ?? '00';
+  const minute = values.minute ?? '00';
+  return `${hour}:${minute}`;
+}
+
+const HTML_ESCAPE_PATTERN = /[&<>"']/g;
+const HTML_ESCAPE_LOOKUP = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+};
+
+export function escapeHtml(value) {
+  return String(value).replace(HTML_ESCAPE_PATTERN, (match) => HTML_ESCAPE_LOOKUP[match]);
+}
