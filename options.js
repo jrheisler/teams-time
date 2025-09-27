@@ -1,4 +1,5 @@
 import timezones from './timezones-data.js';
+import timezoneAliases from './timezone-aliases.js';
 
 const runtimeChrome = typeof chrome !== 'undefined' ? chrome : undefined;
 const storageArea = runtimeChrome?.storage?.sync;
@@ -6,6 +7,7 @@ const fallbackStore = new Map();
 
 let cachedTimezones = null;
 const FALLBACK_TIMEZONES = timezones;
+const FALLBACK_TIMEZONE_ALIASES = timezoneAliases;
 
 function getFallbackKey(key) {
   return `teams-time::${key}`;
@@ -122,15 +124,50 @@ const DEFAULT_SETTINGS = {
 let people = [];
 let settings = { ...DEFAULT_SETTINGS };
 
-function populateTimezoneDatalist(zones) {
+function populateTimezoneDatalist(zones, aliases) {
   timezoneList.innerHTML = '';
+
+  const fragment = document.createDocumentFragment();
   for (const zone of zones) {
     const option = document.createElement('option');
     option.value = zone;
     option.textContent = zone;
     option.label = zone;
-    timezoneList.append(option);
+    option.dataset.zone = zone;
+    fragment.append(option);
   }
+
+  for (const [alias, canonical] of Object.entries(aliases)) {
+    const option = document.createElement('option');
+    option.value = alias;
+    option.textContent = alias;
+    option.label = `${alias} (${canonical})`;
+    option.dataset.zone = canonical;
+    fragment.append(option);
+  }
+
+  timezoneList.append(fragment);
+}
+
+function normalizeTimezone(value) {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(timezoneAliases, trimmed)) {
+    return timezoneAliases[trimmed];
+  }
+
+  const matchingOption = Array.from(timezoneList.options).find(
+    (option) => option.value === trimmed
+  );
+
+  if (matchingOption?.dataset?.zone) {
+    return matchingOption.dataset.zone;
+  }
+
+  return trimmed;
 }
 
 function renderEmptyState() {
@@ -208,17 +245,20 @@ personForm.addEventListener('submit', async (event) => {
   const name = nameInput.value.trim();
   const note = noteInput.value.trim();
   const timezone = timezoneInput.value.trim();
+  const canonicalTimezone = normalizeTimezone(timezone);
 
-  if (!name || !timezone) {
+  if (!name || !canonicalTimezone) {
     return;
   }
 
   timezoneInput.setCustomValidity('');
-  if (!validateTimezone(timezone)) {
+  if (!validateTimezone(canonicalTimezone)) {
     timezoneInput.setCustomValidity('Enter a valid IANA time zone.');
     timezoneInput.reportValidity();
     return;
   }
+
+  timezoneInput.value = canonicalTimezone;
 
   const id = typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
     ? crypto.randomUUID()
@@ -228,7 +268,7 @@ personForm.addEventListener('submit', async (event) => {
     id,
     name,
     note,
-    timezone
+    timezone: canonicalTimezone
   };
 
   people = [...people, entry];
@@ -255,10 +295,27 @@ async function initialize() {
   people = Array.isArray(storedPeople) ? storedPeople : [];
   settings = { ...DEFAULT_SETTINGS, ...(storedSettings ?? {}) };
 
-  populateTimezoneDatalist(Array.isArray(zones) ? zones : []);
+  populateTimezoneDatalist(
+    Array.isArray(zones) ? zones : [],
+    FALLBACK_TIMEZONE_ALIASES
+  );
 
   hourFormatSelect.value = settings.hour12 ? '12' : '24';
   renderPeople();
 }
+
+timezoneInput.addEventListener('change', () => {
+  const canonical = normalizeTimezone(timezoneInput.value);
+  if (canonical) {
+    timezoneInput.value = canonical;
+  }
+});
+
+timezoneInput.addEventListener('blur', () => {
+  const canonical = normalizeTimezone(timezoneInput.value);
+  if (canonical) {
+    timezoneInput.value = canonical;
+  }
+});
 
 initialize();
