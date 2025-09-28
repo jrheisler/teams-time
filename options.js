@@ -130,6 +130,87 @@ let people = [];
 let settings = { ...DEFAULT_SETTINGS };
 let timelineRefreshIntervalId = null;
 
+function getTimezoneOffsetMinutes(referenceDate, timeZone) {
+  try {
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      hour12: false,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
+    const parts = formatter.formatToParts(referenceDate).reduce((accumulator, part) => {
+      if (part.type !== 'literal') {
+        accumulator[part.type] = part.value;
+      }
+      return accumulator;
+    }, {});
+
+    if (
+      !parts.year ||
+      !parts.month ||
+      !parts.day ||
+      !parts.hour ||
+      typeof parts.minute === 'undefined' ||
+      typeof parts.second === 'undefined'
+    ) {
+      return Number.POSITIVE_INFINITY;
+    }
+
+    const timeAsUTC = Date.UTC(
+      Number(parts.year),
+      Number(parts.month) - 1,
+      Number(parts.day),
+      Number(parts.hour),
+      Number(parts.minute),
+      Number(parts.second)
+    );
+
+    return Math.round((timeAsUTC - referenceDate.getTime()) / (60 * 1000));
+  } catch (error) {
+    console.warn('Unable to determine time zone offset', timeZone, error);
+    return Number.POSITIVE_INFINITY;
+  }
+}
+
+function getSortedPeople(referenceDate = new Date(), list = people) {
+  if (!Array.isArray(list)) {
+    return [];
+  }
+
+  const baseDate = referenceDate instanceof Date ? referenceDate : new Date(referenceDate);
+  const entries = [...list];
+  const offsetCache = new Map();
+  const collator = new Intl.Collator(undefined, { sensitivity: 'accent', numeric: true });
+
+  const getOffset = (timeZone) => {
+    if (!timeZone) {
+      return Number.POSITIVE_INFINITY;
+    }
+
+    if (offsetCache.has(timeZone)) {
+      return offsetCache.get(timeZone);
+    }
+
+    const offset = getTimezoneOffsetMinutes(baseDate, timeZone);
+    offsetCache.set(timeZone, offset);
+    return offset;
+  };
+
+  return entries.sort((a, b) => {
+    const offsetDifference = getOffset(a.timezone) - getOffset(b.timezone);
+    if (offsetDifference !== 0) {
+      return offsetDifference;
+    }
+
+    return collator.compare(a.name ?? '', b.name ?? '');
+  });
+}
+
 function resolveViewerTimezone() {
   try {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -198,13 +279,16 @@ function renderEmptyState() {
   peopleList.append(message);
 }
 
-function renderPeople() {
+function renderPeople(referenceDate, sortedEntries) {
   peopleList.innerHTML = '';
 
-  if (!people.length) {
+  const now = referenceDate instanceof Date ? referenceDate : new Date();
+  const entries = Array.isArray(sortedEntries) ? sortedEntries : getSortedPeople(now);
+
+  if (!entries.length) {
     renderEmptyState();
   } else {
-    for (const person of people) {
+    for (const person of entries) {
       const item = document.createElement('div');
       item.className = 'person';
       item.setAttribute('role', 'listitem');
@@ -237,9 +321,11 @@ function renderPeople() {
       removeButton.type = 'button';
       removeButton.textContent = 'Remove';
       removeButton.addEventListener('click', async () => {
-        people = people.filter((entry) => entry.id !== person.id);
+        const filteredPeople = people.filter((entry) => entry.id !== person.id);
+        const removalReference = new Date();
+        people = getSortedPeople(removalReference, filteredPeople);
         await setInStorage(STORAGE_KEYS.people, people);
-        renderPeople();
+        renderPeople(removalReference, people);
       });
 
       actions.append(removeButton);
@@ -249,7 +335,7 @@ function renderPeople() {
     }
   }
 
-  renderTimelines();
+  renderTimelines(entries, now);
 }
 
 function getDayKey(date, formatter) {
@@ -378,7 +464,7 @@ function createTimelineRow(entry, referenceDate) {
   return row;
 }
 
-function renderTimelines() {
+function renderTimelines(sortedEntries, referenceDate) {
   if (!timelineList || !currentUserTimeline) {
     return;
   }
@@ -386,7 +472,8 @@ function renderTimelines() {
   currentUserTimeline.innerHTML = '';
   timelineList.innerHTML = '';
 
-  const now = new Date();
+  const now = referenceDate instanceof Date ? referenceDate : new Date();
+  const entries = Array.isArray(sortedEntries) ? sortedEntries : getSortedPeople(now);
 
   const viewerRow = createTimelineRow(
     {
@@ -403,7 +490,7 @@ function renderTimelines() {
     currentUserTimeline.append(viewerRow);
   }
 
-  if (!people.length) {
+  if (!entries.length) {
     const message = document.createElement('div');
     message.className = 'empty-message';
     message.textContent = 'Timelines will appear after you add teammates.';
@@ -411,7 +498,7 @@ function renderTimelines() {
     return;
   }
 
-  for (const person of people) {
+  for (const person of entries) {
     const row = createTimelineRow(
       {
         name: person.name,
@@ -486,9 +573,10 @@ personForm.addEventListener('submit', async (event) => {
     timezone: canonicalTimezone
   };
 
-  people = [...people, entry];
+  const additionReference = new Date();
+  people = getSortedPeople(additionReference, [...people, entry]);
   await setInStorage(STORAGE_KEYS.people, people);
-  renderPeople();
+  renderPeople(additionReference, people);
 
   personForm.reset();
   nameInput.focus();
@@ -508,8 +596,16 @@ async function initialize() {
     getFromStorage(STORAGE_KEYS.settings, DEFAULT_SETTINGS)
   ]);
 
-  people = Array.isArray(storedPeople) ? storedPeople : [];
+  const storedList = Array.isArray(storedPeople) ? storedPeople : [];
+  const initializationReference = new Date();
+  const normalizedPeople = getSortedPeople(initializationReference, storedList);
+
+  people = normalizedPeople;
   settings = { ...DEFAULT_SETTINGS, ...(storedSettings ?? {}) };
+
+  if (JSON.stringify(storedList) !== JSON.stringify(normalizedPeople)) {
+    await setInStorage(STORAGE_KEYS.people, people);
+  }
 
   populateTimezoneDatalist(
     Array.isArray(zones) ? zones : [],
@@ -517,7 +613,7 @@ async function initialize() {
   );
 
   hourFormatSelect.value = settings.hour12 ? '12' : '24';
-  renderPeople();
+  renderPeople(initializationReference, people);
 
   if (timelineSection && timelineList && currentUserTimeline) {
     startTimelineRefresh();
