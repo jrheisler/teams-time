@@ -111,6 +111,8 @@ const noteInput = document.getElementById('person-note');
 const timezoneInput = document.getElementById('person-timezone');
 const peopleList = document.getElementById('people-list');
 const hourFormatSelect = document.getElementById('hour-format');
+const timelineSection = document.getElementById('timeline-section');
+const timelineList = document.getElementById('timeline-list');
 
 const STORAGE_KEYS = {
   people: 'people',
@@ -121,8 +123,11 @@ const DEFAULT_SETTINGS = {
   hour12: true
 };
 
+const TIMELINE_REFRESH_INTERVAL = 5 * 60 * 1000;
+
 let people = [];
 let settings = { ...DEFAULT_SETTINGS };
+let timelineRefreshIntervalId = null;
 
 function populateTimezoneDatalist(zones, aliases) {
   timezoneList.innerHTML = '';
@@ -182,52 +187,208 @@ function renderPeople() {
 
   if (!people.length) {
     renderEmptyState();
+  } else {
+    for (const person of people) {
+      const item = document.createElement('div');
+      item.className = 'person';
+      item.setAttribute('role', 'listitem');
+
+      const details = document.createElement('div');
+      details.className = 'person-details';
+
+      const name = document.createElement('span');
+      name.className = 'person-name';
+      name.textContent = person.name;
+
+      details.append(name);
+
+      if (person.note) {
+        const note = document.createElement('p');
+        note.className = 'person-note';
+        note.textContent = person.note;
+        details.append(note);
+      }
+
+      const timezone = document.createElement('p');
+      timezone.className = 'person-timezone';
+      timezone.textContent = person.timezone;
+      details.append(timezone);
+
+      const actions = document.createElement('div');
+      actions.className = 'person-actions';
+
+      const removeButton = document.createElement('button');
+      removeButton.type = 'button';
+      removeButton.textContent = 'Remove';
+      removeButton.addEventListener('click', async () => {
+        people = people.filter((entry) => entry.id !== person.id);
+        await setInStorage(STORAGE_KEYS.people, people);
+        renderPeople();
+      });
+
+      actions.append(removeButton);
+
+      item.append(details, actions);
+      peopleList.append(item);
+    }
+  }
+
+  renderTimelines();
+}
+
+function getDayKey(date, formatter) {
+  const parts = formatter.formatToParts(date);
+  let year = '';
+  let month = '';
+  let day = '';
+
+  for (const part of parts) {
+    if (part.type === 'year') {
+      year = part.value;
+    } else if (part.type === 'month') {
+      month = part.value;
+    } else if (part.type === 'day') {
+      day = part.value;
+    }
+  }
+
+  return `${year}-${month}-${day}`;
+}
+
+function renderTimelines() {
+  if (!timelineList) {
     return;
   }
 
+  timelineList.innerHTML = '';
+
+  if (!people.length) {
+    const message = document.createElement('div');
+    message.className = 'empty-message';
+    message.textContent = 'Timelines will appear after you add teammates.';
+    timelineList.append(message);
+    return;
+  }
+
+  const now = new Date();
+
   for (const person of people) {
-    const item = document.createElement('div');
-    item.className = 'person';
-    item.setAttribute('role', 'listitem');
+    let hourFormatter;
+    let dayLabelFormatter;
+    let dayKeyFormatter;
 
-    const details = document.createElement('div');
-    details.className = 'person-details';
+    try {
+      hourFormatter = new Intl.DateTimeFormat(undefined, {
+        timeZone: person.timezone,
+        hour: 'numeric',
+        hour12: settings.hour12
+      });
 
-    const name = document.createElement('span');
-    name.className = 'person-name';
-    name.textContent = person.name;
+      dayLabelFormatter = new Intl.DateTimeFormat(undefined, {
+        timeZone: person.timezone,
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+      });
 
-    details.append(name);
-
-    if (person.note) {
-      const note = document.createElement('p');
-      note.className = 'person-note';
-      note.textContent = person.note;
-      details.append(note);
+      dayKeyFormatter = new Intl.DateTimeFormat('en-CA', {
+        timeZone: person.timezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
+    } catch (error) {
+      console.warn('Unable to render timeline for person', person, error);
+      continue;
     }
 
-    const timezone = document.createElement('p');
-    timezone.className = 'person-timezone';
+    const row = document.createElement('div');
+    row.className = 'timeline-row';
+    row.setAttribute('role', 'listitem');
+
+    const personInfo = document.createElement('div');
+    personInfo.className = 'timeline-person';
+
+    const name = document.createElement('span');
+    name.className = 'timeline-person-name';
+    name.textContent = person.name;
+    personInfo.append(name);
+
+    if (person.note) {
+      const note = document.createElement('span');
+      note.className = 'timeline-person-note';
+      note.textContent = person.note;
+      personInfo.append(note);
+    }
+
+    const timezone = document.createElement('span');
+    timezone.className = 'timeline-person-timezone';
     timezone.textContent = person.timezone;
-    details.append(timezone);
+    personInfo.append(timezone);
 
-    const actions = document.createElement('div');
-    actions.className = 'person-actions';
+    const track = document.createElement('div');
+    track.className = 'timeline-track';
+    track.setAttribute('role', 'list');
+    track.setAttribute('aria-label', `${person.name}'s next 24 hours`);
 
-    const removeButton = document.createElement('button');
-    removeButton.type = 'button';
-    removeButton.textContent = 'Remove';
-    removeButton.addEventListener('click', async () => {
-      people = people.filter((entry) => entry.id !== person.id);
-      await setInStorage(STORAGE_KEYS.people, people);
-      renderPeople();
-    });
+    let previousDayKey = null;
 
-    actions.append(removeButton);
+    for (let offset = 0; offset < 24; offset += 1) {
+      const segmentDate = new Date(now.getTime() + offset * 60 * 60 * 1000);
+      const hourLabel = hourFormatter.format(segmentDate);
+      const dayKey = getDayKey(segmentDate, dayKeyFormatter);
+      const dayLabel = dayLabelFormatter.format(segmentDate);
+      const isCurrentHour = offset === 0;
+      const isDayChange = previousDayKey !== null && dayKey !== previousDayKey;
 
-    item.append(details, actions);
-    peopleList.append(item);
+      const hourElement = document.createElement('div');
+      hourElement.className = 'timeline-hour';
+      if (isCurrentHour) {
+        hourElement.classList.add('is-current');
+      }
+      if (isDayChange) {
+        hourElement.classList.add('is-day-change');
+      }
+      hourElement.setAttribute('role', 'listitem');
+      hourElement.setAttribute(
+        'aria-label',
+        `${person.name}: ${hourLabel} (${dayLabel})`
+      );
+      hourElement.title = `${dayLabel} • ${hourLabel}`;
+
+      const hourLabelElement = document.createElement('span');
+      hourLabelElement.className = 'timeline-hour-label';
+      hourLabelElement.textContent = hourLabel;
+      hourElement.append(hourLabelElement);
+
+      if (isDayChange || offset === 0) {
+        const dayLabelElement = document.createElement('span');
+        dayLabelElement.className = 'timeline-day-label';
+        dayLabelElement.textContent = dayLabel;
+        hourElement.append(dayLabelElement);
+      }
+
+      track.append(hourElement);
+      previousDayKey = dayKey;
+    }
+
+    row.append(personInfo, track);
+    timelineList.append(row);
   }
+}
+
+function startTimelineRefresh() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  if (timelineRefreshIntervalId) {
+    window.clearInterval(timelineRefreshIntervalId);
+  }
+
+  timelineRefreshIntervalId = window.setInterval(() => {
+    renderTimelines();
+  }, TIMELINE_REFRESH_INTERVAL);
 }
 
 function validateTimezone(value) {
@@ -283,6 +444,7 @@ hourFormatSelect.addEventListener('change', async () => {
   const hour12 = hourFormatSelect.value === '12';
   settings = { ...settings, hour12 };
   await setInStorage(STORAGE_KEYS.settings, settings);
+  renderTimelines();
 });
 
 async function initialize() {
@@ -302,6 +464,10 @@ async function initialize() {
 
   hourFormatSelect.value = settings.hour12 ? '12' : '24';
   renderPeople();
+
+  if (timelineSection && timelineList) {
+    startTimelineRefresh();
+  }
 }
 
 timezoneInput.addEventListener('change', () => {
