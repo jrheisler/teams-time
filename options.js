@@ -112,6 +112,7 @@ const timezoneInput = document.getElementById('person-timezone');
 const peopleList = document.getElementById('people-list');
 const hourFormatSelect = document.getElementById('hour-format');
 const timelineSection = document.getElementById('timeline-section');
+const currentUserTimeline = document.getElementById('current-user-timeline');
 const timelineList = document.getElementById('timeline-list');
 
 const STORAGE_KEYS = {
@@ -128,6 +129,21 @@ const TIMELINE_REFRESH_INTERVAL = 5 * 60 * 1000;
 let people = [];
 let settings = { ...DEFAULT_SETTINGS };
 let timelineRefreshIntervalId = null;
+
+function resolveViewerTimezone() {
+  try {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (timezone && typeof timezone === 'string') {
+      return { timezone, isFallback: false };
+    }
+  } catch (error) {
+    console.warn('Unable to detect viewer time zone', error);
+  }
+
+  return { timezone: 'UTC', isFallback: true };
+}
+
+const viewerTimezoneInfo = resolveViewerTimezone();
 
 function populateTimezoneDatalist(zones, aliases) {
   timezoneList.innerHTML = '';
@@ -255,12 +271,137 @@ function getDayKey(date, formatter) {
   return `${year}-${month}-${day}`;
 }
 
+function createTimelineRow(entry, referenceDate) {
+  const { name, note, timezone, trackLabel, extraClass } = entry;
+  let hourFormatter;
+  let dayLabelFormatter;
+  let dayKeyFormatter;
+
+  try {
+    hourFormatter = new Intl.DateTimeFormat(undefined, {
+      timeZone: timezone,
+      hour: 'numeric',
+      hour12: settings.hour12
+    });
+
+    dayLabelFormatter = new Intl.DateTimeFormat(undefined, {
+      timeZone: timezone,
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric'
+    });
+
+    dayKeyFormatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone: timezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
+  } catch (error) {
+    console.warn('Unable to render timeline for entry', entry, error);
+    return null;
+  }
+
+  const row = document.createElement('div');
+  row.className = 'timeline-row';
+  if (extraClass) {
+    row.classList.add(extraClass);
+  }
+  row.setAttribute('role', 'listitem');
+
+  const personInfo = document.createElement('div');
+  personInfo.className = 'timeline-person';
+
+  const nameElement = document.createElement('span');
+  nameElement.className = 'timeline-person-name';
+  nameElement.textContent = name;
+  personInfo.append(nameElement);
+
+  if (note) {
+    const noteElement = document.createElement('span');
+    noteElement.className = 'timeline-person-note';
+    noteElement.textContent = note;
+    personInfo.append(noteElement);
+  }
+
+  const timezoneElement = document.createElement('span');
+  timezoneElement.className = 'timeline-person-timezone';
+  timezoneElement.textContent = timezone;
+  personInfo.append(timezoneElement);
+
+  const track = document.createElement('div');
+  track.className = 'timeline-track';
+  track.setAttribute('role', 'list');
+  const accessibleLabel = trackLabel ?? `${name}'s next 24 hours`;
+  track.setAttribute('aria-label', accessibleLabel);
+
+  let previousDayKey = null;
+  const baseDate = referenceDate ?? new Date();
+
+  for (let offset = 0; offset < 24; offset += 1) {
+    const segmentDate = new Date(baseDate.getTime() + offset * 60 * 60 * 1000);
+    const hourLabel = hourFormatter.format(segmentDate);
+    const dayKey = getDayKey(segmentDate, dayKeyFormatter);
+    const dayLabel = dayLabelFormatter.format(segmentDate);
+    const isCurrentHour = offset === 0;
+    const isDayChange = previousDayKey !== null && dayKey !== previousDayKey;
+
+    const hourElement = document.createElement('div');
+    hourElement.className = 'timeline-hour';
+    if (isCurrentHour) {
+      hourElement.classList.add('is-current');
+    }
+    if (isDayChange) {
+      hourElement.classList.add('is-day-change');
+    }
+    hourElement.setAttribute('role', 'listitem');
+    hourElement.setAttribute('aria-label', `${name}: ${hourLabel} (${dayLabel})`);
+    hourElement.title = `${dayLabel} • ${hourLabel}`;
+
+    const hourLabelElement = document.createElement('span');
+    hourLabelElement.className = 'timeline-hour-label';
+    hourLabelElement.textContent = hourLabel;
+    hourElement.append(hourLabelElement);
+
+    if (isDayChange || offset === 0) {
+      const dayLabelElement = document.createElement('span');
+      dayLabelElement.className = 'timeline-day-label';
+      dayLabelElement.textContent = dayLabel;
+      hourElement.append(dayLabelElement);
+    }
+
+    track.append(hourElement);
+    previousDayKey = dayKey;
+  }
+
+  row.append(personInfo, track);
+  return row;
+}
+
 function renderTimelines() {
-  if (!timelineList) {
+  if (!timelineList || !currentUserTimeline) {
     return;
   }
 
+  currentUserTimeline.innerHTML = '';
   timelineList.innerHTML = '';
+
+  const now = new Date();
+
+  const viewerRow = createTimelineRow(
+    {
+      name: 'You',
+      note: viewerTimezoneInfo.isFallback ? 'Defaulting to UTC' : 'Your local time',
+      timezone: viewerTimezoneInfo.timezone,
+      trackLabel: 'Your next 24 hours',
+      extraClass: 'is-viewer'
+    },
+    now
+  );
+
+  if (viewerRow) {
+    currentUserTimeline.append(viewerRow);
+  }
 
   if (!people.length) {
     const message = document.createElement('div');
@@ -270,115 +411,28 @@ function renderTimelines() {
     return;
   }
 
-  const now = new Date();
-
   for (const person of people) {
-    let hourFormatter;
-    let dayLabelFormatter;
-    let dayKeyFormatter;
+    const row = createTimelineRow(
+      {
+        name: person.name,
+        note: person.note,
+        timezone: person.timezone
+      },
+      now
+    );
 
-    try {
-      hourFormatter = new Intl.DateTimeFormat(undefined, {
-        timeZone: person.timezone,
-        hour: 'numeric',
-        hour12: settings.hour12
-      });
-
-      dayLabelFormatter = new Intl.DateTimeFormat(undefined, {
-        timeZone: person.timezone,
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric'
-      });
-
-      dayKeyFormatter = new Intl.DateTimeFormat('en-CA', {
-        timeZone: person.timezone,
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      });
-    } catch (error) {
-      console.warn('Unable to render timeline for person', person, error);
-      continue;
+    if (row) {
+      timelineList.append(row);
     }
-
-    const row = document.createElement('div');
-    row.className = 'timeline-row';
-    row.setAttribute('role', 'listitem');
-
-    const personInfo = document.createElement('div');
-    personInfo.className = 'timeline-person';
-
-    const name = document.createElement('span');
-    name.className = 'timeline-person-name';
-    name.textContent = person.name;
-    personInfo.append(name);
-
-    if (person.note) {
-      const note = document.createElement('span');
-      note.className = 'timeline-person-note';
-      note.textContent = person.note;
-      personInfo.append(note);
-    }
-
-    const timezone = document.createElement('span');
-    timezone.className = 'timeline-person-timezone';
-    timezone.textContent = person.timezone;
-    personInfo.append(timezone);
-
-    const track = document.createElement('div');
-    track.className = 'timeline-track';
-    track.setAttribute('role', 'list');
-    track.setAttribute('aria-label', `${person.name}'s next 24 hours`);
-
-    let previousDayKey = null;
-
-    for (let offset = 0; offset < 24; offset += 1) {
-      const segmentDate = new Date(now.getTime() + offset * 60 * 60 * 1000);
-      const hourLabel = hourFormatter.format(segmentDate);
-      const dayKey = getDayKey(segmentDate, dayKeyFormatter);
-      const dayLabel = dayLabelFormatter.format(segmentDate);
-      const isCurrentHour = offset === 0;
-      const isDayChange = previousDayKey !== null && dayKey !== previousDayKey;
-
-      const hourElement = document.createElement('div');
-      hourElement.className = 'timeline-hour';
-      if (isCurrentHour) {
-        hourElement.classList.add('is-current');
-      }
-      if (isDayChange) {
-        hourElement.classList.add('is-day-change');
-      }
-      hourElement.setAttribute('role', 'listitem');
-      hourElement.setAttribute(
-        'aria-label',
-        `${person.name}: ${hourLabel} (${dayLabel})`
-      );
-      hourElement.title = `${dayLabel} • ${hourLabel}`;
-
-      const hourLabelElement = document.createElement('span');
-      hourLabelElement.className = 'timeline-hour-label';
-      hourLabelElement.textContent = hourLabel;
-      hourElement.append(hourLabelElement);
-
-      if (isDayChange || offset === 0) {
-        const dayLabelElement = document.createElement('span');
-        dayLabelElement.className = 'timeline-day-label';
-        dayLabelElement.textContent = dayLabel;
-        hourElement.append(dayLabelElement);
-      }
-
-      track.append(hourElement);
-      previousDayKey = dayKey;
-    }
-
-    row.append(personInfo, track);
-    timelineList.append(row);
   }
 }
 
 function startTimelineRefresh() {
   if (typeof window === 'undefined') {
+    return;
+  }
+
+  if (!timelineList || !currentUserTimeline) {
     return;
   }
 
@@ -465,7 +519,7 @@ async function initialize() {
   hourFormatSelect.value = settings.hour12 ? '12' : '24';
   renderPeople();
 
-  if (timelineSection && timelineList) {
+  if (timelineSection && timelineList && currentUserTimeline) {
     startTimelineRefresh();
   }
 }
