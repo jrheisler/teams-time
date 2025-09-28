@@ -186,28 +186,27 @@ button:focus-visible {
   border-radius: 0.65rem;
 }
 
-.timeline-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+.timeline-scroller {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-top: 1rem;
 }
 
-.timeline-current-user {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 1.25rem 1.5rem;
-  border-radius: 0.75rem;
-  background: rgba(37, 99, 235, 0.12);
-  border: 1px solid rgba(37, 99, 235, 0.25);
+.timeline-rows {
+  --tt-hour-min-width: 2.75rem;
+  display: grid;
+  grid-template-columns: minmax(0, 220px) repeat(24, minmax(var(--tt-hour-min-width), 1fr));
+  column-gap: 0.35rem;
+  row-gap: 1.25rem;
+  width: max-content;
+  min-width: 100%;
+  align-items: flex-start;
+  padding-right: 0.5rem;
 }
 
-.timeline-current-user .timeline-row {
-  margin: 0;
-}
-
-.timeline-list .empty-message {
+.timeline-rows .empty-message {
+  grid-column: 1 / -1;
   text-align: center;
   padding: 1.2rem 0;
   color: var(--tt-color-muted-text);
@@ -216,16 +215,15 @@ button:focus-visible {
 }
 
 .timeline-row {
-  display: grid;
-  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: flex-start;
+  display: contents;
 }
 
 .timeline-person {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  padding-right: 1.15rem;
+  grid-column: 1;
 }
 
 .timeline-person-name {
@@ -245,23 +243,8 @@ button:focus-visible {
 }
 
 .timeline-track {
-  --tt-hour-min-width: 2.75rem;
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(24, minmax(var(--tt-hour-min-width), 1fr));
-  gap: 0.35rem;
-  padding-bottom: 0.5rem;
-  overflow-x: auto;
-  scrollbar-width: thin;
-}
-
-.timeline-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.timeline-track::-webkit-scrollbar-thumb {
-  background: rgba(15, 23, 42, 0.2);
-  border-radius: 999px;
+  display: contents;
+  grid-column: 2 / -1;
 }
 
 .timeline-hour {
@@ -352,12 +335,7 @@ button:focus-visible {
     justify-content: flex-end;
   }
 
-  .timeline-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .timeline-track {
+  .timeline-rows {
     --tt-hour-min-width: 3.2rem;
   }
 }

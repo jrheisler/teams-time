@@ -112,8 +112,7 @@ const timezoneInput = document.getElementById('person-timezone');
 const peopleList = document.getElementById('people-list');
 const hourFormatSelect = document.getElementById('hour-format');
 const timelineSection = document.getElementById('timeline-section');
-const currentUserTimeline = document.getElementById('current-user-timeline');
-const timelineList = document.getElementById('timeline-list');
+const timelineRows = document.getElementById('timeline-rows');
 
 const STORAGE_KEYS = {
   people: 'people',
@@ -465,12 +464,11 @@ function createTimelineRow(entry, referenceDate) {
 }
 
 function renderTimelines(sortedEntries, referenceDate) {
-  if (!timelineList || !currentUserTimeline) {
+  if (!timelineRows) {
     return;
   }
 
-  currentUserTimeline.innerHTML = '';
-  timelineList.innerHTML = '';
+  timelineRows.innerHTML = '';
 
   const now = referenceDate instanceof Date ? referenceDate : new Date();
   const entries = Array.isArray(sortedEntries) ? sortedEntries : getSortedPeople(now);
@@ -487,14 +485,15 @@ function renderTimelines(sortedEntries, referenceDate) {
   );
 
   if (viewerRow) {
-    currentUserTimeline.append(viewerRow);
+    timelineRows.append(viewerRow);
   }
 
   if (!entries.length) {
     const message = document.createElement('div');
     message.className = 'empty-message';
     message.textContent = 'Timelines will appear after you add teammates.';
-    timelineList.append(message);
+    message.setAttribute('role', 'listitem');
+    timelineRows.append(message);
     return;
   }
 
@@ -509,7 +508,7 @@ function renderTimelines(sortedEntries, referenceDate) {
     );
 
     if (row) {
-      timelineList.append(row);
+      timelineRows.append(row);
     }
   }
 }
@@ -519,7 +518,7 @@ function startTimelineRefresh() {
     return;
   }
 
-  if (!timelineList || !currentUserTimeline) {
+  if (!timelineRows) {
     return;
   }
 
@@ -615,7 +614,7 @@ async function initialize() {
   hourFormatSelect.value = settings.hour12 ? '12' : '24';
   renderPeople(initializationReference, people);
 
-  if (timelineSection && timelineList && currentUserTimeline) {
+  if (timelineSection && timelineRows) {
     startTimelineRefresh();
   }
 }
