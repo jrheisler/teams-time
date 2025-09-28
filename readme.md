@@ -26,6 +26,7 @@ Teams Time is a Chrome extension that helps distributed teams quickly see the cu
 - Popup shows the configured teammates and their time zones.
 - Quick-add form in the popup for adding teammates on the fly.
 - Options page for managing the full roster and default preferences.
+- Options page timeline visualizes the next 24 hours for each teammate so you can coordinate at a glance.
 - Time zone data backed by a curated list in `timezones.json`.
 
 ## Development notes
