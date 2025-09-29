@@ -222,8 +222,13 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding-right: 1.15rem;
+  padding-right: calc(1.15rem + 0.35rem);
+  margin-right: -0.35rem;
   grid-column: 1;
+  position: sticky;
+  left: 0;
+  background: var(--tt-color-card);
+  z-index: 2;
 }
 
 .timeline-person-name {
