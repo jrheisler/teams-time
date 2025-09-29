@@ -139,7 +139,8 @@ const formatterCache = new Map();
 
 function getFormatter(prefix, timeZone, options) {
   const zoneKey = timeZone ?? 'default';
-  const cacheKey = `${prefix}::${zoneKey}`;
+  const optionsKey = options ? JSON.stringify(options) : 'default';
+  const cacheKey = `${prefix}::${zoneKey}::${optionsKey}`;
   let formatter = formatterCache.get(cacheKey);
   if (!formatter) {
     const resolvedOptions = timeZone ? { ...options, timeZone } : { ...options };
@@ -182,11 +183,18 @@ function ymd(date, timeZone) {
   return { year, month, day };
 }
 
-export function fmtTime(date, timeZone) {
-  const formatter = getFormatter('time', timeZone, {
+export function fmtTime(date, timeZone, { hour12, hourCycle } = {}) {
+  const formatterOptions = {
     hour: 'numeric',
     minute: '2-digit'
-  });
+  };
+  if (typeof hour12 === 'boolean') {
+    formatterOptions.hour12 = hour12;
+  }
+  if (hourCycle) {
+    formatterOptions.hourCycle = hourCycle;
+  }
+  const formatter = getFormatter('time', timeZone, formatterOptions);
   const parts = formatter.formatToParts(date);
   return parts
     .filter((part) => part.type === 'hour' || part.type === 'minute' || part.type === 'dayPeriod' || part.type === 'literal')

@@ -3,7 +3,8 @@ import { getStoredValue, fmtTime, dayDelta, timeValue, escapeHtml } from './util
 const DEFAULT_PEOPLE = [];
 const DEFAULT_SETTINGS = {
   sortMode: 'time',
-  baseTimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+  baseTimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  hour12: true
 };
 
 const currentTimeElement = document.getElementById('current-time');
@@ -44,6 +45,9 @@ function normalizeSettings(value) {
   if (typeof suppliedBase === 'string' && suppliedBase) {
     normalized.baseTimeZone = suppliedBase;
   }
+  if (typeof value.hour12 === 'boolean') {
+    normalized.hour12 = value.hour12;
+  }
   return normalized;
 }
 
@@ -81,13 +85,13 @@ function sortPeople(people, sortMode, now) {
   });
 }
 
-function renderCurrentTime(now, baseTimeZone) {
-  const currentTime = fmtTime(now, baseTimeZone);
+function renderCurrentTime(now, baseTimeZone, hour12) {
+  const currentTime = fmtTime(now, baseTimeZone, { hour12 });
   const timezoneLabel = baseTimeZone || 'Local time';
   currentTimeElement.innerHTML = `${escapeHtml(currentTime)} • ${escapeHtml(timezoneLabel)}`;
 }
 
-function renderPeople(now, baseTimeZone, sortMode) {
+function renderPeople(now, baseTimeZone, sortMode, hour12) {
   peopleListElement.innerHTML = '';
   if (!state.people.length) {
     const empty = document.createElement('li');
@@ -105,7 +109,7 @@ function renderPeople(now, baseTimeZone, sortMode) {
     item.innerHTML = `
       <div class="person__header">
         <h3 class="person__name">${escapeHtml(person.name)}</h3>
-        <span class="person__time">${escapeHtml(fmtTime(now, person.timezone))}</span>
+        <span class="person__time">${escapeHtml(fmtTime(now, person.timezone, { hour12 }))}</span>
       </div>
       <div class="person__meta">
         <span class="person__delta">${escapeHtml(describeDayDelta(delta))}</span>
@@ -120,8 +124,10 @@ function render() {
   const now = new Date();
   const baseTimeZone = state.settings.baseTimeZone || DEFAULT_SETTINGS.baseTimeZone;
   const sortMode = state.settings.sortMode || DEFAULT_SETTINGS.sortMode;
-  renderCurrentTime(now, baseTimeZone);
-  renderPeople(now, baseTimeZone, sortMode);
+  const hour12 =
+    typeof state.settings.hour12 === 'boolean' ? state.settings.hour12 : DEFAULT_SETTINGS.hour12;
+  renderCurrentTime(now, baseTimeZone, hour12);
+  renderPeople(now, baseTimeZone, sortMode, hour12);
 }
 
 function startRenderTimer() {
