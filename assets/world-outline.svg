@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="worldWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dbeafe" />
+      <stop offset="1" stop-color="#bfdbfe" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#worldWater)" />
+  <g fill="#bfdbfe" stroke="#60a5fa" stroke-width="3" stroke-linejoin="round">
+    <path d="M78 180l46-52 78-24 56 18 34-26 46 16 16 36-54 54-44-12-52 28-52-12-48 32-38-22z" />
+    <path d="M300 90l80-36 56 14 58-22 70 16 32 40-20 52-72 26-54-18-42 32-76-12-38-38z" />
+    <path d="M458 220l64-40 62-6 74 26 26 40-24 40-66 20-68-20-44-46z" />
+    <path d="M646 130l50-30 52 10 32 32-20 52-48 8-40-32-26-40z" />
+    <path d="M188 240l52 10 40 46-16 66-52 16-44-42 20-48z" />
+    <path d="M542 300l46-20 52 24 8 42-40 32-52-14-14-36z" />
+  </g>
+</svg>

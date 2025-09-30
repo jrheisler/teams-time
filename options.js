@@ -19,6 +19,9 @@ let cachedTimezoneGeoData = null;
 const timezoneMapRegionsByZone = new Map();
 let activeTimezoneMapRegion = null;
 const MAP_POINT_RADIUS = 4.5;
+const WORLD_BASEMAP_URL = runtimeChrome?.runtime?.getURL
+  ? runtimeChrome.runtime.getURL('assets/world-outline.svg')
+  : new URL('./assets/world-outline.svg', import.meta.url).toString();
 
 function getFallbackKey(key) {
   return `teams-time::${key}`;
@@ -734,6 +737,16 @@ function renderTimezoneMap(features) {
   svg.setAttribute('class', 'timezone-map-canvas');
   svg.setAttribute('role', 'group');
   svg.setAttribute('aria-label', 'Selectable time zones');
+
+  const basemap = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+  basemap.setAttribute('href', WORLD_BASEMAP_URL);
+  basemap.setAttribute('class', 'timezone-map-basemap');
+  basemap.setAttribute('x', '0');
+  basemap.setAttribute('y', '0');
+  basemap.setAttribute('width', String(width));
+  basemap.setAttribute('height', String(height));
+  basemap.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+  svg.append(basemap);
 
   for (const feature of features) {
     if (!feature || !feature.id) {
