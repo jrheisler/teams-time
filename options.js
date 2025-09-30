@@ -500,6 +500,7 @@ function polygonToPath(coordinates, width, height) {
 
     const commands = [];
     let previousLng = null;
+    let hasSubpath = false;
 
     for (let index = 0; index < ring.length; index += 1) {
       const point = ring[index];
@@ -511,22 +512,33 @@ function polygonToPath(coordinates, width, height) {
       const normalizedLng = normalizeLongitude(lng);
       const [x, y] = projectCoordinates(normalizedLng, lat, width, height);
 
+      if (!hasSubpath) {
+        commands.push(`M${x.toFixed(2)} ${y.toFixed(2)}`);
+        hasSubpath = true;
+        previousLng = normalizedLng;
+        continue;
+      }
+
       if (previousLng !== null) {
         const delta = Math.abs(normalizedLng - previousLng);
         if (delta > 180) {
-          // Dateline wrap – start a new subpath to avoid drawing across the map.
+          // Dateline wrap – close the current ring and start a new one.
+          commands.push('Z');
           commands.push(`M${x.toFixed(2)} ${y.toFixed(2)}`);
           previousLng = normalizedLng;
           continue;
         }
       }
 
-      commands.push(`${index === 0 ? 'M' : 'L'}${x.toFixed(2)} ${y.toFixed(2)}`);
+      commands.push(`L${x.toFixed(2)} ${y.toFixed(2)}`);
       previousLng = normalizedLng;
     }
 
     if (commands.length) {
-      rings.push(`${commands.join(' ')} Z`);
+      if (commands[commands.length - 1] !== 'Z') {
+        commands.push('Z');
+      }
+      rings.push(commands.join(' '));
     }
   }
 
@@ -537,6 +549,42 @@ function createMapRegionElement(feature, width, height) {
   const { geometry } = feature;
   if (!geometry) {
     return null;
+  }
+
+  if (geometry.type === 'GeometryCollection') {
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    for (const child of geometry.geometries || []) {
+      const element = createMapRegionElement({ ...feature, geometry: child }, width, height);
+      if (element) {
+        group.append(element);
+      }
+    }
+
+    if (!group.childNodes.length) {
+      return null;
+    }
+
+    return group;
+  }
+
+  if (geometry.type === 'MultiPoint') {
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    for (const point of geometry.coordinates || []) {
+      const element = createMapRegionElement(
+        { ...feature, geometry: { type: 'Point', coordinates: point } },
+        width,
+        height
+      );
+      if (element) {
+        group.append(element);
+      }
+    }
+
+    if (!group.childNodes.length) {
+      return null;
+    }
+
+    return group;
   }
 
   if (geometry.type === 'Polygon') {

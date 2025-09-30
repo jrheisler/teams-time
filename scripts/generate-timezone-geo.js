@@ -4,73 +4,193 @@ const path = require('path');
 
 const zones = require('../timezones.json');
 
-const regionBounds = {
-  Africa: { minLon: -20, maxLon: 55, minLat: -35, maxLat: 35, columns: 9 },
-  America: { minLon: -170, maxLon: -30, minLat: -60, maxLat: 70, columns: 14 },
-  Antarctica: { minLon: -180, maxLon: 180, minLat: -90, maxLat: -60, columns: 4 },
-  Arctic: { minLon: -180, maxLon: 180, minLat: 60, maxLat: 85, columns: 2 },
-  Asia: { minLon: 55, maxLon: 150, minLat: -15, maxLat: 75, columns: 11 },
-  Atlantic: { minLon: -60, maxLon: -15, minLat: -50, maxLat: 65, columns: 4 },
-  Australia: { minLon: 110, maxLon: 160, minLat: -45, maxLat: -10, columns: 4 },
-  Europe: { minLon: -25, maxLon: 45, minLat: 32, maxLat: 72, columns: 8 },
-  Indian: { minLon: 40, maxLon: 110, minLat: -40, maxLat: 25, columns: 5 },
-  Pacific: { minLon: -180, maxLon: -110, minLat: -50, maxLat: 35, columns: 7 }
-};
+const DATA_DIRECTORY = path.resolve(__dirname, 'data');
+const DATA_FILES = ['zone1970.tab', 'zone.tab'];
 
-const counts = new Map();
-for (const zone of zones) {
-  const [prefix] = zone.split('/');
-  counts.set(prefix, (counts.get(prefix) || 0) + 1);
+function readDataFile(fileName) {
+  const filePath = path.resolve(DATA_DIRECTORY, fileName);
+  return fs.readFileSync(filePath, 'utf8');
 }
 
-const positions = new Map();
+function parseDms(part, degreeDigits) {
+  if (!part) {
+    return null;
+  }
 
-function wrapLongitude(value) {
+  const sign = part.startsWith('-') ? -1 : 1;
+  const digits = part.slice(1);
+  if (!digits.length) {
+    return null;
+  }
+
+  const degrees = Number.parseInt(digits.slice(0, degreeDigits), 10);
+  const minutes = Number.parseInt(digits.slice(degreeDigits, degreeDigits + 2) || '0', 10);
+  const seconds = Number.parseInt(digits.slice(degreeDigits + 2, degreeDigits + 4) || '0', 10);
+
+  if (Number.isNaN(degrees) || Number.isNaN(minutes) || Number.isNaN(seconds)) {
+    return null;
+  }
+
+  const absolute = degrees + minutes / 60 + seconds / 3600;
+  return sign * absolute;
+}
+
+function parseCoordinatePair(raw) {
+  if (typeof raw !== 'string' || raw.length < 2) {
+    return null;
+  }
+
+  let splitIndex = 1;
+  while (splitIndex < raw.length) {
+    const character = raw[splitIndex];
+    if (character === '+' || character === '-') {
+      break;
+    }
+    splitIndex += 1;
+  }
+
+  const latitudePart = raw.slice(0, splitIndex);
+  const longitudePart = raw.slice(splitIndex);
+  if (!latitudePart || !longitudePart) {
+    return null;
+  }
+
+  const latitude = parseDms(latitudePart, 2);
+  const longitude = parseDms(longitudePart, 3);
+
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+    return null;
+  }
+
+  return { latitude, longitude };
+}
+
+function loadCoordinatesIndex() {
+  const index = new Map();
+
+  for (const fileName of DATA_FILES) {
+    let contents;
+    try {
+      contents = readDataFile(fileName);
+    } catch (error) {
+      console.warn(`Unable to read ${fileName}:`, error.message);
+      continue;
+    }
+
+    const lines = contents.split(/\r?\n/);
+    for (const line of lines) {
+      if (!line || line.startsWith('#')) {
+        continue;
+      }
+
+      const [territories, coordinateString, zone] = line.split('\t');
+      if (!coordinateString || !zone) {
+        continue;
+      }
+
+      if (index.has(zone)) {
+        continue;
+      }
+
+      const coordinates = parseCoordinatePair(coordinateString.trim());
+      if (!coordinates) {
+        continue;
+      }
+
+      index.set(zone, coordinates);
+    }
+  }
+
+  return index;
+}
+
+function normalizeLongitude(value) {
   if (!Number.isFinite(value)) {
     return 0;
   }
-  const normalized = ((value + 180) % 360 + 360) % 360 - 180;
-  return normalized;
+  return ((value + 180) % 360 + 360) % 360 - 180;
 }
 
-const features = zones.map((zone) => {
-  const [prefix] = zone.split('/');
-  const bounds = regionBounds[prefix] || {
-    minLon: -180,
-    maxLon: 180,
-    minLat: -90,
-    maxLat: 90,
-    columns: Math.ceil(Math.sqrt(counts.get(prefix) || 1)) || 1
-  };
-  const count = counts.get(prefix) || 1;
-  const index = positions.get(prefix) || 0;
-  const columns = bounds.columns || Math.ceil(Math.sqrt(count));
-  const rows = Math.ceil(count / columns);
-  const col = index % columns;
-  const row = Math.floor(index / columns);
+function clampLatitude(value) {
+  if (!Number.isFinite(value)) {
+    return 0;
+  }
+  return Math.min(90, Math.max(-90, value));
+}
 
-  const lonSpan = bounds.maxLon - bounds.minLon;
-  const latSpan = bounds.maxLat - bounds.minLat;
+const coordinateIndex = loadCoordinatesIndex();
 
-  const longitude = wrapLongitude(
-    bounds.minLon + ((col + 0.5) / columns) * lonSpan
-  );
-  const latitude = Math.max(
-    -90,
-    Math.min(90, bounds.maxLat - ((row + 0.5) / rows) * latSpan)
-  );
+const coordinateAliases = new Map([
+  ['Africa/Asmera', 'Africa/Asmara'],
+  ['America/Buenos_Aires', 'America/Argentina/Buenos_Aires'],
+  ['America/Catamarca', 'America/Argentina/Catamarca'],
+  ['America/Coral_Harbour', 'America/Atikokan'],
+  ['America/Cordoba', 'America/Argentina/Cordoba'],
+  ['America/Godthab', 'America/Nuuk'],
+  ['America/Indianapolis', 'America/Indiana/Indianapolis'],
+  ['America/Jujuy', 'America/Argentina/Jujuy'],
+  ['America/Louisville', 'America/Kentucky/Louisville'],
+  ['America/Mendoza', 'America/Argentina/Mendoza'],
+  ['Asia/Calcutta', 'Asia/Kolkata'],
+  ['Asia/Katmandu', 'Asia/Kathmandu'],
+  ['Asia/Rangoon', 'Asia/Yangon'],
+  ['Asia/Saigon', 'Asia/Ho_Chi_Minh'],
+  ['Atlantic/Faeroe', 'Atlantic/Faroe'],
+  ['Europe/Kiev', 'Europe/Kyiv'],
+  ['Pacific/Enderbury', 'Pacific/Kanton'],
+  ['Pacific/Ponape', 'Pacific/Pohnpei'],
+  ['Pacific/Truk', 'Pacific/Chuuk']
+]);
 
-  positions.set(prefix, index + 1);
+function resolveCoordinates(zone) {
+  const visited = new Set();
+  let current = zone;
 
-  return {
-    id: zone,
-    properties: { label: zone },
-    geometry: {
-      type: 'Point',
-      coordinates: [Number(longitude.toFixed(6)), Number(latitude.toFixed(6))]
+  while (current && !visited.has(current)) {
+    visited.add(current);
+
+    const direct = coordinateIndex.get(current);
+    if (direct) {
+      return direct;
     }
-  };
-});
+
+    const alias = coordinateAliases.get(current);
+    current = alias;
+  }
+
+  return null;
+}
+
+const unresolvedZones = [];
+
+const features = zones
+  .map((zone) => {
+    const coordinates = resolveCoordinates(zone);
+    if (!coordinates) {
+      unresolvedZones.push(zone);
+      return null;
+    }
+
+    const longitude = normalizeLongitude(coordinates.longitude);
+    const latitude = clampLatitude(coordinates.latitude);
+
+    return {
+      id: zone,
+      properties: { label: zone },
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          Number(longitude.toFixed(6)),
+          Number(latitude.toFixed(6))
+        ]
+      }
+    };
+  })
+  .filter(Boolean);
+
+if (unresolvedZones.length) {
+  console.warn('Missing coordinates for zones:', unresolvedZones.join(', '));
+}
 
 const featureCollection = {
   type: 'FeatureCollection',
