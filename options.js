@@ -20,8 +20,8 @@ const timezoneMapRegionsByZone = new Map();
 let activeTimezoneMapRegion = null;
 const MAP_POINT_RADIUS = 4.5;
 const WORLD_BASEMAP_URL = runtimeChrome?.runtime?.getURL
-  ? runtimeChrome.runtime.getURL('assets/world-outline.svg')
-  : new URL('./assets/world-outline.svg', import.meta.url).toString();
+  ? runtimeChrome.runtime.getURL('assets/world-detailed.svg')
+  : new URL('./assets/world-detailed.svg', import.meta.url).toString();
 
 function getFallbackKey(key) {
   return `teams-time::${key}`;

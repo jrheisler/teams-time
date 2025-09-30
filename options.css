@@ -107,10 +107,14 @@ main {
   width: 100%;
   height: 100%;
   max-height: none;
+  shape-rendering: geometricPrecision;
 }
 
 .timezone-map-basemap {
   pointer-events: none;
+  width: 100%;
+  height: 100%;
+  image-rendering: optimizeQuality;
 }
 
 .timezone-map-region {
