@@ -57,6 +57,19 @@
               role="group"
               aria-labelledby="timezone-browse-label"
             >
+              <div class="timezone-map-wrapper">
+                <div
+                  id="timezone-map"
+                  class="timezone-map"
+                  role="application"
+                  aria-label="World map of common time zones"
+                  tabindex="-1"
+                >
+                  <p class="timezone-map-placeholder">
+                    Map loading… Use the selectors to choose a time zone.
+                  </p>
+                </div>
+              </div>
               <div class="timezone-select-wrapper">
                 <label for="timezone-country">Country or territory</label>
                 <select id="timezone-country" name="timezoneCountry">

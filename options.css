@@ -70,16 +70,76 @@ main {
 }
 
 .timezone-browse-controls {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+  grid-template-columns: minmax(0, 1.25fr) minmax(220px, 1fr);
+}
+
+.timezone-map-wrapper {
+  position: relative;
+  min-height: 240px;
+  border-radius: 0.75rem;
+  border: 1px solid var(--tt-color-border);
+  background: var(--tt-color-card);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.02);
+}
+
+.timezone-map {
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.timezone-map-placeholder {
+  margin: 0;
+  text-align: center;
+  color: var(--tt-color-muted-text);
+  font-size: 0.9rem;
+}
+
+.timezone-map-canvas {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+}
+
+.timezone-map-region {
+  fill: rgba(37, 99, 235, 0.12);
+  stroke: rgba(37, 99, 235, 0.6);
+  stroke-width: 1.5;
+  transition: fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
+  cursor: pointer;
+}
+
+.timezone-map-region:hover,
+.timezone-map-region:focus,
+.timezone-map-region:focus-visible {
+  fill: rgba(37, 99, 235, 0.22);
+  stroke: var(--tt-color-accent-strong);
+  stroke-width: 2.25;
+  outline: none;
+}
+
+.timezone-map-region.is-active {
+  fill: rgba(37, 99, 235, 0.35);
+  stroke: var(--tt-color-accent-strong);
+  stroke-width: 2.5;
 }
 
 .timezone-select-wrapper {
-  flex: 1 1 220px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
+}
+
+.timezone-select-wrapper select {
+  min-width: 220px;
+  width: 100%;
 }
 
 .assistive-text {
@@ -414,6 +474,26 @@ button:focus-visible {
     color: var(--tt-color-muted-text);
   }
 
+  .timezone-map-wrapper {
+    border-color: var(--tt-color-border);
+    box-shadow: inset 0 0 0 1px rgba(249, 250, 251, 0.05);
+  }
+
+  .timezone-map-region {
+    fill: rgba(96, 165, 250, 0.2);
+    stroke: rgba(96, 165, 250, 0.7);
+  }
+
+  .timezone-map-region:hover,
+  .timezone-map-region:focus,
+  .timezone-map-region:focus-visible {
+    fill: rgba(96, 165, 250, 0.32);
+  }
+
+  .timezone-map-region.is-active {
+    fill: rgba(96, 165, 250, 0.42);
+  }
+
   .person-actions button {
     border-color: var(--tt-color-accent);
     color: var(--tt-color-accent);
@@ -428,6 +508,18 @@ button:focus-visible {
 @media (max-width: 600px) {
   body {
     padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .timezone-browse-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .timezone-map-wrapper {
+    min-height: 200px;
+  }
+
+  .timezone-select-wrapper select {
+    min-width: 0;
   }
 
   .person {

@@ -12,6 +12,144 @@ const FALLBACK_TIMEZONE_METADATA = createFallbackMetadata(FALLBACK_TIMEZONES);
 let cachedTimezoneMetadata = null;
 let timezoneMetadataIndex = null;
 
+const FALLBACK_TIMEZONE_GEO_DATA = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      id: 'America/Los_Angeles',
+      properties: { label: 'America/Los_Angeles' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[-130, 51], [-130, 30], [-110, 30], [-110, 51], [-130, 51]]]
+      }
+    },
+    {
+      id: 'America/Denver',
+      properties: { label: 'America/Denver' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[-110, 50], [-110, 31], [-100, 31], [-100, 50], [-110, 50]]]
+      }
+    },
+    {
+      id: 'America/Chicago',
+      properties: { label: 'America/Chicago' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[-100, 50], [-100, 25], [-83, 25], [-83, 50], [-100, 50]]]
+      }
+    },
+    {
+      id: 'America/New_York',
+      properties: { label: 'America/New_York' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[-83, 50], [-83, 25], [-65, 25], [-65, 50], [-83, 50]]]
+      }
+    },
+    {
+      id: 'America/Sao_Paulo',
+      properties: { label: 'America/Sao_Paulo' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[-75, 5], [-75, -35], [-35, -35], [-35, 5], [-75, 5]]]
+      }
+    },
+    {
+      id: 'Europe/London',
+      properties: { label: 'Europe/London' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[-12, 62], [-12, 48], [5, 48], [5, 62], [-12, 62]]]
+      }
+    },
+    {
+      id: 'Europe/Berlin',
+      properties: { label: 'Europe/Berlin' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[5, 62], [5, 46], [22, 46], [22, 62], [5, 62]]]
+      }
+    },
+    {
+      id: 'Europe/Moscow',
+      properties: { label: 'Europe/Moscow' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[22, 70], [22, 45], [50, 45], [50, 70], [22, 70]]]
+      }
+    },
+    {
+      id: 'Africa/Cairo',
+      properties: { label: 'Africa/Cairo' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[22, 35], [22, 20], [40, 20], [40, 35], [22, 35]]]
+      }
+    },
+    {
+      id: 'Africa/Johannesburg',
+      properties: { label: 'Africa/Johannesburg' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[10, -10], [10, -40], [40, -40], [40, -10], [10, -10]]]
+      }
+    },
+    {
+      id: 'Asia/Dubai',
+      properties: { label: 'Asia/Dubai' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[50, 35], [50, 18], [60, 18], [60, 35], [50, 35]]]
+      }
+    },
+    {
+      id: 'Asia/Kolkata',
+      properties: { label: 'Asia/Kolkata' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[60, 35], [60, 5], [90, 5], [90, 35], [60, 35]]]
+      }
+    },
+    {
+      id: 'Asia/Shanghai',
+      properties: { label: 'Asia/Shanghai' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[90, 50], [90, 15], [120, 15], [120, 50], [90, 50]]]
+      }
+    },
+    {
+      id: 'Asia/Tokyo',
+      properties: { label: 'Asia/Tokyo' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[120, 50], [120, 25], [150, 25], [150, 50], [120, 50]]]
+      }
+    },
+    {
+      id: 'Australia/Sydney',
+      properties: { label: 'Australia/Sydney' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[110, -10], [110, -45], [155, -45], [155, -10], [110, -10]]]
+      }
+    },
+    {
+      id: 'Pacific/Auckland',
+      properties: { label: 'Pacific/Auckland' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[155, -25], [155, -50], [180, -50], [180, -25], [155, -25]]]
+      }
+    }
+  ]
+};
+
+let cachedTimezoneGeoData = null;
+const timezoneMapRegionsByZone = new Map();
+let activeTimezoneMapRegion = null;
+
 function getFallbackKey(key) {
   return `teams-time::${key}`;
 }
@@ -116,6 +254,7 @@ const timezoneBrowseContainer = document.getElementById('timezone-browse');
 const timezoneCountrySelect = document.getElementById('timezone-country');
 const timezoneRegionSelect = document.getElementById('timezone-region');
 const timezoneBrowseStatus = document.getElementById('timezone-browse-status');
+const timezoneMapContainer = document.getElementById('timezone-map');
 const peopleList = document.getElementById('people-list');
 const hourFormatSelect = document.getElementById('hour-format');
 const timelineSection = document.getElementById('timeline-section');
@@ -425,6 +564,273 @@ function announceTimezoneSelection(message) {
   }
 }
 
+async function loadTimezoneGeoData() {
+  if (cachedTimezoneGeoData) {
+    return cachedTimezoneGeoData;
+  }
+
+  const url = runtimeChrome?.runtime?.getURL
+    ? runtimeChrome.runtime.getURL('timezones-geo.json')
+    : 'timezones-geo.json';
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to load map data: ${response.status}`);
+    }
+    const data = await response.json();
+    if (data && typeof data === 'object' && Array.isArray(data.features)) {
+      cachedTimezoneGeoData = data;
+      return data;
+    }
+  } catch (error) {
+    console.warn('Unable to load time zone map data', error);
+  }
+
+  cachedTimezoneGeoData = FALLBACK_TIMEZONE_GEO_DATA;
+  return cachedTimezoneGeoData;
+}
+
+function projectCoordinates(lng, lat, width, height) {
+  const safeLng = Number.isFinite(lng) ? Math.min(180, Math.max(-180, lng)) : 0;
+  const safeLat = Number.isFinite(lat) ? Math.min(90, Math.max(-90, lat)) : 0;
+  const x = ((safeLng + 180) / 360) * width;
+  const y = ((90 - safeLat) / 180) * height;
+  return [x, y];
+}
+
+function polygonToPath(coordinates, width, height) {
+  if (!Array.isArray(coordinates)) {
+    return '';
+  }
+
+  const rings = [];
+
+  for (const ring of coordinates) {
+    if (!Array.isArray(ring) || !ring.length) {
+      continue;
+    }
+
+    const commands = [];
+
+    for (let index = 0; index < ring.length; index += 1) {
+      const point = ring[index];
+      if (!Array.isArray(point) || point.length < 2) {
+        continue;
+      }
+
+      const [lng, lat] = point;
+      const [x, y] = projectCoordinates(lng, lat, width, height);
+      commands.push(`${index === 0 ? 'M' : 'L'}${x.toFixed(2)} ${y.toFixed(2)}`);
+    }
+
+    if (commands.length) {
+      rings.push(`${commands.join(' ')} Z`);
+    }
+  }
+
+  return rings.join(' ');
+}
+
+function getMapZoneLabel(zoneId) {
+  const metadata = timezoneMetadataIndex?.byZone?.get(zoneId);
+  return metadata?.displayLabel || metadata?.label || zoneId;
+}
+
+function formatMapSelection(zoneId) {
+  if (!zoneId) {
+    return '';
+  }
+
+  const label = getMapZoneLabel(zoneId);
+  return label && label !== zoneId ? `${label} (${zoneId})` : zoneId;
+}
+
+function clearTimezoneMapSelection() {
+  if (activeTimezoneMapRegion) {
+    activeTimezoneMapRegion.classList.remove('is-active');
+    activeTimezoneMapRegion.removeAttribute('aria-current');
+    activeTimezoneMapRegion = null;
+  }
+}
+
+function setActiveTimezoneOnMap(zoneId) {
+  if (!timezoneMapRegionsByZone.size) {
+    return;
+  }
+
+  if (!zoneId || !timezoneMapRegionsByZone.has(zoneId)) {
+    clearTimezoneMapSelection();
+    return;
+  }
+
+  const nextRegion = timezoneMapRegionsByZone.get(zoneId);
+  if (activeTimezoneMapRegion && activeTimezoneMapRegion !== nextRegion) {
+    activeTimezoneMapRegion.classList.remove('is-active');
+    activeTimezoneMapRegion.removeAttribute('aria-current');
+  }
+
+  activeTimezoneMapRegion = nextRegion;
+  if (activeTimezoneMapRegion) {
+    activeTimezoneMapRegion.classList.add('is-active');
+    activeTimezoneMapRegion.setAttribute('aria-current', 'true');
+  }
+}
+
+function handleMapRegionActivate(zoneId, { focusInput = false } = {}) {
+  if (!zoneId) {
+    return;
+  }
+
+  const canonical = normalizeTimezone(zoneId);
+  if (!canonical) {
+    return;
+  }
+
+  setActiveTimezoneOnMap(canonical);
+
+  if (timezoneInput) {
+    timezoneInput.value = canonical;
+    const changeEvent = new Event('change', { bubbles: false });
+    timezoneInput.dispatchEvent(changeEvent);
+    if (focusInput) {
+      timezoneInput.focus();
+    }
+  }
+
+  const selectionMessage = formatMapSelection(canonical);
+  if (selectionMessage) {
+    announceTimezoneSelection(`Time zone set to ${selectionMessage}.`);
+  }
+}
+
+function renderTimezoneMap(features) {
+  if (!timezoneMapContainer) {
+    return;
+  }
+
+  timezoneMapRegionsByZone.clear();
+  clearTimezoneMapSelection();
+
+  timezoneMapContainer.innerHTML = '';
+
+  if (!Array.isArray(features) || !features.length) {
+    const fallback = document.createElement('p');
+    fallback.className = 'timezone-map-placeholder';
+    fallback.textContent = 'Map unavailable. Use the selectors to choose a time zone.';
+    timezoneMapContainer.append(fallback);
+    return;
+  }
+
+  const width = 800;
+  const height = 400;
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+  svg.setAttribute('class', 'timezone-map-canvas');
+  svg.setAttribute('role', 'group');
+  svg.setAttribute('aria-label', 'Selectable time zones');
+
+  for (const feature of features) {
+    if (!feature || !feature.id) {
+      continue;
+    }
+
+    const { geometry } = feature;
+    if (!geometry) {
+      continue;
+    }
+
+    let pathData = '';
+
+    if (geometry.type === 'Polygon') {
+      pathData = polygonToPath(geometry.coordinates, width, height);
+    } else if (geometry.type === 'MultiPolygon') {
+      const parts = [];
+      for (const polygon of geometry.coordinates || []) {
+        parts.push(polygonToPath(polygon, width, height));
+      }
+      pathData = parts.filter(Boolean).join(' ');
+    }
+
+    if (!pathData) {
+      continue;
+    }
+
+    const region = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    region.setAttribute('d', pathData);
+    region.classList.add('timezone-map-region');
+    region.dataset.zone = feature.id;
+    region.setAttribute('tabindex', '0');
+    region.setAttribute('role', 'button');
+
+    const label = feature.properties?.label || getMapZoneLabel(feature.id);
+    region.setAttribute('aria-label', label);
+
+    const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+    title.textContent = label;
+    region.append(title);
+
+    region.addEventListener('click', (event) => {
+      event.preventDefault();
+      handleMapRegionActivate(feature.id);
+    });
+
+    region.addEventListener('keydown', (event) => {
+      const isSpace = event.key === ' ' || event.key === 'Spacebar' || event.key === 'Space';
+      if (event.key === 'Enter' || isSpace) {
+        event.preventDefault();
+        handleMapRegionActivate(feature.id, { focusInput: isSpace });
+      }
+    });
+
+    region.addEventListener('focus', () => {
+      announceTimezoneSelection(`${label}. Press Enter to select this time zone.`);
+    });
+
+    region.addEventListener('blur', () => {
+      if (activeTimezoneMapRegion) {
+        const activeZone = activeTimezoneMapRegion.dataset.zone;
+        const selection = formatMapSelection(activeZone);
+        if (selection) {
+          announceTimezoneSelection(`Time zone set to ${selection}.`);
+        } else {
+          announceTimezoneSelection('');
+        }
+      } else {
+        announceTimezoneSelection('');
+      }
+    });
+
+    timezoneMapRegionsByZone.set(feature.id, region);
+    svg.append(region);
+  }
+
+  timezoneMapContainer.append(svg);
+}
+
+async function initializeTimezoneMap(metadataIndex) {
+  if (!timezoneMapContainer) {
+    return;
+  }
+
+  try {
+    const geoData = await loadTimezoneGeoData();
+    const features = Array.isArray(geoData?.features) ? geoData.features : [];
+    const validZones = metadataIndex?.byZone ?? new Map();
+    const filtered = features.filter((feature) => validZones.has(feature.id));
+    renderTimezoneMap(filtered);
+
+    const canonical = normalizeTimezone(timezoneInput?.value ?? '');
+    if (canonical && validZones.has(canonical)) {
+      setActiveTimezoneOnMap(canonical);
+    }
+  } catch (error) {
+    console.warn('Unable to initialize time zone map', error);
+    renderTimezoneMap([]);
+  }
+}
+
 function updateRegionSelect(countryKey, selectedZone, { preserveValue = false } = {}) {
   if (!timezoneRegionSelect) {
     return;
@@ -489,6 +895,7 @@ function resetGeographicSelector() {
 
   timezoneCountrySelect.value = '';
   updateRegionSelect('', null);
+  clearTimezoneMapSelection();
 }
 
 function populateGeographicSelector(metadataIndex) {
@@ -541,6 +948,8 @@ function syncSelectorsToTimezone(zoneId) {
   if (timezoneRegionSelect) {
     timezoneRegionSelect.value = zoneId;
   }
+
+  setActiveTimezoneOnMap(zoneId);
 }
 
 function handleTimezoneCountryChange() {
@@ -576,7 +985,10 @@ function handleTimezoneRegionChange() {
   }
 
   timezoneInput.value = zoneId;
-  announceTimezoneSelection(`Time zone set to ${zoneId}.`);
+  const selectionMessage = formatMapSelection(zoneId);
+  if (selectionMessage) {
+    announceTimezoneSelection(`Time zone set to ${selectionMessage}.`);
+  }
   const changeEvent = new Event('change', { bubbles: false });
   timezoneInput.dispatchEvent(changeEvent);
 }
@@ -1192,6 +1604,8 @@ async function initialize() {
   } else if (timezoneBrowseContainer) {
     timezoneBrowseContainer.hidden = true;
   }
+
+  await initializeTimezoneMap(timezoneMetadataIndex);
 
   const storedList = Array.isArray(storedPeople) ? storedPeople : [];
   const initializationReference = new Date();

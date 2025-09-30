@@ -1,0 +1,293 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "America/Los_Angeles",
+      "properties": {
+        "label": "America/Los_Angeles"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-130, 51],
+            [-130, 30],
+            [-110, 30],
+            [-110, 51],
+            [-130, 51]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "America/Denver",
+      "properties": {
+        "label": "America/Denver"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-110, 50],
+            [-110, 31],
+            [-100, 31],
+            [-100, 50],
+            [-110, 50]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "America/Chicago",
+      "properties": {
+        "label": "America/Chicago"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-100, 50],
+            [-100, 25],
+            [-83, 25],
+            [-83, 50],
+            [-100, 50]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "America/New_York",
+      "properties": {
+        "label": "America/New_York"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-83, 50],
+            [-83, 25],
+            [-65, 25],
+            [-65, 50],
+            [-83, 50]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "America/Sao_Paulo",
+      "properties": {
+        "label": "America/Sao_Paulo"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-75, 5],
+            [-75, -35],
+            [-35, -35],
+            [-35, 5],
+            [-75, 5]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Europe/London",
+      "properties": {
+        "label": "Europe/London"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-12, 62],
+            [-12, 48],
+            [5, 48],
+            [5, 62],
+            [-12, 62]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Europe/Berlin",
+      "properties": {
+        "label": "Europe/Berlin"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [5, 62],
+            [5, 46],
+            [22, 46],
+            [22, 62],
+            [5, 62]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Europe/Moscow",
+      "properties": {
+        "label": "Europe/Moscow"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [22, 70],
+            [22, 45],
+            [50, 45],
+            [50, 70],
+            [22, 70]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Africa/Cairo",
+      "properties": {
+        "label": "Africa/Cairo"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [22, 35],
+            [22, 20],
+            [40, 20],
+            [40, 35],
+            [22, 35]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Africa/Johannesburg",
+      "properties": {
+        "label": "Africa/Johannesburg"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10, -10],
+            [10, -40],
+            [40, -40],
+            [40, -10],
+            [10, -10]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Asia/Dubai",
+      "properties": {
+        "label": "Asia/Dubai"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [50, 35],
+            [50, 18],
+            [60, 18],
+            [60, 35],
+            [50, 35]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Asia/Kolkata",
+      "properties": {
+        "label": "Asia/Kolkata"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [60, 35],
+            [60, 5],
+            [90, 5],
+            [90, 35],
+            [60, 35]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Asia/Shanghai",
+      "properties": {
+        "label": "Asia/Shanghai"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [90, 50],
+            [90, 15],
+            [120, 15],
+            [120, 50],
+            [90, 50]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Asia/Tokyo",
+      "properties": {
+        "label": "Asia/Tokyo"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [120, 50],
+            [120, 25],
+            [150, 25],
+            [150, 50],
+            [120, 50]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Australia/Sydney",
+      "properties": {
+        "label": "Australia/Sydney"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [110, -10],
+            [110, -45],
+            [155, -45],
+            [155, -10],
+            [110, -10]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Pacific/Auckland",
+      "properties": {
+        "label": "Pacific/Auckland"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [155, -25],
+            [155, -50],
+            [180, -50],
+            [180, -25],
+            [155, -25]
+          ]
+        ]
+      }
+    }
+  ]
+}
