@@ -127,10 +127,38 @@ export async function loadTimezoneOptions(selectElement, { includeEmpty = false 
     emptyOption.textContent = 'Select a time zone';
     selectElement.append(emptyOption);
   }
+  // `fetchTimezones` currently returns a list of IANA zone IDs as strings. Normalize
+  // to handle that shape while remaining resilient if the data source ever returns
+  // objects instead (e.g. `{ value, label }`).
   for (const zone of zones) {
     const option = document.createElement('option');
-    option.value = zone.value;
-    option.textContent = zone.label;
+    if (typeof zone === 'string') {
+      option.value = zone;
+      option.textContent = zone;
+    } else if (zone && typeof zone === 'object') {
+      const value =
+        typeof zone.value === 'string'
+          ? zone.value
+          : typeof zone.id === 'string'
+          ? zone.id
+          : typeof zone.zoneId === 'string'
+          ? zone.zoneId
+          : '';
+      const label =
+        typeof zone.label === 'string'
+          ? zone.label
+          : typeof zone.name === 'string'
+          ? zone.name
+          : value;
+      option.value = value;
+      option.textContent = label;
+    } else {
+      option.value = '';
+      option.textContent = '';
+    }
+    if (!option.value) {
+      continue;
+    }
     selectElement.append(option);
   }
 }
