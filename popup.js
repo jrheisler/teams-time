@@ -1,4 +1,11 @@
-import { getStoredValue, fmtTime, dayDelta, timeValue, escapeHtml } from './util.js';
+import {
+  getStoredValue,
+  setStoredValue,
+  fmtTime,
+  dayDelta,
+  timeValue,
+  escapeHtml
+} from './util.js';
 import { loadTimezoneMetadata, getDisplayLabel } from './timezone-metadata.js';
 
 const DEFAULT_PEOPLE = [];
@@ -8,9 +15,12 @@ const DEFAULT_SETTINGS = {
   hour12: true
 };
 
-const currentTimeElement = document.getElementById('current-time');
-const peopleListElement = document.getElementById('people-list');
-const settingsButton = document.getElementById('open-settings');
+const currentTimeElement =
+  typeof document !== 'undefined' ? document.getElementById('current-time') : null;
+const peopleListElement =
+  typeof document !== 'undefined' ? document.getElementById('people-list') : null;
+const settingsButton =
+  typeof document !== 'undefined' ? document.getElementById('open-settings') : null;
 
 let state = {
   people: DEFAULT_PEOPLE,
@@ -31,7 +41,38 @@ function normalizePeople(value) {
     .filter((entry) => entry.name && entry.timezone);
 }
 
-function normalizeSettings(value) {
+function isValidTimeZone(value) {
+  if (typeof value !== 'string' || !value) {
+    return false;
+  }
+  try {
+    new Intl.DateTimeFormat(undefined, { timeZone: value });
+    return true;
+  } catch (error) {
+    console.warn('Invalid timezone provided', value, error);
+    return false;
+  }
+}
+
+function cleanupInvalidStoredTimeZones(source, invalidKeys) {
+  if (!invalidKeys.length) {
+    return;
+  }
+  const sanitized = { ...source };
+  let modified = false;
+  for (const key of invalidKeys) {
+    if (key in sanitized) {
+      delete sanitized[key];
+      modified = true;
+    }
+  }
+  if (!modified) {
+    return;
+  }
+  void setStoredValue('settings', sanitized);
+}
+
+export function normalizeSettings(value) {
   const normalized = { ...DEFAULT_SETTINGS };
   if (!value || typeof value !== 'object') {
     return normalized;
@@ -42,10 +83,34 @@ function normalizeSettings(value) {
       normalized.sortMode = lower;
     }
   }
-  const suppliedBase =
-    value.baseTimeZone || value.defaultTimezone || value.timezone || value.referenceTimezone;
-  if (typeof suppliedBase === 'string' && suppliedBase) {
-    normalized.baseTimeZone = suppliedBase;
+  const timezonePreferenceKeys = [
+    'baseTimeZone',
+    'defaultTimezone',
+    'timezone',
+    'referenceTimezone'
+  ];
+  const invalidKeys = [];
+  let selectedZone = null;
+  for (const key of timezonePreferenceKeys) {
+    const candidate = value[key];
+    if (typeof candidate !== 'string' || !candidate) {
+      continue;
+    }
+    if (isValidTimeZone(candidate)) {
+      if (!selectedZone) {
+        selectedZone = candidate;
+      }
+      continue;
+    }
+    invalidKeys.push(key);
+  }
+  if (selectedZone) {
+    normalized.baseTimeZone = selectedZone;
+  } else if (invalidKeys.length) {
+    normalized.baseTimeZone = DEFAULT_SETTINGS.baseTimeZone;
+  }
+  if (invalidKeys.length) {
+    cleanupInvalidStoredTimeZones(value, invalidKeys);
   }
   if (typeof value.hour12 === 'boolean') {
     normalized.hour12 = value.hour12;
@@ -88,12 +153,18 @@ function sortPeople(people, sortMode, now) {
 }
 
 function renderCurrentTime(now, baseTimeZone, hour12) {
+  if (!currentTimeElement) {
+    return;
+  }
   const currentTime = fmtTime(now, baseTimeZone, { hour12 });
   const timezoneLabel = baseTimeZone || 'Local time';
   currentTimeElement.innerHTML = `${escapeHtml(currentTime)} • ${escapeHtml(timezoneLabel)}`;
 }
 
 function renderPeople(now, baseTimeZone, sortMode, hour12) {
+  if (!peopleListElement) {
+    return;
+  }
   peopleListElement.innerHTML = '';
   if (!state.people.length) {
     const empty = document.createElement('li');
@@ -169,14 +240,18 @@ async function hydrate() {
   startRenderTimer();
 }
 
-window.addEventListener('unload', () => {
-  if (renderTimerId !== null) {
-    clearInterval(renderTimerId);
-    renderTimerId = null;
-  }
-});
+if (typeof window !== 'undefined') {
+  window.addEventListener('unload', () => {
+    if (renderTimerId !== null) {
+      clearInterval(renderTimerId);
+      renderTimerId = null;
+    }
+  });
+}
 
-document.addEventListener('DOMContentLoaded', hydrate);
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', hydrate);
+}
 
 if (settingsButton) {
   settingsButton.addEventListener('click', (event) => {
