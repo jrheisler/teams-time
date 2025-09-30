@@ -1,4 +1,4 @@
-{
+const timezoneGeoData = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -5436,4 +5436,6 @@
       }
     }
   ]
-}
+};
+
+export default timezoneGeoData;

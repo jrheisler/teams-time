@@ -1,5 +1,6 @@
 import timezones from './timezones-data.js';
 import timezoneAliases from './timezone-aliases.js';
+import timezoneGeoFallback from './timezones-geo-fallback.js';
 
 const runtimeChrome = typeof chrome !== 'undefined' ? chrome : undefined;
 const storageArea = runtimeChrome?.storage?.sync;
@@ -12,143 +13,12 @@ const FALLBACK_TIMEZONE_METADATA = createFallbackMetadata(FALLBACK_TIMEZONES);
 let cachedTimezoneMetadata = null;
 let timezoneMetadataIndex = null;
 
-const FALLBACK_TIMEZONE_GEO_DATA = {
-  type: 'FeatureCollection',
-  features: [
-    {
-      id: 'America/Los_Angeles',
-      properties: { label: 'America/Los_Angeles' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[-130, 51], [-130, 30], [-110, 30], [-110, 51], [-130, 51]]]
-      }
-    },
-    {
-      id: 'America/Denver',
-      properties: { label: 'America/Denver' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[-110, 50], [-110, 31], [-100, 31], [-100, 50], [-110, 50]]]
-      }
-    },
-    {
-      id: 'America/Chicago',
-      properties: { label: 'America/Chicago' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[-100, 50], [-100, 25], [-83, 25], [-83, 50], [-100, 50]]]
-      }
-    },
-    {
-      id: 'America/New_York',
-      properties: { label: 'America/New_York' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[-83, 50], [-83, 25], [-65, 25], [-65, 50], [-83, 50]]]
-      }
-    },
-    {
-      id: 'America/Sao_Paulo',
-      properties: { label: 'America/Sao_Paulo' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[-75, 5], [-75, -35], [-35, -35], [-35, 5], [-75, 5]]]
-      }
-    },
-    {
-      id: 'Europe/London',
-      properties: { label: 'Europe/London' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[-12, 62], [-12, 48], [5, 48], [5, 62], [-12, 62]]]
-      }
-    },
-    {
-      id: 'Europe/Berlin',
-      properties: { label: 'Europe/Berlin' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[5, 62], [5, 46], [22, 46], [22, 62], [5, 62]]]
-      }
-    },
-    {
-      id: 'Europe/Moscow',
-      properties: { label: 'Europe/Moscow' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[22, 70], [22, 45], [50, 45], [50, 70], [22, 70]]]
-      }
-    },
-    {
-      id: 'Africa/Cairo',
-      properties: { label: 'Africa/Cairo' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[22, 35], [22, 20], [40, 20], [40, 35], [22, 35]]]
-      }
-    },
-    {
-      id: 'Africa/Johannesburg',
-      properties: { label: 'Africa/Johannesburg' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[10, -10], [10, -40], [40, -40], [40, -10], [10, -10]]]
-      }
-    },
-    {
-      id: 'Asia/Dubai',
-      properties: { label: 'Asia/Dubai' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[50, 35], [50, 18], [60, 18], [60, 35], [50, 35]]]
-      }
-    },
-    {
-      id: 'Asia/Kolkata',
-      properties: { label: 'Asia/Kolkata' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[60, 35], [60, 5], [90, 5], [90, 35], [60, 35]]]
-      }
-    },
-    {
-      id: 'Asia/Shanghai',
-      properties: { label: 'Asia/Shanghai' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[90, 50], [90, 15], [120, 15], [120, 50], [90, 50]]]
-      }
-    },
-    {
-      id: 'Asia/Tokyo',
-      properties: { label: 'Asia/Tokyo' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[120, 50], [120, 25], [150, 25], [150, 50], [120, 50]]]
-      }
-    },
-    {
-      id: 'Australia/Sydney',
-      properties: { label: 'Australia/Sydney' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[110, -10], [110, -45], [155, -45], [155, -10], [110, -10]]]
-      }
-    },
-    {
-      id: 'Pacific/Auckland',
-      properties: { label: 'Pacific/Auckland' },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[[155, -25], [155, -50], [180, -50], [180, -25], [155, -25]]]
-      }
-    }
-  ]
-};
+const FALLBACK_TIMEZONE_GEO_DATA = JSON.parse(JSON.stringify(timezoneGeoFallback));
 
 let cachedTimezoneGeoData = null;
 const timezoneMapRegionsByZone = new Map();
 let activeTimezoneMapRegion = null;
+const MAP_POINT_RADIUS = 4.5;
 
 function getFallbackKey(key) {
   return `teams-time::${key}`;
@@ -591,9 +461,26 @@ async function loadTimezoneGeoData() {
   return cachedTimezoneGeoData;
 }
 
+function normalizeLongitude(lng) {
+  if (!Number.isFinite(lng)) {
+    return 0;
+  }
+
+  const normalized = ((lng + 180) % 360 + 360) % 360 - 180;
+  return normalized;
+}
+
+function clampLatitude(lat) {
+  if (!Number.isFinite(lat)) {
+    return 0;
+  }
+
+  return Math.min(90, Math.max(-90, lat));
+}
+
 function projectCoordinates(lng, lat, width, height) {
-  const safeLng = Number.isFinite(lng) ? Math.min(180, Math.max(-180, lng)) : 0;
-  const safeLat = Number.isFinite(lat) ? Math.min(90, Math.max(-90, lat)) : 0;
+  const safeLng = normalizeLongitude(lng);
+  const safeLat = clampLatitude(lat);
   const x = ((safeLng + 180) / 360) * width;
   const y = ((90 - safeLat) / 180) * height;
   return [x, y];
@@ -612,6 +499,7 @@ function polygonToPath(coordinates, width, height) {
     }
 
     const commands = [];
+    let previousLng = null;
 
     for (let index = 0; index < ring.length; index += 1) {
       const point = ring[index];
@@ -620,8 +508,21 @@ function polygonToPath(coordinates, width, height) {
       }
 
       const [lng, lat] = point;
-      const [x, y] = projectCoordinates(lng, lat, width, height);
+      const normalizedLng = normalizeLongitude(lng);
+      const [x, y] = projectCoordinates(normalizedLng, lat, width, height);
+
+      if (previousLng !== null) {
+        const delta = Math.abs(normalizedLng - previousLng);
+        if (delta > 180) {
+          // Dateline wrap – start a new subpath to avoid drawing across the map.
+          commands.push(`M${x.toFixed(2)} ${y.toFixed(2)}`);
+          previousLng = normalizedLng;
+          continue;
+        }
+      }
+
       commands.push(`${index === 0 ? 'M' : 'L'}${x.toFixed(2)} ${y.toFixed(2)}`);
+      previousLng = normalizedLng;
     }
 
     if (commands.length) {
@@ -630,6 +531,61 @@ function polygonToPath(coordinates, width, height) {
   }
 
   return rings.join(' ');
+}
+
+function createMapRegionElement(feature, width, height) {
+  const { geometry } = feature;
+  if (!geometry) {
+    return null;
+  }
+
+  if (geometry.type === 'Polygon') {
+    const pathData = polygonToPath(geometry.coordinates, width, height);
+    if (!pathData) {
+      return null;
+    }
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', pathData);
+    return path;
+  }
+
+  if (geometry.type === 'MultiPolygon') {
+    const parts = [];
+    for (const polygon of geometry.coordinates || []) {
+      const part = polygonToPath(polygon, width, height);
+      if (part) {
+        parts.push(part);
+      }
+    }
+
+    if (!parts.length) {
+      return null;
+    }
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', parts.join(' '));
+    return path;
+  }
+
+  if (geometry.type === 'Point') {
+    const coordinates = geometry.coordinates;
+    if (!Array.isArray(coordinates) || coordinates.length < 2) {
+      return null;
+    }
+
+    const [lng, lat] = coordinates;
+    const [x, y] = projectCoordinates(lng, lat, width, height);
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', x.toFixed(2));
+    circle.setAttribute('cy', y.toFixed(2));
+    circle.setAttribute('r', MAP_POINT_RADIUS.toString());
+    circle.classList.add('timezone-map-region-point');
+    return circle;
+  }
+
+  return null;
 }
 
 function getMapZoneLabel(zoneId) {
@@ -736,29 +692,11 @@ function renderTimezoneMap(features) {
       continue;
     }
 
-    const { geometry } = feature;
-    if (!geometry) {
+    const region = createMapRegionElement(feature, width, height);
+    if (!region) {
       continue;
     }
 
-    let pathData = '';
-
-    if (geometry.type === 'Polygon') {
-      pathData = polygonToPath(geometry.coordinates, width, height);
-    } else if (geometry.type === 'MultiPolygon') {
-      const parts = [];
-      for (const polygon of geometry.coordinates || []) {
-        parts.push(polygonToPath(polygon, width, height));
-      }
-      pathData = parts.filter(Boolean).join(' ');
-    }
-
-    if (!pathData) {
-      continue;
-    }
-
-    const region = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    region.setAttribute('d', pathData);
     region.classList.add('timezone-map-region');
     region.dataset.zone = feature.id;
     region.setAttribute('tabindex', '0');
