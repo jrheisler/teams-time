@@ -1,0 +1,3346 @@
+{
+  "Africa/Abidjan": {
+    "zone": "Africa/Abidjan",
+    "territory": "Africa",
+    "country": "Abidjan",
+    "subdivision": null,
+    "displayLabel": "Abidjan (Africa)",
+    "coordinates": null
+  },
+  "Africa/Accra": {
+    "zone": "Africa/Accra",
+    "territory": "Africa",
+    "country": "Accra",
+    "subdivision": null,
+    "displayLabel": "Accra (Africa)",
+    "coordinates": null
+  },
+  "Africa/Addis_Ababa": {
+    "zone": "Africa/Addis_Ababa",
+    "territory": "Africa",
+    "country": "Addis Ababa",
+    "subdivision": null,
+    "displayLabel": "Addis Ababa (Africa)",
+    "coordinates": null
+  },
+  "Africa/Algiers": {
+    "zone": "Africa/Algiers",
+    "territory": "Africa",
+    "country": "Algiers",
+    "subdivision": null,
+    "displayLabel": "Algiers (Africa)",
+    "coordinates": null
+  },
+  "Africa/Asmera": {
+    "zone": "Africa/Asmera",
+    "territory": "Africa",
+    "country": "Asmera",
+    "subdivision": null,
+    "displayLabel": "Asmera (Africa)",
+    "coordinates": null
+  },
+  "Africa/Bamako": {
+    "zone": "Africa/Bamako",
+    "territory": "Africa",
+    "country": "Bamako",
+    "subdivision": null,
+    "displayLabel": "Bamako (Africa)",
+    "coordinates": null
+  },
+  "Africa/Bangui": {
+    "zone": "Africa/Bangui",
+    "territory": "Africa",
+    "country": "Bangui",
+    "subdivision": null,
+    "displayLabel": "Bangui (Africa)",
+    "coordinates": null
+  },
+  "Africa/Banjul": {
+    "zone": "Africa/Banjul",
+    "territory": "Africa",
+    "country": "Banjul",
+    "subdivision": null,
+    "displayLabel": "Banjul (Africa)",
+    "coordinates": null
+  },
+  "Africa/Bissau": {
+    "zone": "Africa/Bissau",
+    "territory": "Africa",
+    "country": "Bissau",
+    "subdivision": null,
+    "displayLabel": "Bissau (Africa)",
+    "coordinates": null
+  },
+  "Africa/Blantyre": {
+    "zone": "Africa/Blantyre",
+    "territory": "Africa",
+    "country": "Blantyre",
+    "subdivision": null,
+    "displayLabel": "Blantyre (Africa)",
+    "coordinates": null
+  },
+  "Africa/Brazzaville": {
+    "zone": "Africa/Brazzaville",
+    "territory": "Africa",
+    "country": "Brazzaville",
+    "subdivision": null,
+    "displayLabel": "Brazzaville (Africa)",
+    "coordinates": null
+  },
+  "Africa/Bujumbura": {
+    "zone": "Africa/Bujumbura",
+    "territory": "Africa",
+    "country": "Bujumbura",
+    "subdivision": null,
+    "displayLabel": "Bujumbura (Africa)",
+    "coordinates": null
+  },
+  "Africa/Cairo": {
+    "zone": "Africa/Cairo",
+    "territory": "Africa",
+    "country": "Cairo",
+    "subdivision": null,
+    "displayLabel": "Cairo (Africa)",
+    "coordinates": null
+  },
+  "Africa/Casablanca": {
+    "zone": "Africa/Casablanca",
+    "territory": "Africa",
+    "country": "Casablanca",
+    "subdivision": null,
+    "displayLabel": "Casablanca (Africa)",
+    "coordinates": null
+  },
+  "Africa/Ceuta": {
+    "zone": "Africa/Ceuta",
+    "territory": "Africa",
+    "country": "Ceuta",
+    "subdivision": null,
+    "displayLabel": "Ceuta (Africa)",
+    "coordinates": null
+  },
+  "Africa/Conakry": {
+    "zone": "Africa/Conakry",
+    "territory": "Africa",
+    "country": "Conakry",
+    "subdivision": null,
+    "displayLabel": "Conakry (Africa)",
+    "coordinates": null
+  },
+  "Africa/Dakar": {
+    "zone": "Africa/Dakar",
+    "territory": "Africa",
+    "country": "Dakar",
+    "subdivision": null,
+    "displayLabel": "Dakar (Africa)",
+    "coordinates": null
+  },
+  "Africa/Dar_es_Salaam": {
+    "zone": "Africa/Dar_es_Salaam",
+    "territory": "Africa",
+    "country": "Dar Es Salaam",
+    "subdivision": null,
+    "displayLabel": "Dar Es Salaam (Africa)",
+    "coordinates": null
+  },
+  "Africa/Djibouti": {
+    "zone": "Africa/Djibouti",
+    "territory": "Africa",
+    "country": "Djibouti",
+    "subdivision": null,
+    "displayLabel": "Djibouti (Africa)",
+    "coordinates": null
+  },
+  "Africa/Douala": {
+    "zone": "Africa/Douala",
+    "territory": "Africa",
+    "country": "Douala",
+    "subdivision": null,
+    "displayLabel": "Douala (Africa)",
+    "coordinates": null
+  },
+  "Africa/El_Aaiun": {
+    "zone": "Africa/El_Aaiun",
+    "territory": "Africa",
+    "country": "El Aaiun",
+    "subdivision": null,
+    "displayLabel": "El Aaiun (Africa)",
+    "coordinates": null
+  },
+  "Africa/Freetown": {
+    "zone": "Africa/Freetown",
+    "territory": "Africa",
+    "country": "Freetown",
+    "subdivision": null,
+    "displayLabel": "Freetown (Africa)",
+    "coordinates": null
+  },
+  "Africa/Gaborone": {
+    "zone": "Africa/Gaborone",
+    "territory": "Africa",
+    "country": "Gaborone",
+    "subdivision": null,
+    "displayLabel": "Gaborone (Africa)",
+    "coordinates": null
+  },
+  "Africa/Harare": {
+    "zone": "Africa/Harare",
+    "territory": "Africa",
+    "country": "Harare",
+    "subdivision": null,
+    "displayLabel": "Harare (Africa)",
+    "coordinates": null
+  },
+  "Africa/Johannesburg": {
+    "zone": "Africa/Johannesburg",
+    "territory": "Africa",
+    "country": "Johannesburg",
+    "subdivision": null,
+    "displayLabel": "Johannesburg (Africa)",
+    "coordinates": null
+  },
+  "Africa/Juba": {
+    "zone": "Africa/Juba",
+    "territory": "Africa",
+    "country": "Juba",
+    "subdivision": null,
+    "displayLabel": "Juba (Africa)",
+    "coordinates": null
+  },
+  "Africa/Kampala": {
+    "zone": "Africa/Kampala",
+    "territory": "Africa",
+    "country": "Kampala",
+    "subdivision": null,
+    "displayLabel": "Kampala (Africa)",
+    "coordinates": null
+  },
+  "Africa/Khartoum": {
+    "zone": "Africa/Khartoum",
+    "territory": "Africa",
+    "country": "Khartoum",
+    "subdivision": null,
+    "displayLabel": "Khartoum (Africa)",
+    "coordinates": null
+  },
+  "Africa/Kigali": {
+    "zone": "Africa/Kigali",
+    "territory": "Africa",
+    "country": "Kigali",
+    "subdivision": null,
+    "displayLabel": "Kigali (Africa)",
+    "coordinates": null
+  },
+  "Africa/Kinshasa": {
+    "zone": "Africa/Kinshasa",
+    "territory": "Africa",
+    "country": "Kinshasa",
+    "subdivision": null,
+    "displayLabel": "Kinshasa (Africa)",
+    "coordinates": null
+  },
+  "Africa/Lagos": {
+    "zone": "Africa/Lagos",
+    "territory": "Africa",
+    "country": "Lagos",
+    "subdivision": null,
+    "displayLabel": "Lagos (Africa)",
+    "coordinates": null
+  },
+  "Africa/Libreville": {
+    "zone": "Africa/Libreville",
+    "territory": "Africa",
+    "country": "Libreville",
+    "subdivision": null,
+    "displayLabel": "Libreville (Africa)",
+    "coordinates": null
+  },
+  "Africa/Lome": {
+    "zone": "Africa/Lome",
+    "territory": "Africa",
+    "country": "Lome",
+    "subdivision": null,
+    "displayLabel": "Lome (Africa)",
+    "coordinates": null
+  },
+  "Africa/Luanda": {
+    "zone": "Africa/Luanda",
+    "territory": "Africa",
+    "country": "Luanda",
+    "subdivision": null,
+    "displayLabel": "Luanda (Africa)",
+    "coordinates": null
+  },
+  "Africa/Lubumbashi": {
+    "zone": "Africa/Lubumbashi",
+    "territory": "Africa",
+    "country": "Lubumbashi",
+    "subdivision": null,
+    "displayLabel": "Lubumbashi (Africa)",
+    "coordinates": null
+  },
+  "Africa/Lusaka": {
+    "zone": "Africa/Lusaka",
+    "territory": "Africa",
+    "country": "Lusaka",
+    "subdivision": null,
+    "displayLabel": "Lusaka (Africa)",
+    "coordinates": null
+  },
+  "Africa/Malabo": {
+    "zone": "Africa/Malabo",
+    "territory": "Africa",
+    "country": "Malabo",
+    "subdivision": null,
+    "displayLabel": "Malabo (Africa)",
+    "coordinates": null
+  },
+  "Africa/Maputo": {
+    "zone": "Africa/Maputo",
+    "territory": "Africa",
+    "country": "Maputo",
+    "subdivision": null,
+    "displayLabel": "Maputo (Africa)",
+    "coordinates": null
+  },
+  "Africa/Maseru": {
+    "zone": "Africa/Maseru",
+    "territory": "Africa",
+    "country": "Maseru",
+    "subdivision": null,
+    "displayLabel": "Maseru (Africa)",
+    "coordinates": null
+  },
+  "Africa/Mbabane": {
+    "zone": "Africa/Mbabane",
+    "territory": "Africa",
+    "country": "Mbabane",
+    "subdivision": null,
+    "displayLabel": "Mbabane (Africa)",
+    "coordinates": null
+  },
+  "Africa/Mogadishu": {
+    "zone": "Africa/Mogadishu",
+    "territory": "Africa",
+    "country": "Mogadishu",
+    "subdivision": null,
+    "displayLabel": "Mogadishu (Africa)",
+    "coordinates": null
+  },
+  "Africa/Monrovia": {
+    "zone": "Africa/Monrovia",
+    "territory": "Africa",
+    "country": "Monrovia",
+    "subdivision": null,
+    "displayLabel": "Monrovia (Africa)",
+    "coordinates": null
+  },
+  "Africa/Nairobi": {
+    "zone": "Africa/Nairobi",
+    "territory": "Africa",
+    "country": "Nairobi",
+    "subdivision": null,
+    "displayLabel": "Nairobi (Africa)",
+    "coordinates": null
+  },
+  "Africa/Ndjamena": {
+    "zone": "Africa/Ndjamena",
+    "territory": "Africa",
+    "country": "Ndjamena",
+    "subdivision": null,
+    "displayLabel": "Ndjamena (Africa)",
+    "coordinates": null
+  },
+  "Africa/Niamey": {
+    "zone": "Africa/Niamey",
+    "territory": "Africa",
+    "country": "Niamey",
+    "subdivision": null,
+    "displayLabel": "Niamey (Africa)",
+    "coordinates": null
+  },
+  "Africa/Nouakchott": {
+    "zone": "Africa/Nouakchott",
+    "territory": "Africa",
+    "country": "Nouakchott",
+    "subdivision": null,
+    "displayLabel": "Nouakchott (Africa)",
+    "coordinates": null
+  },
+  "Africa/Ouagadougou": {
+    "zone": "Africa/Ouagadougou",
+    "territory": "Africa",
+    "country": "Ouagadougou",
+    "subdivision": null,
+    "displayLabel": "Ouagadougou (Africa)",
+    "coordinates": null
+  },
+  "Africa/Porto-Novo": {
+    "zone": "Africa/Porto-Novo",
+    "territory": "Africa",
+    "country": "Porto-Novo",
+    "subdivision": null,
+    "displayLabel": "Porto-Novo (Africa)",
+    "coordinates": null
+  },
+  "Africa/Sao_Tome": {
+    "zone": "Africa/Sao_Tome",
+    "territory": "Africa",
+    "country": "Sao Tome",
+    "subdivision": null,
+    "displayLabel": "Sao Tome (Africa)",
+    "coordinates": null
+  },
+  "Africa/Tripoli": {
+    "zone": "Africa/Tripoli",
+    "territory": "Africa",
+    "country": "Tripoli",
+    "subdivision": null,
+    "displayLabel": "Tripoli (Africa)",
+    "coordinates": null
+  },
+  "Africa/Tunis": {
+    "zone": "Africa/Tunis",
+    "territory": "Africa",
+    "country": "Tunis",
+    "subdivision": null,
+    "displayLabel": "Tunis (Africa)",
+    "coordinates": null
+  },
+  "Africa/Windhoek": {
+    "zone": "Africa/Windhoek",
+    "territory": "Africa",
+    "country": "Windhoek",
+    "subdivision": null,
+    "displayLabel": "Windhoek (Africa)",
+    "coordinates": null
+  },
+  "America/Adak": {
+    "zone": "America/Adak",
+    "territory": "America",
+    "country": "Adak",
+    "subdivision": null,
+    "displayLabel": "Adak (America)",
+    "coordinates": null
+  },
+  "America/Anchorage": {
+    "zone": "America/Anchorage",
+    "territory": "America",
+    "country": "Anchorage",
+    "subdivision": null,
+    "displayLabel": "Anchorage (America)",
+    "coordinates": null
+  },
+  "America/Anguilla": {
+    "zone": "America/Anguilla",
+    "territory": "America",
+    "country": "Anguilla",
+    "subdivision": null,
+    "displayLabel": "Anguilla (America)",
+    "coordinates": null
+  },
+  "America/Antigua": {
+    "zone": "America/Antigua",
+    "territory": "America",
+    "country": "Antigua",
+    "subdivision": null,
+    "displayLabel": "Antigua (America)",
+    "coordinates": null
+  },
+  "America/Araguaina": {
+    "zone": "America/Araguaina",
+    "territory": "America",
+    "country": "Araguaina",
+    "subdivision": null,
+    "displayLabel": "Araguaina (America)",
+    "coordinates": null
+  },
+  "America/Argentina/La_Rioja": {
+    "zone": "America/Argentina/La_Rioja",
+    "territory": "America",
+    "country": "Argentina",
+    "subdivision": "La Rioja",
+    "displayLabel": "Argentina – La Rioja (America)",
+    "coordinates": null
+  },
+  "America/Argentina/Rio_Gallegos": {
+    "zone": "America/Argentina/Rio_Gallegos",
+    "territory": "America",
+    "country": "Argentina",
+    "subdivision": "Rio Gallegos",
+    "displayLabel": "Argentina – Rio Gallegos (America)",
+    "coordinates": null
+  },
+  "America/Argentina/Salta": {
+    "zone": "America/Argentina/Salta",
+    "territory": "America",
+    "country": "Argentina",
+    "subdivision": "Salta",
+    "displayLabel": "Argentina – Salta (America)",
+    "coordinates": null
+  },
+  "America/Argentina/San_Juan": {
+    "zone": "America/Argentina/San_Juan",
+    "territory": "America",
+    "country": "Argentina",
+    "subdivision": "San Juan",
+    "displayLabel": "Argentina – San Juan (America)",
+    "coordinates": null
+  },
+  "America/Argentina/San_Luis": {
+    "zone": "America/Argentina/San_Luis",
+    "territory": "America",
+    "country": "Argentina",
+    "subdivision": "San Luis",
+    "displayLabel": "Argentina – San Luis (America)",
+    "coordinates": null
+  },
+  "America/Argentina/Tucuman": {
+    "zone": "America/Argentina/Tucuman",
+    "territory": "America",
+    "country": "Argentina",
+    "subdivision": "Tucuman",
+    "displayLabel": "Argentina – Tucuman (America)",
+    "coordinates": null
+  },
+  "America/Argentina/Ushuaia": {
+    "zone": "America/Argentina/Ushuaia",
+    "territory": "America",
+    "country": "Argentina",
+    "subdivision": "Ushuaia",
+    "displayLabel": "Argentina – Ushuaia (America)",
+    "coordinates": null
+  },
+  "America/Aruba": {
+    "zone": "America/Aruba",
+    "territory": "America",
+    "country": "Aruba",
+    "subdivision": null,
+    "displayLabel": "Aruba (America)",
+    "coordinates": null
+  },
+  "America/Asuncion": {
+    "zone": "America/Asuncion",
+    "territory": "America",
+    "country": "Asuncion",
+    "subdivision": null,
+    "displayLabel": "Asuncion (America)",
+    "coordinates": null
+  },
+  "America/Bahia": {
+    "zone": "America/Bahia",
+    "territory": "America",
+    "country": "Bahia",
+    "subdivision": null,
+    "displayLabel": "Bahia (America)",
+    "coordinates": null
+  },
+  "America/Bahia_Banderas": {
+    "zone": "America/Bahia_Banderas",
+    "territory": "America",
+    "country": "Bahia Banderas",
+    "subdivision": null,
+    "displayLabel": "Bahia Banderas (America)",
+    "coordinates": null
+  },
+  "America/Barbados": {
+    "zone": "America/Barbados",
+    "territory": "America",
+    "country": "Barbados",
+    "subdivision": null,
+    "displayLabel": "Barbados (America)",
+    "coordinates": null
+  },
+  "America/Belem": {
+    "zone": "America/Belem",
+    "territory": "America",
+    "country": "Belem",
+    "subdivision": null,
+    "displayLabel": "Belem (America)",
+    "coordinates": null
+  },
+  "America/Belize": {
+    "zone": "America/Belize",
+    "territory": "America",
+    "country": "Belize",
+    "subdivision": null,
+    "displayLabel": "Belize (America)",
+    "coordinates": null
+  },
+  "America/Blanc-Sablon": {
+    "zone": "America/Blanc-Sablon",
+    "territory": "America",
+    "country": "Blanc-Sablon",
+    "subdivision": null,
+    "displayLabel": "Blanc-Sablon (America)",
+    "coordinates": null
+  },
+  "America/Boa_Vista": {
+    "zone": "America/Boa_Vista",
+    "territory": "America",
+    "country": "Boa Vista",
+    "subdivision": null,
+    "displayLabel": "Boa Vista (America)",
+    "coordinates": null
+  },
+  "America/Bogota": {
+    "zone": "America/Bogota",
+    "territory": "America",
+    "country": "Bogota",
+    "subdivision": null,
+    "displayLabel": "Bogota (America)",
+    "coordinates": null
+  },
+  "America/Boise": {
+    "zone": "America/Boise",
+    "territory": "America",
+    "country": "Boise",
+    "subdivision": null,
+    "displayLabel": "Boise (America)",
+    "coordinates": null
+  },
+  "America/Buenos_Aires": {
+    "zone": "America/Buenos_Aires",
+    "territory": "America",
+    "country": "Buenos Aires",
+    "subdivision": null,
+    "displayLabel": "Buenos Aires (America)",
+    "coordinates": null
+  },
+  "America/Cambridge_Bay": {
+    "zone": "America/Cambridge_Bay",
+    "territory": "America",
+    "country": "Cambridge Bay",
+    "subdivision": null,
+    "displayLabel": "Cambridge Bay (America)",
+    "coordinates": null
+  },
+  "America/Campo_Grande": {
+    "zone": "America/Campo_Grande",
+    "territory": "America",
+    "country": "Campo Grande",
+    "subdivision": null,
+    "displayLabel": "Campo Grande (America)",
+    "coordinates": null
+  },
+  "America/Cancun": {
+    "zone": "America/Cancun",
+    "territory": "America",
+    "country": "Cancun",
+    "subdivision": null,
+    "displayLabel": "Cancun (America)",
+    "coordinates": null
+  },
+  "America/Caracas": {
+    "zone": "America/Caracas",
+    "territory": "America",
+    "country": "Caracas",
+    "subdivision": null,
+    "displayLabel": "Caracas (America)",
+    "coordinates": null
+  },
+  "America/Catamarca": {
+    "zone": "America/Catamarca",
+    "territory": "America",
+    "country": "Catamarca",
+    "subdivision": null,
+    "displayLabel": "Catamarca (America)",
+    "coordinates": null
+  },
+  "America/Cayenne": {
+    "zone": "America/Cayenne",
+    "territory": "America",
+    "country": "Cayenne",
+    "subdivision": null,
+    "displayLabel": "Cayenne (America)",
+    "coordinates": null
+  },
+  "America/Cayman": {
+    "zone": "America/Cayman",
+    "territory": "America",
+    "country": "Cayman",
+    "subdivision": null,
+    "displayLabel": "Cayman (America)",
+    "coordinates": null
+  },
+  "America/Chicago": {
+    "zone": "America/Chicago",
+    "territory": "America",
+    "country": "Chicago",
+    "subdivision": null,
+    "displayLabel": "Chicago (America)",
+    "coordinates": null
+  },
+  "America/Chihuahua": {
+    "zone": "America/Chihuahua",
+    "territory": "America",
+    "country": "Chihuahua",
+    "subdivision": null,
+    "displayLabel": "Chihuahua (America)",
+    "coordinates": null
+  },
+  "America/Ciudad_Juarez": {
+    "zone": "America/Ciudad_Juarez",
+    "territory": "America",
+    "country": "Ciudad Juarez",
+    "subdivision": null,
+    "displayLabel": "Ciudad Juarez (America)",
+    "coordinates": null
+  },
+  "America/Coral_Harbour": {
+    "zone": "America/Coral_Harbour",
+    "territory": "America",
+    "country": "Coral Harbour",
+    "subdivision": null,
+    "displayLabel": "Coral Harbour (America)",
+    "coordinates": null
+  },
+  "America/Cordoba": {
+    "zone": "America/Cordoba",
+    "territory": "America",
+    "country": "Cordoba",
+    "subdivision": null,
+    "displayLabel": "Cordoba (America)",
+    "coordinates": null
+  },
+  "America/Costa_Rica": {
+    "zone": "America/Costa_Rica",
+    "territory": "America",
+    "country": "Costa Rica",
+    "subdivision": null,
+    "displayLabel": "Costa Rica (America)",
+    "coordinates": null
+  },
+  "America/Coyhaique": {
+    "zone": "America/Coyhaique",
+    "territory": "America",
+    "country": "Coyhaique",
+    "subdivision": null,
+    "displayLabel": "Coyhaique (America)",
+    "coordinates": null
+  },
+  "America/Creston": {
+    "zone": "America/Creston",
+    "territory": "America",
+    "country": "Creston",
+    "subdivision": null,
+    "displayLabel": "Creston (America)",
+    "coordinates": null
+  },
+  "America/Cuiaba": {
+    "zone": "America/Cuiaba",
+    "territory": "America",
+    "country": "Cuiaba",
+    "subdivision": null,
+    "displayLabel": "Cuiaba (America)",
+    "coordinates": null
+  },
+  "America/Curacao": {
+    "zone": "America/Curacao",
+    "territory": "America",
+    "country": "Curacao",
+    "subdivision": null,
+    "displayLabel": "Curacao (America)",
+    "coordinates": null
+  },
+  "America/Danmarkshavn": {
+    "zone": "America/Danmarkshavn",
+    "territory": "America",
+    "country": "Danmarkshavn",
+    "subdivision": null,
+    "displayLabel": "Danmarkshavn (America)",
+    "coordinates": null
+  },
+  "America/Dawson": {
+    "zone": "America/Dawson",
+    "territory": "America",
+    "country": "Dawson",
+    "subdivision": null,
+    "displayLabel": "Dawson (America)",
+    "coordinates": null
+  },
+  "America/Dawson_Creek": {
+    "zone": "America/Dawson_Creek",
+    "territory": "America",
+    "country": "Dawson Creek",
+    "subdivision": null,
+    "displayLabel": "Dawson Creek (America)",
+    "coordinates": null
+  },
+  "America/Denver": {
+    "zone": "America/Denver",
+    "territory": "America",
+    "country": "Denver",
+    "subdivision": null,
+    "displayLabel": "Denver (America)",
+    "coordinates": null
+  },
+  "America/Detroit": {
+    "zone": "America/Detroit",
+    "territory": "America",
+    "country": "Detroit",
+    "subdivision": null,
+    "displayLabel": "Detroit (America)",
+    "coordinates": null
+  },
+  "America/Dominica": {
+    "zone": "America/Dominica",
+    "territory": "America",
+    "country": "Dominica",
+    "subdivision": null,
+    "displayLabel": "Dominica (America)",
+    "coordinates": null
+  },
+  "America/Edmonton": {
+    "zone": "America/Edmonton",
+    "territory": "America",
+    "country": "Edmonton",
+    "subdivision": null,
+    "displayLabel": "Edmonton (America)",
+    "coordinates": null
+  },
+  "America/Eirunepe": {
+    "zone": "America/Eirunepe",
+    "territory": "America",
+    "country": "Eirunepe",
+    "subdivision": null,
+    "displayLabel": "Eirunepe (America)",
+    "coordinates": null
+  },
+  "America/El_Salvador": {
+    "zone": "America/El_Salvador",
+    "territory": "America",
+    "country": "El Salvador",
+    "subdivision": null,
+    "displayLabel": "El Salvador (America)",
+    "coordinates": null
+  },
+  "America/Fort_Nelson": {
+    "zone": "America/Fort_Nelson",
+    "territory": "America",
+    "country": "Fort Nelson",
+    "subdivision": null,
+    "displayLabel": "Fort Nelson (America)",
+    "coordinates": null
+  },
+  "America/Fortaleza": {
+    "zone": "America/Fortaleza",
+    "territory": "America",
+    "country": "Fortaleza",
+    "subdivision": null,
+    "displayLabel": "Fortaleza (America)",
+    "coordinates": null
+  },
+  "America/Glace_Bay": {
+    "zone": "America/Glace_Bay",
+    "territory": "America",
+    "country": "Glace Bay",
+    "subdivision": null,
+    "displayLabel": "Glace Bay (America)",
+    "coordinates": null
+  },
+  "America/Godthab": {
+    "zone": "America/Godthab",
+    "territory": "America",
+    "country": "Godthab",
+    "subdivision": null,
+    "displayLabel": "Godthab (America)",
+    "coordinates": null
+  },
+  "America/Goose_Bay": {
+    "zone": "America/Goose_Bay",
+    "territory": "America",
+    "country": "Goose Bay",
+    "subdivision": null,
+    "displayLabel": "Goose Bay (America)",
+    "coordinates": null
+  },
+  "America/Grand_Turk": {
+    "zone": "America/Grand_Turk",
+    "territory": "America",
+    "country": "Grand Turk",
+    "subdivision": null,
+    "displayLabel": "Grand Turk (America)",
+    "coordinates": null
+  },
+  "America/Grenada": {
+    "zone": "America/Grenada",
+    "territory": "America",
+    "country": "Grenada",
+    "subdivision": null,
+    "displayLabel": "Grenada (America)",
+    "coordinates": null
+  },
+  "America/Guadeloupe": {
+    "zone": "America/Guadeloupe",
+    "territory": "America",
+    "country": "Guadeloupe",
+    "subdivision": null,
+    "displayLabel": "Guadeloupe (America)",
+    "coordinates": null
+  },
+  "America/Guatemala": {
+    "zone": "America/Guatemala",
+    "territory": "America",
+    "country": "Guatemala",
+    "subdivision": null,
+    "displayLabel": "Guatemala (America)",
+    "coordinates": null
+  },
+  "America/Guayaquil": {
+    "zone": "America/Guayaquil",
+    "territory": "America",
+    "country": "Guayaquil",
+    "subdivision": null,
+    "displayLabel": "Guayaquil (America)",
+    "coordinates": null
+  },
+  "America/Guyana": {
+    "zone": "America/Guyana",
+    "territory": "America",
+    "country": "Guyana",
+    "subdivision": null,
+    "displayLabel": "Guyana (America)",
+    "coordinates": null
+  },
+  "America/Halifax": {
+    "zone": "America/Halifax",
+    "territory": "America",
+    "country": "Halifax",
+    "subdivision": null,
+    "displayLabel": "Halifax (America)",
+    "coordinates": null
+  },
+  "America/Havana": {
+    "zone": "America/Havana",
+    "territory": "America",
+    "country": "Havana",
+    "subdivision": null,
+    "displayLabel": "Havana (America)",
+    "coordinates": null
+  },
+  "America/Hermosillo": {
+    "zone": "America/Hermosillo",
+    "territory": "America",
+    "country": "Hermosillo",
+    "subdivision": null,
+    "displayLabel": "Hermosillo (America)",
+    "coordinates": null
+  },
+  "America/Indiana/Knox": {
+    "zone": "America/Indiana/Knox",
+    "territory": "America",
+    "country": "Indiana",
+    "subdivision": "Knox",
+    "displayLabel": "Indiana – Knox (America)",
+    "coordinates": null
+  },
+  "America/Indiana/Marengo": {
+    "zone": "America/Indiana/Marengo",
+    "territory": "America",
+    "country": "Indiana",
+    "subdivision": "Marengo",
+    "displayLabel": "Indiana – Marengo (America)",
+    "coordinates": null
+  },
+  "America/Indiana/Petersburg": {
+    "zone": "America/Indiana/Petersburg",
+    "territory": "America",
+    "country": "Indiana",
+    "subdivision": "Petersburg",
+    "displayLabel": "Indiana – Petersburg (America)",
+    "coordinates": null
+  },
+  "America/Indiana/Tell_City": {
+    "zone": "America/Indiana/Tell_City",
+    "territory": "America",
+    "country": "Indiana",
+    "subdivision": "Tell City",
+    "displayLabel": "Indiana – Tell City (America)",
+    "coordinates": null
+  },
+  "America/Indiana/Vevay": {
+    "zone": "America/Indiana/Vevay",
+    "territory": "America",
+    "country": "Indiana",
+    "subdivision": "Vevay",
+    "displayLabel": "Indiana – Vevay (America)",
+    "coordinates": null
+  },
+  "America/Indiana/Vincennes": {
+    "zone": "America/Indiana/Vincennes",
+    "territory": "America",
+    "country": "Indiana",
+    "subdivision": "Vincennes",
+    "displayLabel": "Indiana – Vincennes (America)",
+    "coordinates": null
+  },
+  "America/Indiana/Winamac": {
+    "zone": "America/Indiana/Winamac",
+    "territory": "America",
+    "country": "Indiana",
+    "subdivision": "Winamac",
+    "displayLabel": "Indiana – Winamac (America)",
+    "coordinates": null
+  },
+  "America/Indianapolis": {
+    "zone": "America/Indianapolis",
+    "territory": "America",
+    "country": "Indianapolis",
+    "subdivision": null,
+    "displayLabel": "Indianapolis (America)",
+    "coordinates": null
+  },
+  "America/Inuvik": {
+    "zone": "America/Inuvik",
+    "territory": "America",
+    "country": "Inuvik",
+    "subdivision": null,
+    "displayLabel": "Inuvik (America)",
+    "coordinates": null
+  },
+  "America/Iqaluit": {
+    "zone": "America/Iqaluit",
+    "territory": "America",
+    "country": "Iqaluit",
+    "subdivision": null,
+    "displayLabel": "Iqaluit (America)",
+    "coordinates": null
+  },
+  "America/Jamaica": {
+    "zone": "America/Jamaica",
+    "territory": "America",
+    "country": "Jamaica",
+    "subdivision": null,
+    "displayLabel": "Jamaica (America)",
+    "coordinates": null
+  },
+  "America/Jujuy": {
+    "zone": "America/Jujuy",
+    "territory": "America",
+    "country": "Jujuy",
+    "subdivision": null,
+    "displayLabel": "Jujuy (America)",
+    "coordinates": null
+  },
+  "America/Juneau": {
+    "zone": "America/Juneau",
+    "territory": "America",
+    "country": "Juneau",
+    "subdivision": null,
+    "displayLabel": "Juneau (America)",
+    "coordinates": null
+  },
+  "America/Kentucky/Monticello": {
+    "zone": "America/Kentucky/Monticello",
+    "territory": "America",
+    "country": "Kentucky",
+    "subdivision": "Monticello",
+    "displayLabel": "Kentucky – Monticello (America)",
+    "coordinates": null
+  },
+  "America/Kralendijk": {
+    "zone": "America/Kralendijk",
+    "territory": "America",
+    "country": "Kralendijk",
+    "subdivision": null,
+    "displayLabel": "Kralendijk (America)",
+    "coordinates": null
+  },
+  "America/La_Paz": {
+    "zone": "America/La_Paz",
+    "territory": "America",
+    "country": "La Paz",
+    "subdivision": null,
+    "displayLabel": "La Paz (America)",
+    "coordinates": null
+  },
+  "America/Lima": {
+    "zone": "America/Lima",
+    "territory": "America",
+    "country": "Lima",
+    "subdivision": null,
+    "displayLabel": "Lima (America)",
+    "coordinates": null
+  },
+  "America/Los_Angeles": {
+    "zone": "America/Los_Angeles",
+    "territory": "America",
+    "country": "Los Angeles",
+    "subdivision": null,
+    "displayLabel": "Los Angeles (America)",
+    "coordinates": null
+  },
+  "America/Louisville": {
+    "zone": "America/Louisville",
+    "territory": "America",
+    "country": "Louisville",
+    "subdivision": null,
+    "displayLabel": "Louisville (America)",
+    "coordinates": null
+  },
+  "America/Lower_Princes": {
+    "zone": "America/Lower_Princes",
+    "territory": "America",
+    "country": "Lower Princes",
+    "subdivision": null,
+    "displayLabel": "Lower Princes (America)",
+    "coordinates": null
+  },
+  "America/Maceio": {
+    "zone": "America/Maceio",
+    "territory": "America",
+    "country": "Maceio",
+    "subdivision": null,
+    "displayLabel": "Maceio (America)",
+    "coordinates": null
+  },
+  "America/Managua": {
+    "zone": "America/Managua",
+    "territory": "America",
+    "country": "Managua",
+    "subdivision": null,
+    "displayLabel": "Managua (America)",
+    "coordinates": null
+  },
+  "America/Manaus": {
+    "zone": "America/Manaus",
+    "territory": "America",
+    "country": "Manaus",
+    "subdivision": null,
+    "displayLabel": "Manaus (America)",
+    "coordinates": null
+  },
+  "America/Marigot": {
+    "zone": "America/Marigot",
+    "territory": "America",
+    "country": "Marigot",
+    "subdivision": null,
+    "displayLabel": "Marigot (America)",
+    "coordinates": null
+  },
+  "America/Martinique": {
+    "zone": "America/Martinique",
+    "territory": "America",
+    "country": "Martinique",
+    "subdivision": null,
+    "displayLabel": "Martinique (America)",
+    "coordinates": null
+  },
+  "America/Matamoros": {
+    "zone": "America/Matamoros",
+    "territory": "America",
+    "country": "Matamoros",
+    "subdivision": null,
+    "displayLabel": "Matamoros (America)",
+    "coordinates": null
+  },
+  "America/Mazatlan": {
+    "zone": "America/Mazatlan",
+    "territory": "America",
+    "country": "Mazatlan",
+    "subdivision": null,
+    "displayLabel": "Mazatlan (America)",
+    "coordinates": null
+  },
+  "America/Mendoza": {
+    "zone": "America/Mendoza",
+    "territory": "America",
+    "country": "Mendoza",
+    "subdivision": null,
+    "displayLabel": "Mendoza (America)",
+    "coordinates": null
+  },
+  "America/Menominee": {
+    "zone": "America/Menominee",
+    "territory": "America",
+    "country": "Menominee",
+    "subdivision": null,
+    "displayLabel": "Menominee (America)",
+    "coordinates": null
+  },
+  "America/Merida": {
+    "zone": "America/Merida",
+    "territory": "America",
+    "country": "Merida",
+    "subdivision": null,
+    "displayLabel": "Merida (America)",
+    "coordinates": null
+  },
+  "America/Metlakatla": {
+    "zone": "America/Metlakatla",
+    "territory": "America",
+    "country": "Metlakatla",
+    "subdivision": null,
+    "displayLabel": "Metlakatla (America)",
+    "coordinates": null
+  },
+  "America/Mexico_City": {
+    "zone": "America/Mexico_City",
+    "territory": "America",
+    "country": "Mexico City",
+    "subdivision": null,
+    "displayLabel": "Mexico City (America)",
+    "coordinates": null
+  },
+  "America/Miquelon": {
+    "zone": "America/Miquelon",
+    "territory": "America",
+    "country": "Miquelon",
+    "subdivision": null,
+    "displayLabel": "Miquelon (America)",
+    "coordinates": null
+  },
+  "America/Moncton": {
+    "zone": "America/Moncton",
+    "territory": "America",
+    "country": "Moncton",
+    "subdivision": null,
+    "displayLabel": "Moncton (America)",
+    "coordinates": null
+  },
+  "America/Monterrey": {
+    "zone": "America/Monterrey",
+    "territory": "America",
+    "country": "Monterrey",
+    "subdivision": null,
+    "displayLabel": "Monterrey (America)",
+    "coordinates": null
+  },
+  "America/Montevideo": {
+    "zone": "America/Montevideo",
+    "territory": "America",
+    "country": "Montevideo",
+    "subdivision": null,
+    "displayLabel": "Montevideo (America)",
+    "coordinates": null
+  },
+  "America/Montserrat": {
+    "zone": "America/Montserrat",
+    "territory": "America",
+    "country": "Montserrat",
+    "subdivision": null,
+    "displayLabel": "Montserrat (America)",
+    "coordinates": null
+  },
+  "America/Nassau": {
+    "zone": "America/Nassau",
+    "territory": "America",
+    "country": "Nassau",
+    "subdivision": null,
+    "displayLabel": "Nassau (America)",
+    "coordinates": null
+  },
+  "America/New_York": {
+    "zone": "America/New_York",
+    "territory": "America",
+    "country": "New York",
+    "subdivision": null,
+    "displayLabel": "New York (America)",
+    "coordinates": null
+  },
+  "America/Nome": {
+    "zone": "America/Nome",
+    "territory": "America",
+    "country": "Nome",
+    "subdivision": null,
+    "displayLabel": "Nome (America)",
+    "coordinates": null
+  },
+  "America/Noronha": {
+    "zone": "America/Noronha",
+    "territory": "America",
+    "country": "Noronha",
+    "subdivision": null,
+    "displayLabel": "Noronha (America)",
+    "coordinates": null
+  },
+  "America/North_Dakota/Beulah": {
+    "zone": "America/North_Dakota/Beulah",
+    "territory": "America",
+    "country": "North Dakota",
+    "subdivision": "Beulah",
+    "displayLabel": "North Dakota – Beulah (America)",
+    "coordinates": null
+  },
+  "America/North_Dakota/Center": {
+    "zone": "America/North_Dakota/Center",
+    "territory": "America",
+    "country": "North Dakota",
+    "subdivision": "Center",
+    "displayLabel": "North Dakota – Center (America)",
+    "coordinates": null
+  },
+  "America/North_Dakota/New_Salem": {
+    "zone": "America/North_Dakota/New_Salem",
+    "territory": "America",
+    "country": "North Dakota",
+    "subdivision": "New Salem",
+    "displayLabel": "North Dakota – New Salem (America)",
+    "coordinates": null
+  },
+  "America/Ojinaga": {
+    "zone": "America/Ojinaga",
+    "territory": "America",
+    "country": "Ojinaga",
+    "subdivision": null,
+    "displayLabel": "Ojinaga (America)",
+    "coordinates": null
+  },
+  "America/Panama": {
+    "zone": "America/Panama",
+    "territory": "America",
+    "country": "Panama",
+    "subdivision": null,
+    "displayLabel": "Panama (America)",
+    "coordinates": null
+  },
+  "America/Paramaribo": {
+    "zone": "America/Paramaribo",
+    "territory": "America",
+    "country": "Paramaribo",
+    "subdivision": null,
+    "displayLabel": "Paramaribo (America)",
+    "coordinates": null
+  },
+  "America/Phoenix": {
+    "zone": "America/Phoenix",
+    "territory": "America",
+    "country": "Phoenix",
+    "subdivision": null,
+    "displayLabel": "Phoenix (America)",
+    "coordinates": null
+  },
+  "America/Port-au-Prince": {
+    "zone": "America/Port-au-Prince",
+    "territory": "America",
+    "country": "Port-Au-Prince",
+    "subdivision": null,
+    "displayLabel": "Port-Au-Prince (America)",
+    "coordinates": null
+  },
+  "America/Port_of_Spain": {
+    "zone": "America/Port_of_Spain",
+    "territory": "America",
+    "country": "Port Of Spain",
+    "subdivision": null,
+    "displayLabel": "Port Of Spain (America)",
+    "coordinates": null
+  },
+  "America/Porto_Velho": {
+    "zone": "America/Porto_Velho",
+    "territory": "America",
+    "country": "Porto Velho",
+    "subdivision": null,
+    "displayLabel": "Porto Velho (America)",
+    "coordinates": null
+  },
+  "America/Puerto_Rico": {
+    "zone": "America/Puerto_Rico",
+    "territory": "America",
+    "country": "Puerto Rico",
+    "subdivision": null,
+    "displayLabel": "Puerto Rico (America)",
+    "coordinates": null
+  },
+  "America/Punta_Arenas": {
+    "zone": "America/Punta_Arenas",
+    "territory": "America",
+    "country": "Punta Arenas",
+    "subdivision": null,
+    "displayLabel": "Punta Arenas (America)",
+    "coordinates": null
+  },
+  "America/Rankin_Inlet": {
+    "zone": "America/Rankin_Inlet",
+    "territory": "America",
+    "country": "Rankin Inlet",
+    "subdivision": null,
+    "displayLabel": "Rankin Inlet (America)",
+    "coordinates": null
+  },
+  "America/Recife": {
+    "zone": "America/Recife",
+    "territory": "America",
+    "country": "Recife",
+    "subdivision": null,
+    "displayLabel": "Recife (America)",
+    "coordinates": null
+  },
+  "America/Regina": {
+    "zone": "America/Regina",
+    "territory": "America",
+    "country": "Regina",
+    "subdivision": null,
+    "displayLabel": "Regina (America)",
+    "coordinates": null
+  },
+  "America/Resolute": {
+    "zone": "America/Resolute",
+    "territory": "America",
+    "country": "Resolute",
+    "subdivision": null,
+    "displayLabel": "Resolute (America)",
+    "coordinates": null
+  },
+  "America/Rio_Branco": {
+    "zone": "America/Rio_Branco",
+    "territory": "America",
+    "country": "Rio Branco",
+    "subdivision": null,
+    "displayLabel": "Rio Branco (America)",
+    "coordinates": null
+  },
+  "America/Santarem": {
+    "zone": "America/Santarem",
+    "territory": "America",
+    "country": "Santarem",
+    "subdivision": null,
+    "displayLabel": "Santarem (America)",
+    "coordinates": null
+  },
+  "America/Santiago": {
+    "zone": "America/Santiago",
+    "territory": "America",
+    "country": "Santiago",
+    "subdivision": null,
+    "displayLabel": "Santiago (America)",
+    "coordinates": null
+  },
+  "America/Santo_Domingo": {
+    "zone": "America/Santo_Domingo",
+    "territory": "America",
+    "country": "Santo Domingo",
+    "subdivision": null,
+    "displayLabel": "Santo Domingo (America)",
+    "coordinates": null
+  },
+  "America/Sao_Paulo": {
+    "zone": "America/Sao_Paulo",
+    "territory": "America",
+    "country": "Sao Paulo",
+    "subdivision": null,
+    "displayLabel": "Sao Paulo (America)",
+    "coordinates": null
+  },
+  "America/Scoresbysund": {
+    "zone": "America/Scoresbysund",
+    "territory": "America",
+    "country": "Scoresbysund",
+    "subdivision": null,
+    "displayLabel": "Scoresbysund (America)",
+    "coordinates": null
+  },
+  "America/Sitka": {
+    "zone": "America/Sitka",
+    "territory": "America",
+    "country": "Sitka",
+    "subdivision": null,
+    "displayLabel": "Sitka (America)",
+    "coordinates": null
+  },
+  "America/St_Barthelemy": {
+    "zone": "America/St_Barthelemy",
+    "territory": "America",
+    "country": "St Barthelemy",
+    "subdivision": null,
+    "displayLabel": "St Barthelemy (America)",
+    "coordinates": null
+  },
+  "America/St_Johns": {
+    "zone": "America/St_Johns",
+    "territory": "America",
+    "country": "St Johns",
+    "subdivision": null,
+    "displayLabel": "St Johns (America)",
+    "coordinates": null
+  },
+  "America/St_Kitts": {
+    "zone": "America/St_Kitts",
+    "territory": "America",
+    "country": "St Kitts",
+    "subdivision": null,
+    "displayLabel": "St Kitts (America)",
+    "coordinates": null
+  },
+  "America/St_Lucia": {
+    "zone": "America/St_Lucia",
+    "territory": "America",
+    "country": "St Lucia",
+    "subdivision": null,
+    "displayLabel": "St Lucia (America)",
+    "coordinates": null
+  },
+  "America/St_Thomas": {
+    "zone": "America/St_Thomas",
+    "territory": "America",
+    "country": "St Thomas",
+    "subdivision": null,
+    "displayLabel": "St Thomas (America)",
+    "coordinates": null
+  },
+  "America/St_Vincent": {
+    "zone": "America/St_Vincent",
+    "territory": "America",
+    "country": "St Vincent",
+    "subdivision": null,
+    "displayLabel": "St Vincent (America)",
+    "coordinates": null
+  },
+  "America/Swift_Current": {
+    "zone": "America/Swift_Current",
+    "territory": "America",
+    "country": "Swift Current",
+    "subdivision": null,
+    "displayLabel": "Swift Current (America)",
+    "coordinates": null
+  },
+  "America/Tegucigalpa": {
+    "zone": "America/Tegucigalpa",
+    "territory": "America",
+    "country": "Tegucigalpa",
+    "subdivision": null,
+    "displayLabel": "Tegucigalpa (America)",
+    "coordinates": null
+  },
+  "America/Thule": {
+    "zone": "America/Thule",
+    "territory": "America",
+    "country": "Thule",
+    "subdivision": null,
+    "displayLabel": "Thule (America)",
+    "coordinates": null
+  },
+  "America/Tijuana": {
+    "zone": "America/Tijuana",
+    "territory": "America",
+    "country": "Tijuana",
+    "subdivision": null,
+    "displayLabel": "Tijuana (America)",
+    "coordinates": null
+  },
+  "America/Toronto": {
+    "zone": "America/Toronto",
+    "territory": "America",
+    "country": "Toronto",
+    "subdivision": null,
+    "displayLabel": "Toronto (America)",
+    "coordinates": null
+  },
+  "America/Tortola": {
+    "zone": "America/Tortola",
+    "territory": "America",
+    "country": "Tortola",
+    "subdivision": null,
+    "displayLabel": "Tortola (America)",
+    "coordinates": null
+  },
+  "America/Vancouver": {
+    "zone": "America/Vancouver",
+    "territory": "America",
+    "country": "Vancouver",
+    "subdivision": null,
+    "displayLabel": "Vancouver (America)",
+    "coordinates": null
+  },
+  "America/Whitehorse": {
+    "zone": "America/Whitehorse",
+    "territory": "America",
+    "country": "Whitehorse",
+    "subdivision": null,
+    "displayLabel": "Whitehorse (America)",
+    "coordinates": null
+  },
+  "America/Winnipeg": {
+    "zone": "America/Winnipeg",
+    "territory": "America",
+    "country": "Winnipeg",
+    "subdivision": null,
+    "displayLabel": "Winnipeg (America)",
+    "coordinates": null
+  },
+  "America/Yakutat": {
+    "zone": "America/Yakutat",
+    "territory": "America",
+    "country": "Yakutat",
+    "subdivision": null,
+    "displayLabel": "Yakutat (America)",
+    "coordinates": null
+  },
+  "Antarctica/Casey": {
+    "zone": "Antarctica/Casey",
+    "territory": "Antarctica",
+    "country": "Casey",
+    "subdivision": null,
+    "displayLabel": "Casey (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Davis": {
+    "zone": "Antarctica/Davis",
+    "territory": "Antarctica",
+    "country": "Davis",
+    "subdivision": null,
+    "displayLabel": "Davis (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/DumontDUrville": {
+    "zone": "Antarctica/DumontDUrville",
+    "territory": "Antarctica",
+    "country": "DumontDUrville",
+    "subdivision": null,
+    "displayLabel": "DumontDUrville (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Macquarie": {
+    "zone": "Antarctica/Macquarie",
+    "territory": "Antarctica",
+    "country": "Macquarie",
+    "subdivision": null,
+    "displayLabel": "Macquarie (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Mawson": {
+    "zone": "Antarctica/Mawson",
+    "territory": "Antarctica",
+    "country": "Mawson",
+    "subdivision": null,
+    "displayLabel": "Mawson (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/McMurdo": {
+    "zone": "Antarctica/McMurdo",
+    "territory": "Antarctica",
+    "country": "McMurdo",
+    "subdivision": null,
+    "displayLabel": "McMurdo (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Palmer": {
+    "zone": "Antarctica/Palmer",
+    "territory": "Antarctica",
+    "country": "Palmer",
+    "subdivision": null,
+    "displayLabel": "Palmer (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Rothera": {
+    "zone": "Antarctica/Rothera",
+    "territory": "Antarctica",
+    "country": "Rothera",
+    "subdivision": null,
+    "displayLabel": "Rothera (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Syowa": {
+    "zone": "Antarctica/Syowa",
+    "territory": "Antarctica",
+    "country": "Syowa",
+    "subdivision": null,
+    "displayLabel": "Syowa (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Troll": {
+    "zone": "Antarctica/Troll",
+    "territory": "Antarctica",
+    "country": "Troll",
+    "subdivision": null,
+    "displayLabel": "Troll (Antarctica)",
+    "coordinates": null
+  },
+  "Antarctica/Vostok": {
+    "zone": "Antarctica/Vostok",
+    "territory": "Antarctica",
+    "country": "Vostok",
+    "subdivision": null,
+    "displayLabel": "Vostok (Antarctica)",
+    "coordinates": null
+  },
+  "Arctic/Longyearbyen": {
+    "zone": "Arctic/Longyearbyen",
+    "territory": "Arctic",
+    "country": "Longyearbyen",
+    "subdivision": null,
+    "displayLabel": "Longyearbyen (Arctic)",
+    "coordinates": null
+  },
+  "Asia/Aden": {
+    "zone": "Asia/Aden",
+    "territory": "Asia",
+    "country": "Aden",
+    "subdivision": null,
+    "displayLabel": "Aden (Asia)",
+    "coordinates": null
+  },
+  "Asia/Almaty": {
+    "zone": "Asia/Almaty",
+    "territory": "Asia",
+    "country": "Almaty",
+    "subdivision": null,
+    "displayLabel": "Almaty (Asia)",
+    "coordinates": null
+  },
+  "Asia/Amman": {
+    "zone": "Asia/Amman",
+    "territory": "Asia",
+    "country": "Amman",
+    "subdivision": null,
+    "displayLabel": "Amman (Asia)",
+    "coordinates": null
+  },
+  "Asia/Anadyr": {
+    "zone": "Asia/Anadyr",
+    "territory": "Asia",
+    "country": "Anadyr",
+    "subdivision": null,
+    "displayLabel": "Anadyr (Asia)",
+    "coordinates": null
+  },
+  "Asia/Aqtau": {
+    "zone": "Asia/Aqtau",
+    "territory": "Asia",
+    "country": "Aqtau",
+    "subdivision": null,
+    "displayLabel": "Aqtau (Asia)",
+    "coordinates": null
+  },
+  "Asia/Aqtobe": {
+    "zone": "Asia/Aqtobe",
+    "territory": "Asia",
+    "country": "Aqtobe",
+    "subdivision": null,
+    "displayLabel": "Aqtobe (Asia)",
+    "coordinates": null
+  },
+  "Asia/Ashgabat": {
+    "zone": "Asia/Ashgabat",
+    "territory": "Asia",
+    "country": "Ashgabat",
+    "subdivision": null,
+    "displayLabel": "Ashgabat (Asia)",
+    "coordinates": null
+  },
+  "Asia/Atyrau": {
+    "zone": "Asia/Atyrau",
+    "territory": "Asia",
+    "country": "Atyrau",
+    "subdivision": null,
+    "displayLabel": "Atyrau (Asia)",
+    "coordinates": null
+  },
+  "Asia/Baghdad": {
+    "zone": "Asia/Baghdad",
+    "territory": "Asia",
+    "country": "Baghdad",
+    "subdivision": null,
+    "displayLabel": "Baghdad (Asia)",
+    "coordinates": null
+  },
+  "Asia/Bahrain": {
+    "zone": "Asia/Bahrain",
+    "territory": "Asia",
+    "country": "Bahrain",
+    "subdivision": null,
+    "displayLabel": "Bahrain (Asia)",
+    "coordinates": null
+  },
+  "Asia/Baku": {
+    "zone": "Asia/Baku",
+    "territory": "Asia",
+    "country": "Baku",
+    "subdivision": null,
+    "displayLabel": "Baku (Asia)",
+    "coordinates": null
+  },
+  "Asia/Bangkok": {
+    "zone": "Asia/Bangkok",
+    "territory": "Asia",
+    "country": "Bangkok",
+    "subdivision": null,
+    "displayLabel": "Bangkok (Asia)",
+    "coordinates": null
+  },
+  "Asia/Barnaul": {
+    "zone": "Asia/Barnaul",
+    "territory": "Asia",
+    "country": "Barnaul",
+    "subdivision": null,
+    "displayLabel": "Barnaul (Asia)",
+    "coordinates": null
+  },
+  "Asia/Beirut": {
+    "zone": "Asia/Beirut",
+    "territory": "Asia",
+    "country": "Beirut",
+    "subdivision": null,
+    "displayLabel": "Beirut (Asia)",
+    "coordinates": null
+  },
+  "Asia/Bishkek": {
+    "zone": "Asia/Bishkek",
+    "territory": "Asia",
+    "country": "Bishkek",
+    "subdivision": null,
+    "displayLabel": "Bishkek (Asia)",
+    "coordinates": null
+  },
+  "Asia/Brunei": {
+    "zone": "Asia/Brunei",
+    "territory": "Asia",
+    "country": "Brunei",
+    "subdivision": null,
+    "displayLabel": "Brunei (Asia)",
+    "coordinates": null
+  },
+  "Asia/Calcutta": {
+    "zone": "Asia/Calcutta",
+    "territory": "Asia",
+    "country": "Calcutta",
+    "subdivision": null,
+    "displayLabel": "Calcutta (Asia)",
+    "coordinates": null
+  },
+  "Asia/Chita": {
+    "zone": "Asia/Chita",
+    "territory": "Asia",
+    "country": "Chita",
+    "subdivision": null,
+    "displayLabel": "Chita (Asia)",
+    "coordinates": null
+  },
+  "Asia/Colombo": {
+    "zone": "Asia/Colombo",
+    "territory": "Asia",
+    "country": "Colombo",
+    "subdivision": null,
+    "displayLabel": "Colombo (Asia)",
+    "coordinates": null
+  },
+  "Asia/Damascus": {
+    "zone": "Asia/Damascus",
+    "territory": "Asia",
+    "country": "Damascus",
+    "subdivision": null,
+    "displayLabel": "Damascus (Asia)",
+    "coordinates": null
+  },
+  "Asia/Dhaka": {
+    "zone": "Asia/Dhaka",
+    "territory": "Asia",
+    "country": "Dhaka",
+    "subdivision": null,
+    "displayLabel": "Dhaka (Asia)",
+    "coordinates": null
+  },
+  "Asia/Dili": {
+    "zone": "Asia/Dili",
+    "territory": "Asia",
+    "country": "Dili",
+    "subdivision": null,
+    "displayLabel": "Dili (Asia)",
+    "coordinates": null
+  },
+  "Asia/Dubai": {
+    "zone": "Asia/Dubai",
+    "territory": "Asia",
+    "country": "Dubai",
+    "subdivision": null,
+    "displayLabel": "Dubai (Asia)",
+    "coordinates": null
+  },
+  "Asia/Dushanbe": {
+    "zone": "Asia/Dushanbe",
+    "territory": "Asia",
+    "country": "Dushanbe",
+    "subdivision": null,
+    "displayLabel": "Dushanbe (Asia)",
+    "coordinates": null
+  },
+  "Asia/Famagusta": {
+    "zone": "Asia/Famagusta",
+    "territory": "Asia",
+    "country": "Famagusta",
+    "subdivision": null,
+    "displayLabel": "Famagusta (Asia)",
+    "coordinates": null
+  },
+  "Asia/Gaza": {
+    "zone": "Asia/Gaza",
+    "territory": "Asia",
+    "country": "Gaza",
+    "subdivision": null,
+    "displayLabel": "Gaza (Asia)",
+    "coordinates": null
+  },
+  "Asia/Hebron": {
+    "zone": "Asia/Hebron",
+    "territory": "Asia",
+    "country": "Hebron",
+    "subdivision": null,
+    "displayLabel": "Hebron (Asia)",
+    "coordinates": null
+  },
+  "Asia/Hong_Kong": {
+    "zone": "Asia/Hong_Kong",
+    "territory": "Asia",
+    "country": "Hong Kong",
+    "subdivision": null,
+    "displayLabel": "Hong Kong (Asia)",
+    "coordinates": null
+  },
+  "Asia/Hovd": {
+    "zone": "Asia/Hovd",
+    "territory": "Asia",
+    "country": "Hovd",
+    "subdivision": null,
+    "displayLabel": "Hovd (Asia)",
+    "coordinates": null
+  },
+  "Asia/Irkutsk": {
+    "zone": "Asia/Irkutsk",
+    "territory": "Asia",
+    "country": "Irkutsk",
+    "subdivision": null,
+    "displayLabel": "Irkutsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Jakarta": {
+    "zone": "Asia/Jakarta",
+    "territory": "Asia",
+    "country": "Jakarta",
+    "subdivision": null,
+    "displayLabel": "Jakarta (Asia)",
+    "coordinates": null
+  },
+  "Asia/Jayapura": {
+    "zone": "Asia/Jayapura",
+    "territory": "Asia",
+    "country": "Jayapura",
+    "subdivision": null,
+    "displayLabel": "Jayapura (Asia)",
+    "coordinates": null
+  },
+  "Asia/Jerusalem": {
+    "zone": "Asia/Jerusalem",
+    "territory": "Asia",
+    "country": "Jerusalem",
+    "subdivision": null,
+    "displayLabel": "Jerusalem (Asia)",
+    "coordinates": null
+  },
+  "Asia/Kabul": {
+    "zone": "Asia/Kabul",
+    "territory": "Asia",
+    "country": "Kabul",
+    "subdivision": null,
+    "displayLabel": "Kabul (Asia)",
+    "coordinates": null
+  },
+  "Asia/Kamchatka": {
+    "zone": "Asia/Kamchatka",
+    "territory": "Asia",
+    "country": "Kamchatka",
+    "subdivision": null,
+    "displayLabel": "Kamchatka (Asia)",
+    "coordinates": null
+  },
+  "Asia/Karachi": {
+    "zone": "Asia/Karachi",
+    "territory": "Asia",
+    "country": "Karachi",
+    "subdivision": null,
+    "displayLabel": "Karachi (Asia)",
+    "coordinates": null
+  },
+  "Asia/Katmandu": {
+    "zone": "Asia/Katmandu",
+    "territory": "Asia",
+    "country": "Katmandu",
+    "subdivision": null,
+    "displayLabel": "Katmandu (Asia)",
+    "coordinates": null
+  },
+  "Asia/Khandyga": {
+    "zone": "Asia/Khandyga",
+    "territory": "Asia",
+    "country": "Khandyga",
+    "subdivision": null,
+    "displayLabel": "Khandyga (Asia)",
+    "coordinates": null
+  },
+  "Asia/Krasnoyarsk": {
+    "zone": "Asia/Krasnoyarsk",
+    "territory": "Asia",
+    "country": "Krasnoyarsk",
+    "subdivision": null,
+    "displayLabel": "Krasnoyarsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Kuala_Lumpur": {
+    "zone": "Asia/Kuala_Lumpur",
+    "territory": "Asia",
+    "country": "Kuala Lumpur",
+    "subdivision": null,
+    "displayLabel": "Kuala Lumpur (Asia)",
+    "coordinates": null
+  },
+  "Asia/Kuching": {
+    "zone": "Asia/Kuching",
+    "territory": "Asia",
+    "country": "Kuching",
+    "subdivision": null,
+    "displayLabel": "Kuching (Asia)",
+    "coordinates": null
+  },
+  "Asia/Kuwait": {
+    "zone": "Asia/Kuwait",
+    "territory": "Asia",
+    "country": "Kuwait",
+    "subdivision": null,
+    "displayLabel": "Kuwait (Asia)",
+    "coordinates": null
+  },
+  "Asia/Macau": {
+    "zone": "Asia/Macau",
+    "territory": "Asia",
+    "country": "Macau",
+    "subdivision": null,
+    "displayLabel": "Macau (Asia)",
+    "coordinates": null
+  },
+  "Asia/Magadan": {
+    "zone": "Asia/Magadan",
+    "territory": "Asia",
+    "country": "Magadan",
+    "subdivision": null,
+    "displayLabel": "Magadan (Asia)",
+    "coordinates": null
+  },
+  "Asia/Makassar": {
+    "zone": "Asia/Makassar",
+    "territory": "Asia",
+    "country": "Makassar",
+    "subdivision": null,
+    "displayLabel": "Makassar (Asia)",
+    "coordinates": null
+  },
+  "Asia/Manila": {
+    "zone": "Asia/Manila",
+    "territory": "Asia",
+    "country": "Manila",
+    "subdivision": null,
+    "displayLabel": "Manila (Asia)",
+    "coordinates": null
+  },
+  "Asia/Muscat": {
+    "zone": "Asia/Muscat",
+    "territory": "Asia",
+    "country": "Muscat",
+    "subdivision": null,
+    "displayLabel": "Muscat (Asia)",
+    "coordinates": null
+  },
+  "Asia/Nicosia": {
+    "zone": "Asia/Nicosia",
+    "territory": "Asia",
+    "country": "Nicosia",
+    "subdivision": null,
+    "displayLabel": "Nicosia (Asia)",
+    "coordinates": null
+  },
+  "Asia/Novokuznetsk": {
+    "zone": "Asia/Novokuznetsk",
+    "territory": "Asia",
+    "country": "Novokuznetsk",
+    "subdivision": null,
+    "displayLabel": "Novokuznetsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Novosibirsk": {
+    "zone": "Asia/Novosibirsk",
+    "territory": "Asia",
+    "country": "Novosibirsk",
+    "subdivision": null,
+    "displayLabel": "Novosibirsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Omsk": {
+    "zone": "Asia/Omsk",
+    "territory": "Asia",
+    "country": "Omsk",
+    "subdivision": null,
+    "displayLabel": "Omsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Oral": {
+    "zone": "Asia/Oral",
+    "territory": "Asia",
+    "country": "Oral",
+    "subdivision": null,
+    "displayLabel": "Oral (Asia)",
+    "coordinates": null
+  },
+  "Asia/Phnom_Penh": {
+    "zone": "Asia/Phnom_Penh",
+    "territory": "Asia",
+    "country": "Phnom Penh",
+    "subdivision": null,
+    "displayLabel": "Phnom Penh (Asia)",
+    "coordinates": null
+  },
+  "Asia/Pontianak": {
+    "zone": "Asia/Pontianak",
+    "territory": "Asia",
+    "country": "Pontianak",
+    "subdivision": null,
+    "displayLabel": "Pontianak (Asia)",
+    "coordinates": null
+  },
+  "Asia/Pyongyang": {
+    "zone": "Asia/Pyongyang",
+    "territory": "Asia",
+    "country": "Pyongyang",
+    "subdivision": null,
+    "displayLabel": "Pyongyang (Asia)",
+    "coordinates": null
+  },
+  "Asia/Qatar": {
+    "zone": "Asia/Qatar",
+    "territory": "Asia",
+    "country": "Qatar",
+    "subdivision": null,
+    "displayLabel": "Qatar (Asia)",
+    "coordinates": null
+  },
+  "Asia/Qostanay": {
+    "zone": "Asia/Qostanay",
+    "territory": "Asia",
+    "country": "Qostanay",
+    "subdivision": null,
+    "displayLabel": "Qostanay (Asia)",
+    "coordinates": null
+  },
+  "Asia/Qyzylorda": {
+    "zone": "Asia/Qyzylorda",
+    "territory": "Asia",
+    "country": "Qyzylorda",
+    "subdivision": null,
+    "displayLabel": "Qyzylorda (Asia)",
+    "coordinates": null
+  },
+  "Asia/Rangoon": {
+    "zone": "Asia/Rangoon",
+    "territory": "Asia",
+    "country": "Rangoon",
+    "subdivision": null,
+    "displayLabel": "Rangoon (Asia)",
+    "coordinates": null
+  },
+  "Asia/Riyadh": {
+    "zone": "Asia/Riyadh",
+    "territory": "Asia",
+    "country": "Riyadh",
+    "subdivision": null,
+    "displayLabel": "Riyadh (Asia)",
+    "coordinates": null
+  },
+  "Asia/Saigon": {
+    "zone": "Asia/Saigon",
+    "territory": "Asia",
+    "country": "Saigon",
+    "subdivision": null,
+    "displayLabel": "Saigon (Asia)",
+    "coordinates": null
+  },
+  "Asia/Sakhalin": {
+    "zone": "Asia/Sakhalin",
+    "territory": "Asia",
+    "country": "Sakhalin",
+    "subdivision": null,
+    "displayLabel": "Sakhalin (Asia)",
+    "coordinates": null
+  },
+  "Asia/Samarkand": {
+    "zone": "Asia/Samarkand",
+    "territory": "Asia",
+    "country": "Samarkand",
+    "subdivision": null,
+    "displayLabel": "Samarkand (Asia)",
+    "coordinates": null
+  },
+  "Asia/Seoul": {
+    "zone": "Asia/Seoul",
+    "territory": "Asia",
+    "country": "Seoul",
+    "subdivision": null,
+    "displayLabel": "Seoul (Asia)",
+    "coordinates": null
+  },
+  "Asia/Shanghai": {
+    "zone": "Asia/Shanghai",
+    "territory": "Asia",
+    "country": "Shanghai",
+    "subdivision": null,
+    "displayLabel": "Shanghai (Asia)",
+    "coordinates": null
+  },
+  "Asia/Singapore": {
+    "zone": "Asia/Singapore",
+    "territory": "Asia",
+    "country": "Singapore",
+    "subdivision": null,
+    "displayLabel": "Singapore (Asia)",
+    "coordinates": null
+  },
+  "Asia/Srednekolymsk": {
+    "zone": "Asia/Srednekolymsk",
+    "territory": "Asia",
+    "country": "Srednekolymsk",
+    "subdivision": null,
+    "displayLabel": "Srednekolymsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Taipei": {
+    "zone": "Asia/Taipei",
+    "territory": "Asia",
+    "country": "Taipei",
+    "subdivision": null,
+    "displayLabel": "Taipei (Asia)",
+    "coordinates": null
+  },
+  "Asia/Tashkent": {
+    "zone": "Asia/Tashkent",
+    "territory": "Asia",
+    "country": "Tashkent",
+    "subdivision": null,
+    "displayLabel": "Tashkent (Asia)",
+    "coordinates": null
+  },
+  "Asia/Tbilisi": {
+    "zone": "Asia/Tbilisi",
+    "territory": "Asia",
+    "country": "Tbilisi",
+    "subdivision": null,
+    "displayLabel": "Tbilisi (Asia)",
+    "coordinates": null
+  },
+  "Asia/Tehran": {
+    "zone": "Asia/Tehran",
+    "territory": "Asia",
+    "country": "Tehran",
+    "subdivision": null,
+    "displayLabel": "Tehran (Asia)",
+    "coordinates": null
+  },
+  "Asia/Thimphu": {
+    "zone": "Asia/Thimphu",
+    "territory": "Asia",
+    "country": "Thimphu",
+    "subdivision": null,
+    "displayLabel": "Thimphu (Asia)",
+    "coordinates": null
+  },
+  "Asia/Tokyo": {
+    "zone": "Asia/Tokyo",
+    "territory": "Asia",
+    "country": "Tokyo",
+    "subdivision": null,
+    "displayLabel": "Tokyo (Asia)",
+    "coordinates": null
+  },
+  "Asia/Tomsk": {
+    "zone": "Asia/Tomsk",
+    "territory": "Asia",
+    "country": "Tomsk",
+    "subdivision": null,
+    "displayLabel": "Tomsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Ulaanbaatar": {
+    "zone": "Asia/Ulaanbaatar",
+    "territory": "Asia",
+    "country": "Ulaanbaatar",
+    "subdivision": null,
+    "displayLabel": "Ulaanbaatar (Asia)",
+    "coordinates": null
+  },
+  "Asia/Urumqi": {
+    "zone": "Asia/Urumqi",
+    "territory": "Asia",
+    "country": "Urumqi",
+    "subdivision": null,
+    "displayLabel": "Urumqi (Asia)",
+    "coordinates": null
+  },
+  "Asia/Ust-Nera": {
+    "zone": "Asia/Ust-Nera",
+    "territory": "Asia",
+    "country": "Ust-Nera",
+    "subdivision": null,
+    "displayLabel": "Ust-Nera (Asia)",
+    "coordinates": null
+  },
+  "Asia/Vientiane": {
+    "zone": "Asia/Vientiane",
+    "territory": "Asia",
+    "country": "Vientiane",
+    "subdivision": null,
+    "displayLabel": "Vientiane (Asia)",
+    "coordinates": null
+  },
+  "Asia/Vladivostok": {
+    "zone": "Asia/Vladivostok",
+    "territory": "Asia",
+    "country": "Vladivostok",
+    "subdivision": null,
+    "displayLabel": "Vladivostok (Asia)",
+    "coordinates": null
+  },
+  "Asia/Yakutsk": {
+    "zone": "Asia/Yakutsk",
+    "territory": "Asia",
+    "country": "Yakutsk",
+    "subdivision": null,
+    "displayLabel": "Yakutsk (Asia)",
+    "coordinates": null
+  },
+  "Asia/Yekaterinburg": {
+    "zone": "Asia/Yekaterinburg",
+    "territory": "Asia",
+    "country": "Yekaterinburg",
+    "subdivision": null,
+    "displayLabel": "Yekaterinburg (Asia)",
+    "coordinates": null
+  },
+  "Asia/Yerevan": {
+    "zone": "Asia/Yerevan",
+    "territory": "Asia",
+    "country": "Yerevan",
+    "subdivision": null,
+    "displayLabel": "Yerevan (Asia)",
+    "coordinates": null
+  },
+  "Atlantic/Azores": {
+    "zone": "Atlantic/Azores",
+    "territory": "Atlantic",
+    "country": "Azores",
+    "subdivision": null,
+    "displayLabel": "Azores (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/Bermuda": {
+    "zone": "Atlantic/Bermuda",
+    "territory": "Atlantic",
+    "country": "Bermuda",
+    "subdivision": null,
+    "displayLabel": "Bermuda (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/Canary": {
+    "zone": "Atlantic/Canary",
+    "territory": "Atlantic",
+    "country": "Canary",
+    "subdivision": null,
+    "displayLabel": "Canary (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/Cape_Verde": {
+    "zone": "Atlantic/Cape_Verde",
+    "territory": "Atlantic",
+    "country": "Cape Verde",
+    "subdivision": null,
+    "displayLabel": "Cape Verde (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/Faeroe": {
+    "zone": "Atlantic/Faeroe",
+    "territory": "Atlantic",
+    "country": "Faeroe",
+    "subdivision": null,
+    "displayLabel": "Faeroe (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/Madeira": {
+    "zone": "Atlantic/Madeira",
+    "territory": "Atlantic",
+    "country": "Madeira",
+    "subdivision": null,
+    "displayLabel": "Madeira (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/Reykjavik": {
+    "zone": "Atlantic/Reykjavik",
+    "territory": "Atlantic",
+    "country": "Reykjavik",
+    "subdivision": null,
+    "displayLabel": "Reykjavik (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/South_Georgia": {
+    "zone": "Atlantic/South_Georgia",
+    "territory": "Atlantic",
+    "country": "South Georgia",
+    "subdivision": null,
+    "displayLabel": "South Georgia (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/St_Helena": {
+    "zone": "Atlantic/St_Helena",
+    "territory": "Atlantic",
+    "country": "St Helena",
+    "subdivision": null,
+    "displayLabel": "St Helena (Atlantic)",
+    "coordinates": null
+  },
+  "Atlantic/Stanley": {
+    "zone": "Atlantic/Stanley",
+    "territory": "Atlantic",
+    "country": "Stanley",
+    "subdivision": null,
+    "displayLabel": "Stanley (Atlantic)",
+    "coordinates": null
+  },
+  "Australia/Adelaide": {
+    "zone": "Australia/Adelaide",
+    "territory": "Australia",
+    "country": "Adelaide",
+    "subdivision": null,
+    "displayLabel": "Adelaide (Australia)",
+    "coordinates": null
+  },
+  "Australia/Brisbane": {
+    "zone": "Australia/Brisbane",
+    "territory": "Australia",
+    "country": "Brisbane",
+    "subdivision": null,
+    "displayLabel": "Brisbane (Australia)",
+    "coordinates": null
+  },
+  "Australia/Broken_Hill": {
+    "zone": "Australia/Broken_Hill",
+    "territory": "Australia",
+    "country": "Broken Hill",
+    "subdivision": null,
+    "displayLabel": "Broken Hill (Australia)",
+    "coordinates": null
+  },
+  "Australia/Darwin": {
+    "zone": "Australia/Darwin",
+    "territory": "Australia",
+    "country": "Darwin",
+    "subdivision": null,
+    "displayLabel": "Darwin (Australia)",
+    "coordinates": null
+  },
+  "Australia/Eucla": {
+    "zone": "Australia/Eucla",
+    "territory": "Australia",
+    "country": "Eucla",
+    "subdivision": null,
+    "displayLabel": "Eucla (Australia)",
+    "coordinates": null
+  },
+  "Australia/Hobart": {
+    "zone": "Australia/Hobart",
+    "territory": "Australia",
+    "country": "Hobart",
+    "subdivision": null,
+    "displayLabel": "Hobart (Australia)",
+    "coordinates": null
+  },
+  "Australia/Lindeman": {
+    "zone": "Australia/Lindeman",
+    "territory": "Australia",
+    "country": "Lindeman",
+    "subdivision": null,
+    "displayLabel": "Lindeman (Australia)",
+    "coordinates": null
+  },
+  "Australia/Lord_Howe": {
+    "zone": "Australia/Lord_Howe",
+    "territory": "Australia",
+    "country": "Lord Howe",
+    "subdivision": null,
+    "displayLabel": "Lord Howe (Australia)",
+    "coordinates": null
+  },
+  "Australia/Melbourne": {
+    "zone": "Australia/Melbourne",
+    "territory": "Australia",
+    "country": "Melbourne",
+    "subdivision": null,
+    "displayLabel": "Melbourne (Australia)",
+    "coordinates": null
+  },
+  "Australia/Perth": {
+    "zone": "Australia/Perth",
+    "territory": "Australia",
+    "country": "Perth",
+    "subdivision": null,
+    "displayLabel": "Perth (Australia)",
+    "coordinates": null
+  },
+  "Australia/Sydney": {
+    "zone": "Australia/Sydney",
+    "territory": "Australia",
+    "country": "Sydney",
+    "subdivision": null,
+    "displayLabel": "Sydney (Australia)",
+    "coordinates": null
+  },
+  "Europe/Amsterdam": {
+    "zone": "Europe/Amsterdam",
+    "territory": "Europe",
+    "country": "Amsterdam",
+    "subdivision": null,
+    "displayLabel": "Amsterdam (Europe)",
+    "coordinates": null
+  },
+  "Europe/Andorra": {
+    "zone": "Europe/Andorra",
+    "territory": "Europe",
+    "country": "Andorra",
+    "subdivision": null,
+    "displayLabel": "Andorra (Europe)",
+    "coordinates": null
+  },
+  "Europe/Astrakhan": {
+    "zone": "Europe/Astrakhan",
+    "territory": "Europe",
+    "country": "Astrakhan",
+    "subdivision": null,
+    "displayLabel": "Astrakhan (Europe)",
+    "coordinates": null
+  },
+  "Europe/Athens": {
+    "zone": "Europe/Athens",
+    "territory": "Europe",
+    "country": "Athens",
+    "subdivision": null,
+    "displayLabel": "Athens (Europe)",
+    "coordinates": null
+  },
+  "Europe/Belgrade": {
+    "zone": "Europe/Belgrade",
+    "territory": "Europe",
+    "country": "Belgrade",
+    "subdivision": null,
+    "displayLabel": "Belgrade (Europe)",
+    "coordinates": null
+  },
+  "Europe/Berlin": {
+    "zone": "Europe/Berlin",
+    "territory": "Europe",
+    "country": "Berlin",
+    "subdivision": null,
+    "displayLabel": "Berlin (Europe)",
+    "coordinates": null
+  },
+  "Europe/Bratislava": {
+    "zone": "Europe/Bratislava",
+    "territory": "Europe",
+    "country": "Bratislava",
+    "subdivision": null,
+    "displayLabel": "Bratislava (Europe)",
+    "coordinates": null
+  },
+  "Europe/Brussels": {
+    "zone": "Europe/Brussels",
+    "territory": "Europe",
+    "country": "Brussels",
+    "subdivision": null,
+    "displayLabel": "Brussels (Europe)",
+    "coordinates": null
+  },
+  "Europe/Bucharest": {
+    "zone": "Europe/Bucharest",
+    "territory": "Europe",
+    "country": "Bucharest",
+    "subdivision": null,
+    "displayLabel": "Bucharest (Europe)",
+    "coordinates": null
+  },
+  "Europe/Budapest": {
+    "zone": "Europe/Budapest",
+    "territory": "Europe",
+    "country": "Budapest",
+    "subdivision": null,
+    "displayLabel": "Budapest (Europe)",
+    "coordinates": null
+  },
+  "Europe/Busingen": {
+    "zone": "Europe/Busingen",
+    "territory": "Europe",
+    "country": "Busingen",
+    "subdivision": null,
+    "displayLabel": "Busingen (Europe)",
+    "coordinates": null
+  },
+  "Europe/Chisinau": {
+    "zone": "Europe/Chisinau",
+    "territory": "Europe",
+    "country": "Chisinau",
+    "subdivision": null,
+    "displayLabel": "Chisinau (Europe)",
+    "coordinates": null
+  },
+  "Europe/Copenhagen": {
+    "zone": "Europe/Copenhagen",
+    "territory": "Europe",
+    "country": "Copenhagen",
+    "subdivision": null,
+    "displayLabel": "Copenhagen (Europe)",
+    "coordinates": null
+  },
+  "Europe/Dublin": {
+    "zone": "Europe/Dublin",
+    "territory": "Europe",
+    "country": "Dublin",
+    "subdivision": null,
+    "displayLabel": "Dublin (Europe)",
+    "coordinates": null
+  },
+  "Europe/Gibraltar": {
+    "zone": "Europe/Gibraltar",
+    "territory": "Europe",
+    "country": "Gibraltar",
+    "subdivision": null,
+    "displayLabel": "Gibraltar (Europe)",
+    "coordinates": null
+  },
+  "Europe/Guernsey": {
+    "zone": "Europe/Guernsey",
+    "territory": "Europe",
+    "country": "Guernsey",
+    "subdivision": null,
+    "displayLabel": "Guernsey (Europe)",
+    "coordinates": null
+  },
+  "Europe/Helsinki": {
+    "zone": "Europe/Helsinki",
+    "territory": "Europe",
+    "country": "Helsinki",
+    "subdivision": null,
+    "displayLabel": "Helsinki (Europe)",
+    "coordinates": null
+  },
+  "Europe/Isle_of_Man": {
+    "zone": "Europe/Isle_of_Man",
+    "territory": "Europe",
+    "country": "Isle Of Man",
+    "subdivision": null,
+    "displayLabel": "Isle Of Man (Europe)",
+    "coordinates": null
+  },
+  "Europe/Istanbul": {
+    "zone": "Europe/Istanbul",
+    "territory": "Europe",
+    "country": "Istanbul",
+    "subdivision": null,
+    "displayLabel": "Istanbul (Europe)",
+    "coordinates": null
+  },
+  "Europe/Jersey": {
+    "zone": "Europe/Jersey",
+    "territory": "Europe",
+    "country": "Jersey",
+    "subdivision": null,
+    "displayLabel": "Jersey (Europe)",
+    "coordinates": null
+  },
+  "Europe/Kaliningrad": {
+    "zone": "Europe/Kaliningrad",
+    "territory": "Europe",
+    "country": "Kaliningrad",
+    "subdivision": null,
+    "displayLabel": "Kaliningrad (Europe)",
+    "coordinates": null
+  },
+  "Europe/Kiev": {
+    "zone": "Europe/Kiev",
+    "territory": "Europe",
+    "country": "Kiev",
+    "subdivision": null,
+    "displayLabel": "Kiev (Europe)",
+    "coordinates": null
+  },
+  "Europe/Kirov": {
+    "zone": "Europe/Kirov",
+    "territory": "Europe",
+    "country": "Kirov",
+    "subdivision": null,
+    "displayLabel": "Kirov (Europe)",
+    "coordinates": null
+  },
+  "Europe/Lisbon": {
+    "zone": "Europe/Lisbon",
+    "territory": "Europe",
+    "country": "Lisbon",
+    "subdivision": null,
+    "displayLabel": "Lisbon (Europe)",
+    "coordinates": null
+  },
+  "Europe/Ljubljana": {
+    "zone": "Europe/Ljubljana",
+    "territory": "Europe",
+    "country": "Ljubljana",
+    "subdivision": null,
+    "displayLabel": "Ljubljana (Europe)",
+    "coordinates": null
+  },
+  "Europe/London": {
+    "zone": "Europe/London",
+    "territory": "Europe",
+    "country": "London",
+    "subdivision": null,
+    "displayLabel": "London (Europe)",
+    "coordinates": null
+  },
+  "Europe/Luxembourg": {
+    "zone": "Europe/Luxembourg",
+    "territory": "Europe",
+    "country": "Luxembourg",
+    "subdivision": null,
+    "displayLabel": "Luxembourg (Europe)",
+    "coordinates": null
+  },
+  "Europe/Madrid": {
+    "zone": "Europe/Madrid",
+    "territory": "Europe",
+    "country": "Madrid",
+    "subdivision": null,
+    "displayLabel": "Madrid (Europe)",
+    "coordinates": null
+  },
+  "Europe/Malta": {
+    "zone": "Europe/Malta",
+    "territory": "Europe",
+    "country": "Malta",
+    "subdivision": null,
+    "displayLabel": "Malta (Europe)",
+    "coordinates": null
+  },
+  "Europe/Mariehamn": {
+    "zone": "Europe/Mariehamn",
+    "territory": "Europe",
+    "country": "Mariehamn",
+    "subdivision": null,
+    "displayLabel": "Mariehamn (Europe)",
+    "coordinates": null
+  },
+  "Europe/Minsk": {
+    "zone": "Europe/Minsk",
+    "territory": "Europe",
+    "country": "Minsk",
+    "subdivision": null,
+    "displayLabel": "Minsk (Europe)",
+    "coordinates": null
+  },
+  "Europe/Monaco": {
+    "zone": "Europe/Monaco",
+    "territory": "Europe",
+    "country": "Monaco",
+    "subdivision": null,
+    "displayLabel": "Monaco (Europe)",
+    "coordinates": null
+  },
+  "Europe/Moscow": {
+    "zone": "Europe/Moscow",
+    "territory": "Europe",
+    "country": "Moscow",
+    "subdivision": null,
+    "displayLabel": "Moscow (Europe)",
+    "coordinates": null
+  },
+  "Europe/Oslo": {
+    "zone": "Europe/Oslo",
+    "territory": "Europe",
+    "country": "Oslo",
+    "subdivision": null,
+    "displayLabel": "Oslo (Europe)",
+    "coordinates": null
+  },
+  "Europe/Paris": {
+    "zone": "Europe/Paris",
+    "territory": "Europe",
+    "country": "Paris",
+    "subdivision": null,
+    "displayLabel": "Paris (Europe)",
+    "coordinates": null
+  },
+  "Europe/Podgorica": {
+    "zone": "Europe/Podgorica",
+    "territory": "Europe",
+    "country": "Podgorica",
+    "subdivision": null,
+    "displayLabel": "Podgorica (Europe)",
+    "coordinates": null
+  },
+  "Europe/Prague": {
+    "zone": "Europe/Prague",
+    "territory": "Europe",
+    "country": "Prague",
+    "subdivision": null,
+    "displayLabel": "Prague (Europe)",
+    "coordinates": null
+  },
+  "Europe/Riga": {
+    "zone": "Europe/Riga",
+    "territory": "Europe",
+    "country": "Riga",
+    "subdivision": null,
+    "displayLabel": "Riga (Europe)",
+    "coordinates": null
+  },
+  "Europe/Rome": {
+    "zone": "Europe/Rome",
+    "territory": "Europe",
+    "country": "Rome",
+    "subdivision": null,
+    "displayLabel": "Rome (Europe)",
+    "coordinates": null
+  },
+  "Europe/Samara": {
+    "zone": "Europe/Samara",
+    "territory": "Europe",
+    "country": "Samara",
+    "subdivision": null,
+    "displayLabel": "Samara (Europe)",
+    "coordinates": null
+  },
+  "Europe/San_Marino": {
+    "zone": "Europe/San_Marino",
+    "territory": "Europe",
+    "country": "San Marino",
+    "subdivision": null,
+    "displayLabel": "San Marino (Europe)",
+    "coordinates": null
+  },
+  "Europe/Sarajevo": {
+    "zone": "Europe/Sarajevo",
+    "territory": "Europe",
+    "country": "Sarajevo",
+    "subdivision": null,
+    "displayLabel": "Sarajevo (Europe)",
+    "coordinates": null
+  },
+  "Europe/Saratov": {
+    "zone": "Europe/Saratov",
+    "territory": "Europe",
+    "country": "Saratov",
+    "subdivision": null,
+    "displayLabel": "Saratov (Europe)",
+    "coordinates": null
+  },
+  "Europe/Simferopol": {
+    "zone": "Europe/Simferopol",
+    "territory": "Europe",
+    "country": "Simferopol",
+    "subdivision": null,
+    "displayLabel": "Simferopol (Europe)",
+    "coordinates": null
+  },
+  "Europe/Skopje": {
+    "zone": "Europe/Skopje",
+    "territory": "Europe",
+    "country": "Skopje",
+    "subdivision": null,
+    "displayLabel": "Skopje (Europe)",
+    "coordinates": null
+  },
+  "Europe/Sofia": {
+    "zone": "Europe/Sofia",
+    "territory": "Europe",
+    "country": "Sofia",
+    "subdivision": null,
+    "displayLabel": "Sofia (Europe)",
+    "coordinates": null
+  },
+  "Europe/Stockholm": {
+    "zone": "Europe/Stockholm",
+    "territory": "Europe",
+    "country": "Stockholm",
+    "subdivision": null,
+    "displayLabel": "Stockholm (Europe)",
+    "coordinates": null
+  },
+  "Europe/Tallinn": {
+    "zone": "Europe/Tallinn",
+    "territory": "Europe",
+    "country": "Tallinn",
+    "subdivision": null,
+    "displayLabel": "Tallinn (Europe)",
+    "coordinates": null
+  },
+  "Europe/Tirane": {
+    "zone": "Europe/Tirane",
+    "territory": "Europe",
+    "country": "Tirane",
+    "subdivision": null,
+    "displayLabel": "Tirane (Europe)",
+    "coordinates": null
+  },
+  "Europe/Ulyanovsk": {
+    "zone": "Europe/Ulyanovsk",
+    "territory": "Europe",
+    "country": "Ulyanovsk",
+    "subdivision": null,
+    "displayLabel": "Ulyanovsk (Europe)",
+    "coordinates": null
+  },
+  "Europe/Vaduz": {
+    "zone": "Europe/Vaduz",
+    "territory": "Europe",
+    "country": "Vaduz",
+    "subdivision": null,
+    "displayLabel": "Vaduz (Europe)",
+    "coordinates": null
+  },
+  "Europe/Vatican": {
+    "zone": "Europe/Vatican",
+    "territory": "Europe",
+    "country": "Vatican",
+    "subdivision": null,
+    "displayLabel": "Vatican (Europe)",
+    "coordinates": null
+  },
+  "Europe/Vienna": {
+    "zone": "Europe/Vienna",
+    "territory": "Europe",
+    "country": "Vienna",
+    "subdivision": null,
+    "displayLabel": "Vienna (Europe)",
+    "coordinates": null
+  },
+  "Europe/Vilnius": {
+    "zone": "Europe/Vilnius",
+    "territory": "Europe",
+    "country": "Vilnius",
+    "subdivision": null,
+    "displayLabel": "Vilnius (Europe)",
+    "coordinates": null
+  },
+  "Europe/Volgograd": {
+    "zone": "Europe/Volgograd",
+    "territory": "Europe",
+    "country": "Volgograd",
+    "subdivision": null,
+    "displayLabel": "Volgograd (Europe)",
+    "coordinates": null
+  },
+  "Europe/Warsaw": {
+    "zone": "Europe/Warsaw",
+    "territory": "Europe",
+    "country": "Warsaw",
+    "subdivision": null,
+    "displayLabel": "Warsaw (Europe)",
+    "coordinates": null
+  },
+  "Europe/Zagreb": {
+    "zone": "Europe/Zagreb",
+    "territory": "Europe",
+    "country": "Zagreb",
+    "subdivision": null,
+    "displayLabel": "Zagreb (Europe)",
+    "coordinates": null
+  },
+  "Europe/Zurich": {
+    "zone": "Europe/Zurich",
+    "territory": "Europe",
+    "country": "Zurich",
+    "subdivision": null,
+    "displayLabel": "Zurich (Europe)",
+    "coordinates": null
+  },
+  "Indian/Antananarivo": {
+    "zone": "Indian/Antananarivo",
+    "territory": "Indian",
+    "country": "Antananarivo",
+    "subdivision": null,
+    "displayLabel": "Antananarivo (Indian)",
+    "coordinates": null
+  },
+  "Indian/Chagos": {
+    "zone": "Indian/Chagos",
+    "territory": "Indian",
+    "country": "Chagos",
+    "subdivision": null,
+    "displayLabel": "Chagos (Indian)",
+    "coordinates": null
+  },
+  "Indian/Christmas": {
+    "zone": "Indian/Christmas",
+    "territory": "Indian",
+    "country": "Christmas",
+    "subdivision": null,
+    "displayLabel": "Christmas (Indian)",
+    "coordinates": null
+  },
+  "Indian/Cocos": {
+    "zone": "Indian/Cocos",
+    "territory": "Indian",
+    "country": "Cocos",
+    "subdivision": null,
+    "displayLabel": "Cocos (Indian)",
+    "coordinates": null
+  },
+  "Indian/Comoro": {
+    "zone": "Indian/Comoro",
+    "territory": "Indian",
+    "country": "Comoro",
+    "subdivision": null,
+    "displayLabel": "Comoro (Indian)",
+    "coordinates": null
+  },
+  "Indian/Kerguelen": {
+    "zone": "Indian/Kerguelen",
+    "territory": "Indian",
+    "country": "Kerguelen",
+    "subdivision": null,
+    "displayLabel": "Kerguelen (Indian)",
+    "coordinates": null
+  },
+  "Indian/Mahe": {
+    "zone": "Indian/Mahe",
+    "territory": "Indian",
+    "country": "Mahe",
+    "subdivision": null,
+    "displayLabel": "Mahe (Indian)",
+    "coordinates": null
+  },
+  "Indian/Maldives": {
+    "zone": "Indian/Maldives",
+    "territory": "Indian",
+    "country": "Maldives",
+    "subdivision": null,
+    "displayLabel": "Maldives (Indian)",
+    "coordinates": null
+  },
+  "Indian/Mauritius": {
+    "zone": "Indian/Mauritius",
+    "territory": "Indian",
+    "country": "Mauritius",
+    "subdivision": null,
+    "displayLabel": "Mauritius (Indian)",
+    "coordinates": null
+  },
+  "Indian/Mayotte": {
+    "zone": "Indian/Mayotte",
+    "territory": "Indian",
+    "country": "Mayotte",
+    "subdivision": null,
+    "displayLabel": "Mayotte (Indian)",
+    "coordinates": null
+  },
+  "Indian/Reunion": {
+    "zone": "Indian/Reunion",
+    "territory": "Indian",
+    "country": "Reunion",
+    "subdivision": null,
+    "displayLabel": "Reunion (Indian)",
+    "coordinates": null
+  },
+  "Pacific/Apia": {
+    "zone": "Pacific/Apia",
+    "territory": "Pacific",
+    "country": "Apia",
+    "subdivision": null,
+    "displayLabel": "Apia (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Auckland": {
+    "zone": "Pacific/Auckland",
+    "territory": "Pacific",
+    "country": "Auckland",
+    "subdivision": null,
+    "displayLabel": "Auckland (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Bougainville": {
+    "zone": "Pacific/Bougainville",
+    "territory": "Pacific",
+    "country": "Bougainville",
+    "subdivision": null,
+    "displayLabel": "Bougainville (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Chatham": {
+    "zone": "Pacific/Chatham",
+    "territory": "Pacific",
+    "country": "Chatham",
+    "subdivision": null,
+    "displayLabel": "Chatham (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Easter": {
+    "zone": "Pacific/Easter",
+    "territory": "Pacific",
+    "country": "Easter",
+    "subdivision": null,
+    "displayLabel": "Easter (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Efate": {
+    "zone": "Pacific/Efate",
+    "territory": "Pacific",
+    "country": "Efate",
+    "subdivision": null,
+    "displayLabel": "Efate (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Enderbury": {
+    "zone": "Pacific/Enderbury",
+    "territory": "Pacific",
+    "country": "Enderbury",
+    "subdivision": null,
+    "displayLabel": "Enderbury (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Fakaofo": {
+    "zone": "Pacific/Fakaofo",
+    "territory": "Pacific",
+    "country": "Fakaofo",
+    "subdivision": null,
+    "displayLabel": "Fakaofo (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Fiji": {
+    "zone": "Pacific/Fiji",
+    "territory": "Pacific",
+    "country": "Fiji",
+    "subdivision": null,
+    "displayLabel": "Fiji (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Funafuti": {
+    "zone": "Pacific/Funafuti",
+    "territory": "Pacific",
+    "country": "Funafuti",
+    "subdivision": null,
+    "displayLabel": "Funafuti (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Galapagos": {
+    "zone": "Pacific/Galapagos",
+    "territory": "Pacific",
+    "country": "Galapagos",
+    "subdivision": null,
+    "displayLabel": "Galapagos (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Gambier": {
+    "zone": "Pacific/Gambier",
+    "territory": "Pacific",
+    "country": "Gambier",
+    "subdivision": null,
+    "displayLabel": "Gambier (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Guadalcanal": {
+    "zone": "Pacific/Guadalcanal",
+    "territory": "Pacific",
+    "country": "Guadalcanal",
+    "subdivision": null,
+    "displayLabel": "Guadalcanal (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Guam": {
+    "zone": "Pacific/Guam",
+    "territory": "Pacific",
+    "country": "Guam",
+    "subdivision": null,
+    "displayLabel": "Guam (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Honolulu": {
+    "zone": "Pacific/Honolulu",
+    "territory": "Pacific",
+    "country": "Honolulu",
+    "subdivision": null,
+    "displayLabel": "Honolulu (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Kiritimati": {
+    "zone": "Pacific/Kiritimati",
+    "territory": "Pacific",
+    "country": "Kiritimati",
+    "subdivision": null,
+    "displayLabel": "Kiritimati (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Kosrae": {
+    "zone": "Pacific/Kosrae",
+    "territory": "Pacific",
+    "country": "Kosrae",
+    "subdivision": null,
+    "displayLabel": "Kosrae (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Kwajalein": {
+    "zone": "Pacific/Kwajalein",
+    "territory": "Pacific",
+    "country": "Kwajalein",
+    "subdivision": null,
+    "displayLabel": "Kwajalein (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Majuro": {
+    "zone": "Pacific/Majuro",
+    "territory": "Pacific",
+    "country": "Majuro",
+    "subdivision": null,
+    "displayLabel": "Majuro (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Marquesas": {
+    "zone": "Pacific/Marquesas",
+    "territory": "Pacific",
+    "country": "Marquesas",
+    "subdivision": null,
+    "displayLabel": "Marquesas (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Midway": {
+    "zone": "Pacific/Midway",
+    "territory": "Pacific",
+    "country": "Midway",
+    "subdivision": null,
+    "displayLabel": "Midway (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Nauru": {
+    "zone": "Pacific/Nauru",
+    "territory": "Pacific",
+    "country": "Nauru",
+    "subdivision": null,
+    "displayLabel": "Nauru (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Niue": {
+    "zone": "Pacific/Niue",
+    "territory": "Pacific",
+    "country": "Niue",
+    "subdivision": null,
+    "displayLabel": "Niue (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Norfolk": {
+    "zone": "Pacific/Norfolk",
+    "territory": "Pacific",
+    "country": "Norfolk",
+    "subdivision": null,
+    "displayLabel": "Norfolk (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Noumea": {
+    "zone": "Pacific/Noumea",
+    "territory": "Pacific",
+    "country": "Noumea",
+    "subdivision": null,
+    "displayLabel": "Noumea (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Pago_Pago": {
+    "zone": "Pacific/Pago_Pago",
+    "territory": "Pacific",
+    "country": "Pago Pago",
+    "subdivision": null,
+    "displayLabel": "Pago Pago (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Palau": {
+    "zone": "Pacific/Palau",
+    "territory": "Pacific",
+    "country": "Palau",
+    "subdivision": null,
+    "displayLabel": "Palau (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Pitcairn": {
+    "zone": "Pacific/Pitcairn",
+    "territory": "Pacific",
+    "country": "Pitcairn",
+    "subdivision": null,
+    "displayLabel": "Pitcairn (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Ponape": {
+    "zone": "Pacific/Ponape",
+    "territory": "Pacific",
+    "country": "Ponape",
+    "subdivision": null,
+    "displayLabel": "Ponape (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Port_Moresby": {
+    "zone": "Pacific/Port_Moresby",
+    "territory": "Pacific",
+    "country": "Port Moresby",
+    "subdivision": null,
+    "displayLabel": "Port Moresby (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Rarotonga": {
+    "zone": "Pacific/Rarotonga",
+    "territory": "Pacific",
+    "country": "Rarotonga",
+    "subdivision": null,
+    "displayLabel": "Rarotonga (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Saipan": {
+    "zone": "Pacific/Saipan",
+    "territory": "Pacific",
+    "country": "Saipan",
+    "subdivision": null,
+    "displayLabel": "Saipan (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Tahiti": {
+    "zone": "Pacific/Tahiti",
+    "territory": "Pacific",
+    "country": "Tahiti",
+    "subdivision": null,
+    "displayLabel": "Tahiti (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Tarawa": {
+    "zone": "Pacific/Tarawa",
+    "territory": "Pacific",
+    "country": "Tarawa",
+    "subdivision": null,
+    "displayLabel": "Tarawa (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Tongatapu": {
+    "zone": "Pacific/Tongatapu",
+    "territory": "Pacific",
+    "country": "Tongatapu",
+    "subdivision": null,
+    "displayLabel": "Tongatapu (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Truk": {
+    "zone": "Pacific/Truk",
+    "territory": "Pacific",
+    "country": "Truk",
+    "subdivision": null,
+    "displayLabel": "Truk (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Wake": {
+    "zone": "Pacific/Wake",
+    "territory": "Pacific",
+    "country": "Wake",
+    "subdivision": null,
+    "displayLabel": "Wake (Pacific)",
+    "coordinates": null
+  },
+  "Pacific/Wallis": {
+    "zone": "Pacific/Wallis",
+    "territory": "Pacific",
+    "country": "Wallis",
+    "subdivision": null,
+    "displayLabel": "Wallis (Pacific)",
+    "coordinates": null
+  }
+}
