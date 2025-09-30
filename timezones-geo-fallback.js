@@ -9,8 +9,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -15.833333,
-          29.166667
+          -4.033333,
+          5.316667
         ]
       }
     },
@@ -22,8 +22,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.5,
-          29.166667
+          -0.216667,
+          5.55
         ]
       }
     },
@@ -35,8 +35,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0.833333,
-          29.166667
+          38.7,
+          9.033333
         ]
       }
     },
@@ -48,8 +48,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.166667,
-          29.166667
+          3.05,
+          36.783333
         ]
       }
     },
@@ -61,8 +61,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          17.5,
-          29.166667
+          38.883333,
+          15.333333
         ]
       }
     },
@@ -74,8 +74,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          25.833333,
-          29.166667
+          -8,
+          12.65
         ]
       }
     },
@@ -87,8 +87,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.166667,
-          29.166667
+          18.583333,
+          4.366667
         ]
       }
     },
@@ -100,8 +100,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          42.5,
-          29.166667
+          -16.65,
+          13.466667
         ]
       }
     },
@@ -113,8 +113,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          50.833333,
-          29.166667
+          -15.583333,
+          11.85
         ]
       }
     },
@@ -126,8 +126,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -15.833333,
-          17.5
+          35,
+          -15.783333
         ]
       }
     },
@@ -139,8 +139,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.5,
-          17.5
+          15.283333,
+          -4.266667
         ]
       }
     },
@@ -152,8 +152,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0.833333,
-          17.5
+          29.366667,
+          -3.383333
         ]
       }
     },
@@ -165,8 +165,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.166667,
-          17.5
+          31.25,
+          30.05
         ]
       }
     },
@@ -178,8 +178,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          17.5,
-          17.5
+          -7.583333,
+          33.65
         ]
       }
     },
@@ -191,8 +191,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          25.833333,
-          17.5
+          -5.316667,
+          35.883333
         ]
       }
     },
@@ -204,8 +204,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.166667,
-          17.5
+          -13.716667,
+          9.516667
         ]
       }
     },
@@ -217,8 +217,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          42.5,
-          17.5
+          -17.433333,
+          14.666667
         ]
       }
     },
@@ -230,8 +230,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          50.833333,
-          17.5
+          39.283333,
+          -6.8
         ]
       }
     },
@@ -243,8 +243,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -15.833333,
-          5.833333
+          43.15,
+          11.6
         ]
       }
     },
@@ -256,8 +256,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.5,
-          5.833333
+          9.7,
+          4.05
         ]
       }
     },
@@ -269,8 +269,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0.833333,
-          5.833333
+          -13.2,
+          27.15
         ]
       }
     },
@@ -282,8 +282,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.166667,
-          5.833333
+          -13.25,
+          8.5
         ]
       }
     },
@@ -295,8 +295,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          17.5,
-          5.833333
+          25.916667,
+          -24.65
         ]
       }
     },
@@ -308,8 +308,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          25.833333,
-          5.833333
+          31.05,
+          -17.833333
         ]
       }
     },
@@ -321,8 +321,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.166667,
-          5.833333
+          28,
+          -26.25
         ]
       }
     },
@@ -334,8 +334,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          42.5,
-          5.833333
+          31.616667,
+          4.85
         ]
       }
     },
@@ -347,8 +347,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          50.833333,
-          5.833333
+          32.416667,
+          0.316667
         ]
       }
     },
@@ -360,8 +360,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -15.833333,
-          -5.833333
+          32.533333,
+          15.6
         ]
       }
     },
@@ -373,8 +373,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.5,
-          -5.833333
+          30.066667,
+          -1.95
         ]
       }
     },
@@ -386,8 +386,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0.833333,
-          -5.833333
+          15.3,
+          -4.3
         ]
       }
     },
@@ -399,8 +399,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.166667,
-          -5.833333
+          3.4,
+          6.45
         ]
       }
     },
@@ -412,8 +412,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          17.5,
-          -5.833333
+          9.45,
+          0.383333
         ]
       }
     },
@@ -425,8 +425,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          25.833333,
-          -5.833333
+          1.216667,
+          6.133333
         ]
       }
     },
@@ -438,8 +438,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.166667,
-          -5.833333
+          13.233333,
+          -8.8
         ]
       }
     },
@@ -451,8 +451,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          42.5,
-          -5.833333
+          27.466667,
+          -11.666667
         ]
       }
     },
@@ -464,8 +464,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          50.833333,
-          -5.833333
+          28.283333,
+          -15.416667
         ]
       }
     },
@@ -477,8 +477,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -15.833333,
-          -17.5
+          8.783333,
+          3.75
         ]
       }
     },
@@ -490,8 +490,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.5,
-          -17.5
+          32.583333,
+          -25.966667
         ]
       }
     },
@@ -503,8 +503,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0.833333,
-          -17.5
+          27.5,
+          -29.466667
         ]
       }
     },
@@ -516,8 +516,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.166667,
-          -17.5
+          31.1,
+          -26.3
         ]
       }
     },
@@ -529,8 +529,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          17.5,
-          -17.5
+          45.366667,
+          2.066667
         ]
       }
     },
@@ -542,8 +542,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          25.833333,
-          -17.5
+          -10.783333,
+          6.3
         ]
       }
     },
@@ -555,8 +555,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.166667,
-          -17.5
+          36.816667,
+          -1.283333
         ]
       }
     },
@@ -568,8 +568,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          42.5,
-          -17.5
+          15.05,
+          12.116667
         ]
       }
     },
@@ -581,8 +581,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          50.833333,
-          -17.5
+          2.116667,
+          13.516667
         ]
       }
     },
@@ -594,8 +594,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -15.833333,
-          -29.166667
+          -15.95,
+          18.1
         ]
       }
     },
@@ -607,8 +607,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.5,
-          -29.166667
+          -1.516667,
+          12.366667
         ]
       }
     },
@@ -620,8 +620,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0.833333,
-          -29.166667
+          2.616667,
+          6.483333
         ]
       }
     },
@@ -633,8 +633,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.166667,
-          -29.166667
+          6.733333,
+          0.333333
         ]
       }
     },
@@ -646,8 +646,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          17.5,
-          -29.166667
+          13.183333,
+          32.9
         ]
       }
     },
@@ -659,8 +659,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          25.833333,
-          -29.166667
+          10.183333,
+          36.8
         ]
       }
     },
@@ -672,8 +672,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.166667,
-          -29.166667
+          17.1,
+          -22.566667
         ]
       }
     },
@@ -685,8 +685,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          64.090909
+          -176.658056,
+          51.88
         ]
       }
     },
@@ -698,8 +698,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          64.090909
+          -149.900278,
+          61.218056
         ]
       }
     },
@@ -711,8 +711,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          64.090909
+          -63.066667,
+          18.2
         ]
       }
     },
@@ -724,8 +724,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          64.090909
+          -61.8,
+          17.05
         ]
       }
     },
@@ -737,8 +737,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          64.090909
+          -48.2,
+          -7.2
         ]
       }
     },
@@ -750,8 +750,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          64.090909
+          -66.85,
+          -29.433333
         ]
       }
     },
@@ -763,8 +763,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          64.090909
+          -69.216667,
+          -51.633333
         ]
       }
     },
@@ -776,8 +776,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          64.090909
+          -65.416667,
+          -24.783333
         ]
       }
     },
@@ -789,8 +789,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          64.090909
+          -68.516667,
+          -31.533333
         ]
       }
     },
@@ -802,8 +802,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          64.090909
+          -66.35,
+          -33.316667
         ]
       }
     },
@@ -815,8 +815,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          64.090909
+          -65.216667,
+          -26.816667
         ]
       }
     },
@@ -828,8 +828,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          64.090909
+          -68.3,
+          -54.8
         ]
       }
     },
@@ -841,8 +841,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          64.090909
+          -69.966667,
+          12.5
         ]
       }
     },
@@ -854,8 +854,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          64.090909
+          -57.666667,
+          -25.266667
         ]
       }
     },
@@ -867,8 +867,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          52.272727
+          -38.516667,
+          -12.983333
         ]
       }
     },
@@ -880,8 +880,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          52.272727
+          -105.25,
+          20.8
         ]
       }
     },
@@ -893,8 +893,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          52.272727
+          -59.616667,
+          13.1
         ]
       }
     },
@@ -906,8 +906,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          52.272727
+          -48.483333,
+          -1.45
         ]
       }
     },
@@ -919,8 +919,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          52.272727
+          -88.2,
+          17.5
         ]
       }
     },
@@ -932,8 +932,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          52.272727
+          -57.116667,
+          51.416667
         ]
       }
     },
@@ -945,8 +945,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          52.272727
+          -60.666667,
+          2.816667
         ]
       }
     },
@@ -958,8 +958,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          52.272727
+          -74.083333,
+          4.6
         ]
       }
     },
@@ -971,8 +971,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          52.272727
+          -116.2025,
+          43.613611
         ]
       }
     },
@@ -984,8 +984,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          52.272727
+          -58.45,
+          -34.6
         ]
       }
     },
@@ -997,8 +997,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          52.272727
+          -105.052778,
+          69.113889
         ]
       }
     },
@@ -1010,8 +1010,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          52.272727
+          -54.616667,
+          -20.45
         ]
       }
     },
@@ -1023,8 +1023,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          52.272727
+          -86.766667,
+          21.083333
         ]
       }
     },
@@ -1036,8 +1036,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          52.272727
+          -66.933333,
+          10.5
         ]
       }
     },
@@ -1049,8 +1049,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          40.454545
+          -65.783333,
+          -28.466667
         ]
       }
     },
@@ -1062,8 +1062,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          40.454545
+          -52.333333,
+          4.933333
         ]
       }
     },
@@ -1075,8 +1075,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          40.454545
+          -81.383333,
+          19.3
         ]
       }
     },
@@ -1088,8 +1088,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          40.454545
+          -87.65,
+          41.85
         ]
       }
     },
@@ -1101,8 +1101,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          40.454545
+          -106.083333,
+          28.633333
         ]
       }
     },
@@ -1114,8 +1114,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          40.454545
+          -106.483333,
+          31.733333
         ]
       }
     },
@@ -1127,8 +1127,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          40.454545
+          -91.621667,
+          48.758611
         ]
       }
     },
@@ -1140,8 +1140,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          40.454545
+          -64.183333,
+          -31.4
         ]
       }
     },
@@ -1153,8 +1153,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          40.454545
+          -84.083333,
+          9.933333
         ]
       }
     },
@@ -1166,8 +1166,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          40.454545
+          -72.066667,
+          -45.566667
         ]
       }
     },
@@ -1179,8 +1179,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          40.454545
+          -116.516667,
+          49.1
         ]
       }
     },
@@ -1192,8 +1192,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          40.454545
+          -56.083333,
+          -15.583333
         ]
       }
     },
@@ -1205,8 +1205,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          40.454545
+          -69,
+          12.183333
         ]
       }
     },
@@ -1218,8 +1218,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          40.454545
+          -18.666667,
+          76.766667
         ]
       }
     },
@@ -1231,8 +1231,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          28.636364
+          -139.416667,
+          64.066667
         ]
       }
     },
@@ -1244,8 +1244,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          28.636364
+          -120.233333,
+          55.766667
         ]
       }
     },
@@ -1257,8 +1257,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          28.636364
+          -104.984167,
+          39.739167
         ]
       }
     },
@@ -1270,8 +1270,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          28.636364
+          -83.045833,
+          42.331389
         ]
       }
     },
@@ -1283,8 +1283,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          28.636364
+          -61.4,
+          15.3
         ]
       }
     },
@@ -1296,8 +1296,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          28.636364
+          -113.466667,
+          53.55
         ]
       }
     },
@@ -1309,8 +1309,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          28.636364
+          -69.866667,
+          -6.666667
         ]
       }
     },
@@ -1322,8 +1322,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          28.636364
+          -89.2,
+          13.7
         ]
       }
     },
@@ -1335,8 +1335,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          28.636364
+          -122.7,
+          58.8
         ]
       }
     },
@@ -1348,8 +1348,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          28.636364
+          -38.5,
+          -3.716667
         ]
       }
     },
@@ -1361,8 +1361,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          28.636364
+          -59.95,
+          46.2
         ]
       }
     },
@@ -1374,8 +1374,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          28.636364
+          -51.733333,
+          64.183333
         ]
       }
     },
@@ -1387,8 +1387,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          28.636364
+          -60.416667,
+          53.333333
         ]
       }
     },
@@ -1400,8 +1400,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          28.636364
+          -71.133333,
+          21.466667
         ]
       }
     },
@@ -1413,8 +1413,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          16.818182
+          -61.75,
+          12.05
         ]
       }
     },
@@ -1426,8 +1426,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          16.818182
+          -61.533333,
+          16.233333
         ]
       }
     },
@@ -1439,8 +1439,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          16.818182
+          -90.516667,
+          14.633333
         ]
       }
     },
@@ -1452,8 +1452,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          16.818182
+          -79.833333,
+          -2.166667
         ]
       }
     },
@@ -1465,8 +1465,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          16.818182
+          -58.166667,
+          6.8
         ]
       }
     },
@@ -1478,8 +1478,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          16.818182
+          -63.6,
+          44.65
         ]
       }
     },
@@ -1491,8 +1491,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          16.818182
+          -82.366667,
+          23.133333
         ]
       }
     },
@@ -1504,8 +1504,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          16.818182
+          -110.966667,
+          29.066667
         ]
       }
     },
@@ -1517,8 +1517,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          16.818182
+          -86.625,
+          41.295833
         ]
       }
     },
@@ -1530,8 +1530,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          16.818182
+          -86.344722,
+          38.375556
         ]
       }
     },
@@ -1543,8 +1543,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          16.818182
+          -87.278611,
+          38.491944
         ]
       }
     },
@@ -1556,8 +1556,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          16.818182
+          -86.761389,
+          37.953056
         ]
       }
     },
@@ -1569,8 +1569,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          16.818182
+          -85.067222,
+          38.747778
         ]
       }
     },
@@ -1582,8 +1582,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          16.818182
+          -87.528611,
+          38.677222
         ]
       }
     },
@@ -1595,8 +1595,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          5
+          -86.603056,
+          41.051389
         ]
       }
     },
@@ -1608,8 +1608,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          5
+          -86.158056,
+          39.768333
         ]
       }
     },
@@ -1621,8 +1621,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          5
+          -133.716667,
+          68.349722
         ]
       }
     },
@@ -1634,8 +1634,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          5
+          -68.466667,
+          63.733333
         ]
       }
     },
@@ -1647,8 +1647,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          5
+          -76.793333,
+          17.968056
         ]
       }
     },
@@ -1660,8 +1660,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          5
+          -65.3,
+          -24.183333
         ]
       }
     },
@@ -1673,8 +1673,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          5
+          -134.419722,
+          58.301944
         ]
       }
     },
@@ -1686,8 +1686,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          5
+          -84.849167,
+          36.829722
         ]
       }
     },
@@ -1699,8 +1699,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          5
+          -68.276667,
+          12.150833
         ]
       }
     },
@@ -1712,8 +1712,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          5
+          -68.15,
+          -16.5
         ]
       }
     },
@@ -1725,8 +1725,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          5
+          -77.05,
+          -12.05
         ]
       }
     },
@@ -1738,8 +1738,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          5
+          -118.242778,
+          34.052222
         ]
       }
     },
@@ -1751,8 +1751,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          5
+          -85.759444,
+          38.254167
         ]
       }
     },
@@ -1764,8 +1764,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          5
+          -63.047222,
+          18.051389
         ]
       }
     },
@@ -1777,8 +1777,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -6.818182
+          -35.716667,
+          -9.666667
         ]
       }
     },
@@ -1790,8 +1790,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -6.818182
+          -86.283333,
+          12.15
         ]
       }
     },
@@ -1803,8 +1803,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -6.818182
+          -60.016667,
+          -3.133333
         ]
       }
     },
@@ -1816,8 +1816,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -6.818182
+          -63.083333,
+          18.066667
         ]
       }
     },
@@ -1829,8 +1829,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          -6.818182
+          -61.083333,
+          14.6
         ]
       }
     },
@@ -1842,8 +1842,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          -6.818182
+          -97.5,
+          25.833333
         ]
       }
     },
@@ -1855,8 +1855,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          -6.818182
+          -106.416667,
+          23.216667
         ]
       }
     },
@@ -1868,8 +1868,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          -6.818182
+          -68.816667,
+          -32.883333
         ]
       }
     },
@@ -1881,8 +1881,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          -6.818182
+          -87.614167,
+          45.107778
         ]
       }
     },
@@ -1894,8 +1894,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          -6.818182
+          -89.616667,
+          20.966667
         ]
       }
     },
@@ -1907,8 +1907,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          -6.818182
+          -131.576389,
+          55.126944
         ]
       }
     },
@@ -1920,8 +1920,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          -6.818182
+          -99.15,
+          19.4
         ]
       }
     },
@@ -1933,8 +1933,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          -6.818182
+          -56.333333,
+          47.05
         ]
       }
     },
@@ -1946,8 +1946,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          -6.818182
+          -64.783333,
+          46.1
         ]
       }
     },
@@ -1959,8 +1959,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -18.636364
+          -100.316667,
+          25.666667
         ]
       }
     },
@@ -1972,8 +1972,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -18.636364
+          -56.2125,
+          -34.909167
         ]
       }
     },
@@ -1985,8 +1985,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -18.636364
+          -62.216667,
+          16.716667
         ]
       }
     },
@@ -1998,8 +1998,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -18.636364
+          -77.35,
+          25.083333
         ]
       }
     },
@@ -2011,8 +2011,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          -18.636364
+          -74.006389,
+          40.714167
         ]
       }
     },
@@ -2024,8 +2024,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          -18.636364
+          -165.406389,
+          64.501111
         ]
       }
     },
@@ -2037,8 +2037,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          -18.636364
+          -32.416667,
+          -3.85
         ]
       }
     },
@@ -2050,8 +2050,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          -18.636364
+          -101.777778,
+          47.264167
         ]
       }
     },
@@ -2063,8 +2063,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          -18.636364
+          -101.299167,
+          47.116389
         ]
       }
     },
@@ -2076,8 +2076,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          -18.636364
+          -101.410833,
+          46.845
         ]
       }
     },
@@ -2089,8 +2089,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          -18.636364
+          -104.416667,
+          29.566667
         ]
       }
     },
@@ -2102,8 +2102,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          -18.636364
+          -79.533333,
+          8.966667
         ]
       }
     },
@@ -2115,8 +2115,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          -18.636364
+          -55.166667,
+          5.833333
         ]
       }
     },
@@ -2128,8 +2128,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          -18.636364
+          -112.073333,
+          33.448333
         ]
       }
     },
@@ -2141,8 +2141,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -30.454545
+          -72.333333,
+          18.533333
         ]
       }
     },
@@ -2154,8 +2154,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -30.454545
+          -61.516667,
+          10.65
         ]
       }
     },
@@ -2167,8 +2167,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -30.454545
+          -63.9,
+          -8.766667
         ]
       }
     },
@@ -2180,8 +2180,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -30.454545
+          -66.106111,
+          18.468333
         ]
       }
     },
@@ -2193,8 +2193,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          -30.454545
+          -70.916667,
+          -53.15
         ]
       }
     },
@@ -2206,8 +2206,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          -30.454545
+          -92.083056,
+          62.816667
         ]
       }
     },
@@ -2219,8 +2219,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          -30.454545
+          -34.9,
+          -8.05
         ]
       }
     },
@@ -2232,8 +2232,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          -30.454545
+          -104.65,
+          50.4
         ]
       }
     },
@@ -2245,8 +2245,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          -30.454545
+          -94.829167,
+          74.695556
         ]
       }
     },
@@ -2258,8 +2258,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          -30.454545
+          -67.8,
+          -9.966667
         ]
       }
     },
@@ -2271,8 +2271,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          -30.454545
+          -54.866667,
+          -2.433333
         ]
       }
     },
@@ -2284,8 +2284,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          -30.454545
+          -70.666667,
+          -33.45
         ]
       }
     },
@@ -2297,8 +2297,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          -30.454545
+          -69.9,
+          18.466667
         ]
       }
     },
@@ -2310,8 +2310,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          -30.454545
+          -46.616667,
+          -23.533333
         ]
       }
     },
@@ -2323,8 +2323,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -42.272727
+          -21.966667,
+          70.483333
         ]
       }
     },
@@ -2336,8 +2336,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -42.272727
+          -135.301944,
+          57.176389
         ]
       }
     },
@@ -2349,8 +2349,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -42.272727
+          -62.85,
+          17.883333
         ]
       }
     },
@@ -2362,8 +2362,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -42.272727
+          -52.716667,
+          47.566667
         ]
       }
     },
@@ -2375,8 +2375,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          -42.272727
+          -62.716667,
+          17.3
         ]
       }
     },
@@ -2388,8 +2388,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          -42.272727
+          -61,
+          14.016667
         ]
       }
     },
@@ -2401,8 +2401,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105,
-          -42.272727
+          -64.933333,
+          18.35
         ]
       }
     },
@@ -2414,8 +2414,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95,
-          -42.272727
+          -61.233333,
+          13.15
         ]
       }
     },
@@ -2427,8 +2427,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -85,
-          -42.272727
+          -107.833333,
+          50.283333
         ]
       }
     },
@@ -2440,8 +2440,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75,
-          -42.272727
+          -87.216667,
+          14.1
         ]
       }
     },
@@ -2453,8 +2453,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65,
-          -42.272727
+          -68.783333,
+          76.566667
         ]
       }
     },
@@ -2466,8 +2466,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -55,
-          -42.272727
+          -117.016667,
+          32.533333
         ]
       }
     },
@@ -2479,8 +2479,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          -42.272727
+          -79.383333,
+          43.65
         ]
       }
     },
@@ -2492,8 +2492,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -35,
-          -42.272727
+          -64.616667,
+          18.45
         ]
       }
     },
@@ -2505,8 +2505,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -54.090909
+          -123.116667,
+          49.266667
         ]
       }
     },
@@ -2518,8 +2518,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -54.090909
+          -135.05,
+          60.716667
         ]
       }
     },
@@ -2531,8 +2531,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -54.090909
+          -97.15,
+          49.883333
         ]
       }
     },
@@ -2544,8 +2544,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -54.090909
+          -139.727222,
+          59.546944
         ]
       }
     },
@@ -2557,8 +2557,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -65
+          110.516667,
+          -66.283333
         ]
       }
     },
@@ -2570,8 +2570,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          -65
+          77.966667,
+          -68.583333
         ]
       }
     },
@@ -2583,8 +2583,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          45,
-          -65
+          140.016667,
+          -66.666667
         ]
       }
     },
@@ -2596,8 +2596,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          135,
-          -65
+          158.95,
+          -54.5
         ]
       }
     },
@@ -2609,8 +2609,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -75
+          62.883333,
+          -67.6
         ]
       }
     },
@@ -2622,8 +2622,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          -75
+          166.6,
+          -77.833333
         ]
       }
     },
@@ -2635,8 +2635,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          45,
-          -75
+          -64.1,
+          -64.8
         ]
       }
     },
@@ -2648,8 +2648,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          135,
-          -75
+          -68.133333,
+          -67.566667
         ]
       }
     },
@@ -2661,8 +2661,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -85
+          39.59,
+          -69.006111
         ]
       }
     },
@@ -2674,8 +2674,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -45,
-          -85
+          2.535,
+          -72.011389
         ]
       }
     },
@@ -2687,8 +2687,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          45,
-          -85
+          106.9,
+          -78.4
         ]
       }
     },
@@ -2700,8 +2700,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -90,
-          72.5
+          16,
+          78
         ]
       }
     },
@@ -2713,8 +2713,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          69.375
+          45.2,
+          12.75
         ]
       }
     },
@@ -2726,8 +2726,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          69.375
+          76.95,
+          43.25
         ]
       }
     },
@@ -2739,8 +2739,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          69.375
+          35.933333,
+          31.95
         ]
       }
     },
@@ -2752,8 +2752,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          69.375
+          177.483333,
+          64.75
         ]
       }
     },
@@ -2765,8 +2765,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          69.375
+          50.266667,
+          44.516667
         ]
       }
     },
@@ -2778,8 +2778,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.5,
-          69.375
+          57.166667,
+          50.283333
         ]
       }
     },
@@ -2791,8 +2791,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          111.136364,
-          69.375
+          58.383333,
+          37.95
         ]
       }
     },
@@ -2804,8 +2804,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          119.772727,
-          69.375
+          51.933333,
+          47.116667
         ]
       }
     },
@@ -2817,8 +2817,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.409091,
-          69.375
+          44.416667,
+          33.35
         ]
       }
     },
@@ -2830,8 +2830,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          137.045455,
-          69.375
+          50.583333,
+          26.383333
         ]
       }
     },
@@ -2843,8 +2843,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          145.681818,
-          69.375
+          49.85,
+          40.383333
         ]
       }
     },
@@ -2856,8 +2856,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          58.125
+          100.516667,
+          13.75
         ]
       }
     },
@@ -2869,8 +2869,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          58.125
+          83.75,
+          53.366667
         ]
       }
     },
@@ -2882,8 +2882,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          58.125
+          35.5,
+          33.883333
         ]
       }
     },
@@ -2895,8 +2895,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          58.125
+          74.6,
+          42.9
         ]
       }
     },
@@ -2908,8 +2908,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          58.125
+          114.916667,
+          4.933333
         ]
       }
     },
@@ -2921,8 +2921,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.5,
-          58.125
+          88.366667,
+          22.533333
         ]
       }
     },
@@ -2934,8 +2934,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          111.136364,
-          58.125
+          113.466667,
+          52.05
         ]
       }
     },
@@ -2947,8 +2947,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          119.772727,
-          58.125
+          79.85,
+          6.933333
         ]
       }
     },
@@ -2960,8 +2960,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.409091,
-          58.125
+          36.3,
+          33.5
         ]
       }
     },
@@ -2973,8 +2973,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          137.045455,
-          58.125
+          90.416667,
+          23.716667
         ]
       }
     },
@@ -2986,8 +2986,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          145.681818,
-          58.125
+          125.583333,
+          -8.55
         ]
       }
     },
@@ -2999,8 +2999,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          46.875
+          55.3,
+          25.3
         ]
       }
     },
@@ -3012,8 +3012,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          46.875
+          68.8,
+          38.583333
         ]
       }
     },
@@ -3025,8 +3025,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          46.875
+          33.95,
+          35.116667
         ]
       }
     },
@@ -3038,8 +3038,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          46.875
+          34.466667,
+          31.5
         ]
       }
     },
@@ -3051,8 +3051,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          46.875
+          35.095,
+          31.533333
         ]
       }
     },
@@ -3064,8 +3064,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.5,
-          46.875
+          114.15,
+          22.283333
         ]
       }
     },
@@ -3077,8 +3077,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          111.136364,
-          46.875
+          91.65,
+          48.016667
         ]
       }
     },
@@ -3090,8 +3090,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          119.772727,
-          46.875
+          104.333333,
+          52.266667
         ]
       }
     },
@@ -3103,8 +3103,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.409091,
-          46.875
+          106.8,
+          -6.166667
         ]
       }
     },
@@ -3116,8 +3116,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          137.045455,
-          46.875
+          140.7,
+          -2.533333
         ]
       }
     },
@@ -3129,8 +3129,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          145.681818,
-          46.875
+          35.223889,
+          31.780556
         ]
       }
     },
@@ -3142,8 +3142,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          35.625
+          69.2,
+          34.516667
         ]
       }
     },
@@ -3155,8 +3155,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          35.625
+          158.65,
+          53.016667
         ]
       }
     },
@@ -3168,8 +3168,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          35.625
+          67.05,
+          24.866667
         ]
       }
     },
@@ -3181,8 +3181,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          35.625
+          85.316667,
+          27.716667
         ]
       }
     },
@@ -3194,8 +3194,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          35.625
+          135.553889,
+          62.656389
         ]
       }
     },
@@ -3207,8 +3207,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.5,
-          35.625
+          92.833333,
+          56.016667
         ]
       }
     },
@@ -3220,8 +3220,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          111.136364,
-          35.625
+          101.7,
+          3.166667
         ]
       }
     },
@@ -3233,8 +3233,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          119.772727,
-          35.625
+          110.333333,
+          1.55
         ]
       }
     },
@@ -3246,8 +3246,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.409091,
-          35.625
+          47.983333,
+          29.333333
         ]
       }
     },
@@ -3259,8 +3259,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          137.045455,
-          35.625
+          113.541667,
+          22.197222
         ]
       }
     },
@@ -3272,8 +3272,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          145.681818,
-          35.625
+          150.8,
+          59.566667
         ]
       }
     },
@@ -3285,8 +3285,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          24.375
+          119.4,
+          -5.116667
         ]
       }
     },
@@ -3298,8 +3298,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          24.375
+          120.967778,
+          14.586667
         ]
       }
     },
@@ -3311,8 +3311,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          24.375
+          58.583333,
+          23.6
         ]
       }
     },
@@ -3324,8 +3324,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          24.375
+          33.366667,
+          35.166667
         ]
       }
     },
@@ -3337,8 +3337,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          24.375
+          87.116667,
+          53.75
         ]
       }
     },
@@ -3350,8 +3350,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.5,
-          24.375
+          82.916667,
+          55.033333
         ]
       }
     },
@@ -3363,8 +3363,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          111.136364,
-          24.375
+          73.4,
+          55
         ]
       }
     },
@@ -3376,8 +3376,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          119.772727,
-          24.375
+          51.35,
+          51.216667
         ]
       }
     },
@@ -3389,8 +3389,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.409091,
-          24.375
+          104.916667,
+          11.55
         ]
       }
     },
@@ -3402,8 +3402,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          137.045455,
-          24.375
+          109.333333,
+          -0.033333
         ]
       }
     },
@@ -3415,8 +3415,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          145.681818,
-          24.375
+          125.75,
+          39.016667
         ]
       }
     },
@@ -3428,8 +3428,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          13.125
+          51.533333,
+          25.283333
         ]
       }
     },
@@ -3441,8 +3441,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          13.125
+          63.616667,
+          53.2
         ]
       }
     },
@@ -3454,8 +3454,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          13.125
+          65.466667,
+          44.8
         ]
       }
     },
@@ -3467,8 +3467,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          13.125
+          96.166667,
+          16.783333
         ]
       }
     },
@@ -3480,8 +3480,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          13.125
+          46.716667,
+          24.633333
         ]
       }
     },
@@ -3493,8 +3493,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.5,
-          13.125
+          106.666667,
+          10.75
         ]
       }
     },
@@ -3506,8 +3506,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          111.136364,
-          13.125
+          142.7,
+          46.966667
         ]
       }
     },
@@ -3519,8 +3519,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          119.772727,
-          13.125
+          66.8,
+          39.666667
         ]
       }
     },
@@ -3532,8 +3532,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.409091,
-          13.125
+          126.966667,
+          37.55
         ]
       }
     },
@@ -3545,8 +3545,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          137.045455,
-          13.125
+          121.466667,
+          31.233333
         ]
       }
     },
@@ -3558,8 +3558,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          145.681818,
-          13.125
+          103.85,
+          1.283333
         ]
       }
     },
@@ -3571,8 +3571,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          1.875
+          153.716667,
+          67.466667
         ]
       }
     },
@@ -3584,8 +3584,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          1.875
+          121.5,
+          25.05
         ]
       }
     },
@@ -3597,8 +3597,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          1.875
+          69.3,
+          41.333333
         ]
       }
     },
@@ -3610,8 +3610,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          1.875
+          44.816667,
+          41.716667
         ]
       }
     },
@@ -3623,8 +3623,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          1.875
+          51.433333,
+          35.666667
         ]
       }
     },
@@ -3636,8 +3636,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.5,
-          1.875
+          89.65,
+          27.466667
         ]
       }
     },
@@ -3649,8 +3649,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          111.136364,
-          1.875
+          139.744722,
+          35.654444
         ]
       }
     },
@@ -3662,8 +3662,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          119.772727,
-          1.875
+          84.966667,
+          56.5
         ]
       }
     },
@@ -3675,8 +3675,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.409091,
-          1.875
+          106.883333,
+          47.916667
         ]
       }
     },
@@ -3688,8 +3688,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          137.045455,
-          1.875
+          87.583333,
+          43.8
         ]
       }
     },
@@ -3701,8 +3701,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          145.681818,
-          1.875
+          143.226667,
+          64.560278
         ]
       }
     },
@@ -3714,8 +3714,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          59.318182,
-          -9.375
+          102.6,
+          17.966667
         ]
       }
     },
@@ -3727,8 +3727,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          67.954545,
-          -9.375
+          131.933333,
+          43.166667
         ]
       }
     },
@@ -3740,8 +3740,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.590909,
-          -9.375
+          129.666667,
+          62
         ]
       }
     },
@@ -3753,8 +3753,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          85.227273,
-          -9.375
+          60.6,
+          56.85
         ]
       }
     },
@@ -3766,8 +3766,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.863636,
-          -9.375
+          44.5,
+          40.183333
         ]
       }
     },
@@ -3779,8 +3779,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -54.375,
-          45.833333
+          -25.666667,
+          37.733333
         ]
       }
     },
@@ -3792,8 +3792,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -43.125,
-          45.833333
+          -64.766667,
+          32.283333
         ]
       }
     },
@@ -3805,8 +3805,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -31.875,
-          45.833333
+          -15.4,
+          28.1
         ]
       }
     },
@@ -3818,8 +3818,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          45.833333
+          -23.516667,
+          14.916667
         ]
       }
     },
@@ -3831,8 +3831,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -54.375,
-          7.5
+          -6.766667,
+          62.016667
         ]
       }
     },
@@ -3844,8 +3844,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -43.125,
-          7.5
+          -16.9,
+          32.633333
         ]
       }
     },
@@ -3857,8 +3857,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -31.875,
-          7.5
+          -21.85,
+          64.15
         ]
       }
     },
@@ -3870,8 +3870,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          7.5
+          -36.533333,
+          -54.266667
         ]
       }
     },
@@ -3883,8 +3883,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -54.375,
-          -30.833333
+          -5.7,
+          -15.916667
         ]
       }
     },
@@ -3896,8 +3896,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -43.125,
-          -30.833333
+          -57.85,
+          -51.7
         ]
       }
     },
@@ -3909,8 +3909,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          116.25,
-          -15.833333
+          138.583333,
+          -34.916667
         ]
       }
     },
@@ -3922,8 +3922,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.75,
-          -15.833333
+          153.033333,
+          -27.466667
         ]
       }
     },
@@ -3935,8 +3935,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          141.25,
-          -15.833333
+          141.45,
+          -31.95
         ]
       }
     },
@@ -3948,8 +3948,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          153.75,
-          -15.833333
+          130.833333,
+          -12.466667
         ]
       }
     },
@@ -3961,8 +3961,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          116.25,
-          -27.5
+          128.866667,
+          -31.716667
         ]
       }
     },
@@ -3974,8 +3974,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.75,
-          -27.5
+          147.316667,
+          -42.883333
         ]
       }
     },
@@ -3987,8 +3987,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          141.25,
-          -27.5
+          149,
+          -20.266667
         ]
       }
     },
@@ -4000,8 +4000,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          153.75,
-          -27.5
+          159.083333,
+          -31.55
         ]
       }
     },
@@ -4013,8 +4013,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          116.25,
-          -39.166667
+          144.966667,
+          -37.816667
         ]
       }
     },
@@ -4026,8 +4026,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.75,
-          -39.166667
+          115.85,
+          -31.95
         ]
       }
     },
@@ -4039,8 +4039,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          141.25,
-          -39.166667
+          151.216667,
+          -33.866667
         ]
       }
     },
@@ -4052,8 +4052,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          69.5
+          4.9,
+          52.366667
         ]
       }
     },
@@ -4065,8 +4065,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          69.5
+          1.516667,
+          42.5
         ]
       }
     },
@@ -4078,8 +4078,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -3.125,
-          69.5
+          48.05,
+          46.35
         ]
       }
     },
@@ -4091,8 +4091,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          5.625,
-          69.5
+          23.716667,
+          37.966667
         ]
       }
     },
@@ -4104,8 +4104,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          14.375,
-          69.5
+          20.5,
+          44.833333
         ]
       }
     },
@@ -4117,8 +4117,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          23.125,
-          69.5
+          13.366667,
+          52.5
         ]
       }
     },
@@ -4130,8 +4130,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.875,
-          69.5
+          17.116667,
+          48.15
         ]
       }
     },
@@ -4143,8 +4143,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.625,
-          69.5
+          4.333333,
+          50.833333
         ]
       }
     },
@@ -4156,8 +4156,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          64.5
+          26.1,
+          44.433333
         ]
       }
     },
@@ -4169,8 +4169,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          64.5
+          19.083333,
+          47.5
         ]
       }
     },
@@ -4182,8 +4182,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -3.125,
-          64.5
+          8.683333,
+          47.7
         ]
       }
     },
@@ -4195,8 +4195,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          5.625,
-          64.5
+          28.833333,
+          47
         ]
       }
     },
@@ -4208,8 +4208,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          14.375,
-          64.5
+          12.583333,
+          55.666667
         ]
       }
     },
@@ -4221,8 +4221,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          23.125,
-          64.5
+          -6.25,
+          53.333333
         ]
       }
     },
@@ -4234,8 +4234,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.875,
-          64.5
+          -5.35,
+          36.133333
         ]
       }
     },
@@ -4247,8 +4247,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.625,
-          64.5
+          -2.536111,
+          49.454722
         ]
       }
     },
@@ -4260,8 +4260,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          59.5
+          24.966667,
+          60.166667
         ]
       }
     },
@@ -4273,8 +4273,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          59.5
+          -4.466667,
+          54.15
         ]
       }
     },
@@ -4286,8 +4286,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -3.125,
-          59.5
+          28.966667,
+          41.016667
         ]
       }
     },
@@ -4299,8 +4299,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          5.625,
-          59.5
+          -2.106667,
+          49.183611
         ]
       }
     },
@@ -4312,8 +4312,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          14.375,
-          59.5
+          20.5,
+          54.716667
         ]
       }
     },
@@ -4325,8 +4325,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          23.125,
-          59.5
+          30.516667,
+          50.433333
         ]
       }
     },
@@ -4338,8 +4338,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.875,
-          59.5
+          49.65,
+          58.6
         ]
       }
     },
@@ -4351,8 +4351,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.625,
-          59.5
+          -9.133333,
+          38.716667
         ]
       }
     },
@@ -4364,8 +4364,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          54.5
+          14.516667,
+          46.05
         ]
       }
     },
@@ -4377,8 +4377,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          54.5
+          -0.125278,
+          51.508333
         ]
       }
     },
@@ -4390,8 +4390,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -3.125,
-          54.5
+          6.15,
+          49.6
         ]
       }
     },
@@ -4403,8 +4403,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          5.625,
-          54.5
+          -3.683333,
+          40.4
         ]
       }
     },
@@ -4416,8 +4416,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          14.375,
-          54.5
+          14.516667,
+          35.9
         ]
       }
     },
@@ -4429,8 +4429,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          23.125,
-          54.5
+          19.95,
+          60.1
         ]
       }
     },
@@ -4442,8 +4442,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.875,
-          54.5
+          27.566667,
+          53.9
         ]
       }
     },
@@ -4455,8 +4455,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.625,
-          54.5
+          7.383333,
+          43.7
         ]
       }
     },
@@ -4468,8 +4468,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          49.5
+          37.617778,
+          55.755833
         ]
       }
     },
@@ -4481,8 +4481,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          49.5
+          10.75,
+          59.916667
         ]
       }
     },
@@ -4494,8 +4494,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -3.125,
-          49.5
+          2.333333,
+          48.866667
         ]
       }
     },
@@ -4507,8 +4507,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          5.625,
-          49.5
+          19.266667,
+          42.433333
         ]
       }
     },
@@ -4520,8 +4520,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          14.375,
-          49.5
+          14.433333,
+          50.083333
         ]
       }
     },
@@ -4533,8 +4533,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          23.125,
-          49.5
+          24.1,
+          56.95
         ]
       }
     },
@@ -4546,8 +4546,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.875,
-          49.5
+          12.483333,
+          41.9
         ]
       }
     },
@@ -4559,8 +4559,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.625,
-          49.5
+          50.15,
+          53.2
         ]
       }
     },
@@ -4572,8 +4572,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          44.5
+          12.466667,
+          43.916667
         ]
       }
     },
@@ -4585,8 +4585,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          44.5
+          18.416667,
+          43.866667
         ]
       }
     },
@@ -4598,8 +4598,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -3.125,
-          44.5
+          46.033333,
+          51.566667
         ]
       }
     },
@@ -4611,8 +4611,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          5.625,
-          44.5
+          34.1,
+          44.95
         ]
       }
     },
@@ -4624,8 +4624,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          14.375,
-          44.5
+          21.433333,
+          41.983333
         ]
       }
     },
@@ -4637,8 +4637,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          23.125,
-          44.5
+          23.316667,
+          42.683333
         ]
       }
     },
@@ -4650,8 +4650,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.875,
-          44.5
+          18.05,
+          59.333333
         ]
       }
     },
@@ -4663,8 +4663,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.625,
-          44.5
+          24.75,
+          59.416667
         ]
       }
     },
@@ -4676,8 +4676,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          39.5
+          19.833333,
+          41.333333
         ]
       }
     },
@@ -4689,8 +4689,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          39.5
+          48.4,
+          54.333333
         ]
       }
     },
@@ -4702,8 +4702,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -3.125,
-          39.5
+          9.516667,
+          47.15
         ]
       }
     },
@@ -4715,8 +4715,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          5.625,
-          39.5
+          12.453056,
+          41.902222
         ]
       }
     },
@@ -4728,8 +4728,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          14.375,
-          39.5
+          16.333333,
+          48.216667
         ]
       }
     },
@@ -4741,8 +4741,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          23.125,
-          39.5
+          25.316667,
+          54.683333
         ]
       }
     },
@@ -4754,8 +4754,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.875,
-          39.5
+          44.416667,
+          48.733333
         ]
       }
     },
@@ -4767,8 +4767,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.625,
-          39.5
+          21,
+          52.25
         ]
       }
     },
@@ -4780,8 +4780,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -20.625,
-          34.5
+          15.966667,
+          45.8
         ]
       }
     },
@@ -4793,8 +4793,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -11.875,
-          34.5
+          8.533333,
+          47.383333
         ]
       }
     },
@@ -4806,8 +4806,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          47,
-          14.166667
+          47.516667,
+          -18.916667
         ]
       }
     },
@@ -4819,8 +4819,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          61,
-          14.166667
+          72.416667,
+          -7.333333
         ]
       }
     },
@@ -4832,8 +4832,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75,
-          14.166667
+          105.716667,
+          -10.416667
         ]
       }
     },
@@ -4845,8 +4845,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          89,
-          14.166667
+          96.916667,
+          -12.166667
         ]
       }
     },
@@ -4858,8 +4858,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103,
-          14.166667
+          43.266667,
+          -11.683333
         ]
       }
     },
@@ -4871,8 +4871,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          47,
-          -7.5
+          70.2175,
+          -49.352778
         ]
       }
     },
@@ -4884,8 +4884,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          61,
-          -7.5
+          55.466667,
+          -4.666667
         ]
       }
     },
@@ -4897,8 +4897,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75,
-          -7.5
+          73.5,
+          4.166667
         ]
       }
     },
@@ -4910,8 +4910,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          89,
-          -7.5
+          57.5,
+          -20.166667
         ]
       }
     },
@@ -4923,8 +4923,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103,
-          -7.5
+          45.233333,
+          -12.783333
         ]
       }
     },
@@ -4936,8 +4936,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          47,
-          -29.166667
+          55.466667,
+          -20.866667
         ]
       }
     },
@@ -4949,8 +4949,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -175,
-          27.916667
+          -171.733333,
+          -13.833333
         ]
       }
     },
@@ -4962,8 +4962,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          27.916667
+          174.766667,
+          -36.866667
         ]
       }
     },
@@ -4975,8 +4975,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          27.916667
+          155.566667,
+          -6.216667
         ]
       }
     },
@@ -4988,8 +4988,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          27.916667
+          -176.55,
+          -43.95
         ]
       }
     },
@@ -5001,8 +5001,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          27.916667
+          -109.433333,
+          -27.15
         ]
       }
     },
@@ -5014,8 +5014,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          27.916667
+          168.416667,
+          -17.666667
         ]
       }
     },
@@ -5027,8 +5027,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          27.916667
+          -171.716667,
+          -2.783333
         ]
       }
     },
@@ -5040,8 +5040,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -175,
-          13.75
+          -171.233333,
+          -9.366667
         ]
       }
     },
@@ -5053,8 +5053,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          13.75
+          178.416667,
+          -18.133333
         ]
       }
     },
@@ -5066,8 +5066,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          13.75
+          179.216667,
+          -8.516667
         ]
       }
     },
@@ -5079,8 +5079,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          13.75
+          -89.6,
+          -0.9
         ]
       }
     },
@@ -5092,8 +5092,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          13.75
+          -134.95,
+          -23.133333
         ]
       }
     },
@@ -5105,8 +5105,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          13.75
+          160.2,
+          -9.533333
         ]
       }
     },
@@ -5118,8 +5118,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          13.75
+          144.75,
+          13.466667
         ]
       }
     },
@@ -5131,8 +5131,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -175,
-          -0.416667
+          -157.858333,
+          21.306944
         ]
       }
     },
@@ -5144,8 +5144,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -0.416667
+          -157.333333,
+          1.866667
         ]
       }
     },
@@ -5157,8 +5157,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -0.416667
+          162.983333,
+          5.316667
         ]
       }
     },
@@ -5170,8 +5170,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -0.416667
+          167.333333,
+          9.083333
         ]
       }
     },
@@ -5183,8 +5183,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -0.416667
+          171.2,
+          7.15
         ]
       }
     },
@@ -5196,8 +5196,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          -0.416667
+          -139.5,
+          -9
         ]
       }
     },
@@ -5209,8 +5209,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          -0.416667
+          -177.366667,
+          28.216667
         ]
       }
     },
@@ -5222,8 +5222,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -175,
-          -14.583333
+          166.916667,
+          -0.516667
         ]
       }
     },
@@ -5235,8 +5235,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -14.583333
+          -169.916667,
+          -19.016667
         ]
       }
     },
@@ -5248,8 +5248,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -14.583333
+          167.966667,
+          -29.05
         ]
       }
     },
@@ -5261,8 +5261,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -14.583333
+          166.45,
+          -22.266667
         ]
       }
     },
@@ -5274,8 +5274,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -14.583333
+          -170.7,
+          -14.266667
         ]
       }
     },
@@ -5287,8 +5287,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          -14.583333
+          134.483333,
+          7.333333
         ]
       }
     },
@@ -5300,8 +5300,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          -14.583333
+          -130.083333,
+          -25.066667
         ]
       }
     },
@@ -5313,8 +5313,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -175,
-          -28.75
+          158.216667,
+          6.966667
         ]
       }
     },
@@ -5326,8 +5326,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -28.75
+          147.166667,
+          -9.5
         ]
       }
     },
@@ -5339,8 +5339,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -28.75
+          -159.766667,
+          -21.233333
         ]
       }
     },
@@ -5352,8 +5352,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -145,
-          -28.75
+          145.75,
+          15.2
         ]
       }
     },
@@ -5365,8 +5365,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -135,
-          -28.75
+          -149.566667,
+          -17.533333
         ]
       }
     },
@@ -5378,8 +5378,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125,
-          -28.75
+          173,
+          1.416667
         ]
       }
     },
@@ -5391,8 +5391,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115,
-          -28.75
+          -175.2,
+          -21.133333
         ]
       }
     },
@@ -5404,8 +5404,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -175,
-          -42.916667
+          151.783333,
+          7.416667
         ]
       }
     },
@@ -5417,8 +5417,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -165,
-          -42.916667
+          166.616667,
+          19.283333
         ]
       }
     },
@@ -5430,8 +5430,8 @@ const timezoneGeoData = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155,
-          -42.916667
+          -176.166667,
+          -13.3
         ]
       }
     }
