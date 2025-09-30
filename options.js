@@ -1,6 +1,10 @@
 import timezones from './timezones-data.js';
 import timezoneAliases from './timezone-aliases.js';
 import timezoneGeoFallback from './timezones-geo-fallback.js';
+import {
+  loadTimezoneMetadata as loadSharedTimezoneMetadata,
+  getDisplayLabel as getTimezoneDisplayLabel
+} from './timezone-metadata.js';
 
 const runtimeChrome = typeof chrome !== 'undefined' ? chrome : undefined;
 const storageArea = runtimeChrome?.storage?.sync;
@@ -9,8 +13,7 @@ const fallbackStore = new Map();
 let cachedTimezones = null;
 const FALLBACK_TIMEZONES = timezones;
 const FALLBACK_TIMEZONE_ALIASES = timezoneAliases;
-const FALLBACK_TIMEZONE_METADATA = createFallbackMetadata(FALLBACK_TIMEZONES);
-let cachedTimezoneMetadata = null;
+let timezoneMetadata = null;
 let timezoneMetadataIndex = null;
 
 const FALLBACK_TIMEZONE_GEO_DATA = JSON.parse(JSON.stringify(timezoneGeoFallback));
@@ -244,81 +247,6 @@ function resolveViewerTimezone() {
   }
 
   return { timezone: 'UTC', isFallback: true };
-}
-
-function toFriendlySegment(segment) {
-  return segment
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, (character) => character.toUpperCase());
-}
-
-function createFallbackMetadata(zoneList) {
-  const metadata = {};
-  const zones = Array.isArray(zoneList) ? zoneList : [];
-
-  for (const zone of zones) {
-    if (typeof zone !== 'string') {
-      continue;
-    }
-
-    const [territory, ...rest] = zone.split('/');
-    const friendlyTerritory = toFriendlySegment(territory);
-    const friendlySegments = rest.map(toFriendlySegment);
-    const country = friendlySegments[0] || friendlyTerritory;
-    const subdivision = friendlySegments.length > 1
-      ? friendlySegments.slice(1).join(', ')
-      : null;
-    const baseLabel = friendlySegments.length
-      ? friendlySegments.join(' – ')
-      : friendlyTerritory;
-    const displayLabel =
-      friendlyTerritory && friendlyTerritory !== country
-        ? `${baseLabel} (${friendlyTerritory})`
-        : baseLabel;
-
-    metadata[zone] = {
-      zone,
-      territory: friendlyTerritory,
-      country,
-      subdivision,
-      displayLabel,
-      coordinates: null
-    };
-  }
-
-  return metadata;
-}
-
-async function loadTimezoneMetadata(zoneList) {
-  if (cachedTimezoneMetadata) {
-    return cachedTimezoneMetadata;
-  }
-
-  const fallbackMetadata =
-    Array.isArray(zoneList) && zoneList.length
-      ? createFallbackMetadata(zoneList)
-      : FALLBACK_TIMEZONE_METADATA;
-
-  const url = runtimeChrome?.runtime?.getURL
-    ? runtimeChrome.runtime.getURL('timezones-meta.json')
-    : 'timezones-meta.json';
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to load metadata: ${response.status}`);
-    }
-    const metadata = await response.json();
-    if (metadata && typeof metadata === 'object') {
-      cachedTimezoneMetadata = metadata;
-      return metadata;
-    }
-  } catch (error) {
-    console.warn('Unable to load time zone metadata', error);
-  }
-
-  cachedTimezoneMetadata = fallbackMetadata;
-  return cachedTimezoneMetadata;
 }
 
 function buildTimezoneMetadataIndex(metadata) {
@@ -1102,7 +1030,21 @@ function renderPeople(referenceDate, sortedEntries) {
 
       const timezone = document.createElement('p');
       timezone.className = 'person-timezone';
-      timezone.textContent = person.timezone;
+      const timezoneLabel = getTimezoneDisplayLabel(person.timezone, {
+        includeOffset: true,
+        metadata: timezoneMetadata
+      });
+      timezone.textContent = timezoneLabel;
+      if (person.timezone) {
+        timezone.dataset.zoneId = person.timezone;
+        timezone.title = person.timezone;
+        if (timezoneLabel !== person.timezone) {
+          timezone.setAttribute(
+            'aria-label',
+            `${timezoneLabel} (${person.timezone})`
+          );
+        }
+      }
       details.append(timezone);
 
       const actions = document.createElement('div');
@@ -1371,7 +1313,21 @@ function createTimelineRow(entry, referenceDate) {
 
   const timezoneElement = document.createElement('span');
   timezoneElement.className = 'timeline-person-timezone';
-  timezoneElement.textContent = timezone;
+  const timelineTimezoneLabel = getTimezoneDisplayLabel(timezone, {
+    includeOffset: true,
+    metadata: timezoneMetadata
+  });
+  timezoneElement.textContent = timelineTimezoneLabel;
+  if (timezone) {
+    timezoneElement.dataset.zoneId = timezone;
+    timezoneElement.title = timezone;
+    if (timelineTimezoneLabel !== timezone) {
+      timezoneElement.setAttribute(
+        'aria-label',
+        `${timelineTimezoneLabel} (${timezone})`
+      );
+    }
+  }
   personInfo.append(timezoneElement);
 
   const track = document.createElement('div');
@@ -1581,10 +1537,8 @@ async function initialize() {
   ]);
 
   const zoneList = Array.isArray(zones) ? zones : [];
-  const metadataResponse = await loadTimezoneMetadata(zoneList);
-  timezoneMetadataIndex = buildTimezoneMetadataIndex(
-    metadataResponse ?? FALLBACK_TIMEZONE_METADATA
-  );
+  timezoneMetadata = await loadSharedTimezoneMetadata(zoneList);
+  timezoneMetadataIndex = buildTimezoneMetadataIndex(timezoneMetadata);
 
   populateTimezoneDatalist(
     zoneList,

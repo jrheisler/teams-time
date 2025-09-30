@@ -1,4 +1,5 @@
 import { getStoredValue, fmtTime, dayDelta, timeValue, escapeHtml } from './util.js';
+import { loadTimezoneMetadata, getDisplayLabel } from './timezone-metadata.js';
 
 const DEFAULT_PEOPLE = [];
 const DEFAULT_SETTINGS = {
@@ -13,7 +14,8 @@ const settingsButton = document.getElementById('open-settings');
 
 let state = {
   people: DEFAULT_PEOPLE,
-  settings: DEFAULT_SETTINGS
+  settings: DEFAULT_SETTINGS,
+  metadata: null
 };
 let renderTimerId = null;
 
@@ -104,6 +106,10 @@ function renderPeople(now, baseTimeZone, sortMode, hour12) {
   const sorted = sortPeople(state.people, sortMode, now);
   for (const person of sorted) {
     const delta = dayDelta(now, person.timezone, baseTimeZone);
+    const timezoneLabel = getDisplayLabel(person.timezone, {
+      includeOffset: true,
+      metadata: state.metadata
+    });
     const item = document.createElement('li');
     item.className = 'person';
     item.innerHTML = `
@@ -113,9 +119,20 @@ function renderPeople(now, baseTimeZone, sortMode, hour12) {
       </div>
       <div class="person__meta">
         <span class="person__delta">${escapeHtml(describeDayDelta(delta))}</span>
-        <span class="person__timezone">${escapeHtml(person.timezone)}</span>
+        <span class="person__timezone">${escapeHtml(timezoneLabel)}</span>
       </div>
     `;
+    const timezoneElement = item.querySelector('.person__timezone');
+    if (timezoneElement && person.timezone) {
+      timezoneElement.dataset.zoneId = person.timezone;
+      timezoneElement.title = person.timezone;
+      if (timezoneLabel !== person.timezone) {
+        timezoneElement.setAttribute(
+          'aria-label',
+          `${timezoneLabel} (${person.timezone})`
+        );
+      }
+    }
     peopleListElement.append(item);
   }
 }
@@ -138,13 +155,15 @@ function startRenderTimer() {
 }
 
 async function hydrate() {
-  const [storedPeople, storedSettings] = await Promise.all([
+  const [storedPeople, storedSettings, metadata] = await Promise.all([
     getStoredValue('people', []),
-    getStoredValue('settings', {})
+    getStoredValue('settings', {}),
+    loadTimezoneMetadata()
   ]);
   state = {
     people: normalizePeople(storedPeople),
-    settings: normalizeSettings(storedSettings)
+    settings: normalizeSettings(storedSettings),
+    metadata
   };
   render();
   startRenderTimer();

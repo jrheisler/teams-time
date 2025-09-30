@@ -275,6 +275,7 @@ button:focus-visible {
   margin: 0;
   font-size: 0.85rem;
   color: var(--tt-color-text);
+  font-variant-numeric: tabular-nums;
 }
 
 .status-message {
@@ -375,6 +376,7 @@ button:focus-visible {
   margin: 0;
   font-size: 0.85rem;
   color: var(--tt-color-text);
+  font-variant-numeric: tabular-nums;
 }
 
 .timeline-track {
