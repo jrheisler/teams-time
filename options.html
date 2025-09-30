@@ -50,6 +50,33 @@
               required
             />
           </div>
+          <div class="field timezone-browse-group" id="timezone-browse" hidden>
+            <span id="timezone-browse-label">Browse by location</span>
+            <div
+              class="timezone-browse-controls"
+              role="group"
+              aria-labelledby="timezone-browse-label"
+            >
+              <div class="timezone-select-wrapper">
+                <label for="timezone-country">Country or territory</label>
+                <select id="timezone-country" name="timezoneCountry">
+                  <option value="">Select a country or territory</option>
+                </select>
+              </div>
+              <div class="timezone-select-wrapper">
+                <label for="timezone-region">Region or time zone</label>
+                <select id="timezone-region" name="timezoneRegion" disabled>
+                  <option value="">Select a region or time zone</option>
+                </select>
+              </div>
+            </div>
+            <p
+              class="assistive-text sr-only"
+              id="timezone-browse-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </div>
           <button type="submit">Add teammate</button>
         </form>
         <datalist id="timezone-list"></datalist>

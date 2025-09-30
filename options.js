@@ -8,6 +8,9 @@ const fallbackStore = new Map();
 let cachedTimezones = null;
 const FALLBACK_TIMEZONES = timezones;
 const FALLBACK_TIMEZONE_ALIASES = timezoneAliases;
+const FALLBACK_TIMEZONE_METADATA = createFallbackMetadata(FALLBACK_TIMEZONES);
+let cachedTimezoneMetadata = null;
+let timezoneMetadataIndex = null;
 
 function getFallbackKey(key) {
   return `teams-time::${key}`;
@@ -109,6 +112,10 @@ const personForm = document.getElementById('person-form');
 const nameInput = document.getElementById('person-name');
 const noteInput = document.getElementById('person-note');
 const timezoneInput = document.getElementById('person-timezone');
+const timezoneBrowseContainer = document.getElementById('timezone-browse');
+const timezoneCountrySelect = document.getElementById('timezone-country');
+const timezoneRegionSelect = document.getElementById('timezone-region');
+const timezoneBrowseStatus = document.getElementById('timezone-browse-status');
 const peopleList = document.getElementById('people-list');
 const hourFormatSelect = document.getElementById('hour-format');
 const timelineSection = document.getElementById('timeline-section');
@@ -223,17 +230,385 @@ function resolveViewerTimezone() {
   return { timezone: 'UTC', isFallback: true };
 }
 
+function toFriendlySegment(segment) {
+  return segment
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (character) => character.toUpperCase());
+}
+
+function createFallbackMetadata(zoneList) {
+  const metadata = {};
+  const zones = Array.isArray(zoneList) ? zoneList : [];
+
+  for (const zone of zones) {
+    if (typeof zone !== 'string') {
+      continue;
+    }
+
+    const [territory, ...rest] = zone.split('/');
+    const friendlyTerritory = toFriendlySegment(territory);
+    const friendlySegments = rest.map(toFriendlySegment);
+    const country = friendlySegments[0] || friendlyTerritory;
+    const subdivision = friendlySegments.length > 1
+      ? friendlySegments.slice(1).join(', ')
+      : null;
+    const baseLabel = friendlySegments.length
+      ? friendlySegments.join(' – ')
+      : friendlyTerritory;
+    const displayLabel =
+      friendlyTerritory && friendlyTerritory !== country
+        ? `${baseLabel} (${friendlyTerritory})`
+        : baseLabel;
+
+    metadata[zone] = {
+      zone,
+      territory: friendlyTerritory,
+      country,
+      subdivision,
+      displayLabel,
+      coordinates: null
+    };
+  }
+
+  return metadata;
+}
+
+async function loadTimezoneMetadata(zoneList) {
+  if (cachedTimezoneMetadata) {
+    return cachedTimezoneMetadata;
+  }
+
+  const fallbackMetadata =
+    Array.isArray(zoneList) && zoneList.length
+      ? createFallbackMetadata(zoneList)
+      : FALLBACK_TIMEZONE_METADATA;
+
+  const url = runtimeChrome?.runtime?.getURL
+    ? runtimeChrome.runtime.getURL('timezones-meta.json')
+    : 'timezones-meta.json';
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to load metadata: ${response.status}`);
+    }
+    const metadata = await response.json();
+    if (metadata && typeof metadata === 'object') {
+      cachedTimezoneMetadata = metadata;
+      return metadata;
+    }
+  } catch (error) {
+    console.warn('Unable to load time zone metadata', error);
+  }
+
+  cachedTimezoneMetadata = fallbackMetadata;
+  return cachedTimezoneMetadata;
+}
+
+function buildTimezoneMetadataIndex(metadata) {
+  const byZone = new Map();
+  const countriesByKey = new Map();
+  const countries = [];
+  const collator = new Intl.Collator(undefined, {
+    sensitivity: 'accent',
+    numeric: true
+  });
+
+  const entries = Object.values(metadata ?? {});
+
+  for (const entry of entries) {
+    if (!entry?.zone) {
+      continue;
+    }
+
+    const zoneId = entry.zone;
+    const countryLabel = entry.country || entry.displayLabel || zoneId;
+    const territoryLabel = entry.territory || '';
+    const countryKey = `${territoryLabel}::${countryLabel}`;
+
+    let countryInfo = countriesByKey.get(countryKey);
+    if (!countryInfo) {
+      const displayLabel =
+        territoryLabel && territoryLabel !== countryLabel
+          ? `${countryLabel} (${territoryLabel})`
+          : countryLabel;
+
+      countryInfo = {
+        key: countryKey,
+        label: countryLabel,
+        territory: territoryLabel,
+        displayLabel,
+        directZones: [],
+        subdivisions: new Map()
+      };
+
+      countriesByKey.set(countryKey, countryInfo);
+      countries.push(countryInfo);
+    }
+
+    const subdivisionLabel = entry.subdivision;
+    const subdivisionKey = subdivisionLabel ? `${countryKey}::${subdivisionLabel}` : null;
+    const zoneLabel = entry.displayLabel || zoneId;
+    const zoneInfo = {
+      zone: zoneId,
+      label: zoneLabel,
+      countryKey,
+      subdivisionKey,
+      subdivisionLabel
+    };
+
+    if (subdivisionLabel) {
+      let subdivisionInfo = countryInfo.subdivisions.get(subdivisionLabel);
+      if (!subdivisionInfo) {
+        subdivisionInfo = {
+          key: subdivisionKey,
+          label: subdivisionLabel,
+          zones: []
+        };
+        countryInfo.subdivisions.set(subdivisionLabel, subdivisionInfo);
+      }
+      subdivisionInfo.zones.push(zoneInfo);
+    } else {
+      countryInfo.directZones.push(zoneInfo);
+    }
+
+    byZone.set(zoneId, {
+      ...entry,
+      label: zoneLabel,
+      countryKey,
+      subdivisionKey
+    });
+  }
+
+  const sortZones = (list) => list.sort((a, b) => collator.compare(a.label, b.label));
+
+  for (const country of countries) {
+    country.directZones = sortZones(country.directZones);
+    const subdivisionList = Array.from(country.subdivisions.values());
+    subdivisionList.sort((a, b) => collator.compare(a.label, b.label));
+    for (const subdivision of subdivisionList) {
+      subdivision.zones = sortZones(subdivision.zones);
+    }
+    country.subdivisions = subdivisionList;
+  }
+
+  countries.sort((a, b) => collator.compare(a.displayLabel, b.displayLabel));
+
+  return {
+    byZone,
+    countries,
+    countriesByKey
+  };
+}
+
+function announceTimezoneSelection(message) {
+  if (!timezoneBrowseStatus) {
+    return;
+  }
+
+  timezoneBrowseStatus.textContent = '';
+
+  if (!message) {
+    return;
+  }
+
+  if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
+    window.requestAnimationFrame(() => {
+      timezoneBrowseStatus.textContent = message;
+    });
+  } else {
+    timezoneBrowseStatus.textContent = message;
+  }
+}
+
+function updateRegionSelect(countryKey, selectedZone, { preserveValue = false } = {}) {
+  if (!timezoneRegionSelect) {
+    return;
+  }
+
+  const previousValue = preserveValue ? timezoneRegionSelect.value : '';
+
+  timezoneRegionSelect.innerHTML = '';
+
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = 'Select a region or time zone';
+  timezoneRegionSelect.append(placeholder);
+
+  if (!countryKey) {
+    timezoneRegionSelect.disabled = true;
+    timezoneRegionSelect.value = '';
+    return;
+  }
+
+  const country = timezoneMetadataIndex?.countriesByKey.get(countryKey);
+  if (!country) {
+    timezoneRegionSelect.disabled = true;
+    timezoneRegionSelect.value = '';
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  for (const zone of country.directZones) {
+    const option = document.createElement('option');
+    option.value = zone.zone;
+    option.textContent = zone.label;
+    option.dataset.zone = zone.zone;
+    fragment.append(option);
+  }
+
+  for (const subdivision of country.subdivisions) {
+    const optgroup = document.createElement('optgroup');
+    optgroup.label = subdivision.label;
+    for (const zone of subdivision.zones) {
+      const option = document.createElement('option');
+      option.value = zone.zone;
+      option.textContent = zone.label;
+      option.dataset.zone = zone.zone;
+      optgroup.append(option);
+    }
+    fragment.append(optgroup);
+  }
+
+  timezoneRegionSelect.append(fragment);
+  timezoneRegionSelect.disabled = false;
+
+  const targetValue = selectedZone ?? (preserveValue ? previousValue : '');
+  timezoneRegionSelect.value = targetValue;
+}
+
+function resetGeographicSelector() {
+  if (!timezoneCountrySelect || !timezoneRegionSelect) {
+    return;
+  }
+
+  timezoneCountrySelect.value = '';
+  updateRegionSelect('', null);
+}
+
+function populateGeographicSelector(metadataIndex) {
+  if (!timezoneBrowseContainer || !timezoneCountrySelect || !timezoneRegionSelect) {
+    return;
+  }
+
+  timezoneCountrySelect.innerHTML = '';
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = 'Select a country or territory';
+  timezoneCountrySelect.append(placeholder);
+
+  for (const country of metadataIndex.countries) {
+    const option = document.createElement('option');
+    option.value = country.key;
+    option.textContent = country.displayLabel;
+    timezoneCountrySelect.append(option);
+  }
+
+  updateRegionSelect('', null);
+  timezoneBrowseContainer.hidden = false;
+}
+
+function syncSelectorsToTimezone(zoneId) {
+  if (!timezoneMetadataIndex || !zoneId) {
+    resetGeographicSelector();
+    return;
+  }
+
+  const zoneInfo = timezoneMetadataIndex.byZone.get(zoneId);
+  if (!zoneInfo) {
+    resetGeographicSelector();
+    return;
+  }
+
+  const { countryKey } = zoneInfo;
+  if (!countryKey) {
+    resetGeographicSelector();
+    return;
+  }
+
+  if (timezoneCountrySelect && timezoneCountrySelect.value !== countryKey) {
+    timezoneCountrySelect.value = countryKey;
+    updateRegionSelect(countryKey, zoneId);
+  } else {
+    updateRegionSelect(countryKey, zoneId, { preserveValue: true });
+  }
+
+  if (timezoneRegionSelect) {
+    timezoneRegionSelect.value = zoneId;
+  }
+}
+
+function handleTimezoneCountryChange() {
+  if (!timezoneMetadataIndex || !timezoneCountrySelect) {
+    return;
+  }
+
+  const key = timezoneCountrySelect.value;
+  updateRegionSelect(key, null);
+
+  if (!key) {
+    announceTimezoneSelection('Country selection cleared.');
+    return;
+  }
+
+  const country = timezoneMetadataIndex.countriesByKey.get(key);
+  if (country) {
+    announceTimezoneSelection(
+      `${country.displayLabel} selected. Choose a region or time zone to finish.`
+    );
+  }
+}
+
+function handleTimezoneRegionChange() {
+  if (!timezoneMetadataIndex || !timezoneRegionSelect) {
+    return;
+  }
+
+  const zoneId = timezoneRegionSelect.value;
+  if (!zoneId) {
+    announceTimezoneSelection('Region selection cleared.');
+    return;
+  }
+
+  timezoneInput.value = zoneId;
+  announceTimezoneSelection(`Time zone set to ${zoneId}.`);
+  const changeEvent = new Event('change', { bubbles: false });
+  timezoneInput.dispatchEvent(changeEvent);
+}
+
+function handleTimezoneInputLiveChange() {
+  if (!timezoneMetadataIndex) {
+    return;
+  }
+
+  const value = timezoneInput.value.trim();
+
+  if (!value) {
+    resetGeographicSelector();
+    announceTimezoneSelection('Time zone field cleared.');
+    return;
+  }
+
+  const canonical = normalizeTimezone(value);
+  if (canonical && timezoneMetadataIndex.byZone.has(canonical)) {
+    syncSelectorsToTimezone(canonical);
+  }
+}
+
 const viewerTimezoneInfo = resolveViewerTimezone();
 
-function populateTimezoneDatalist(zones, aliases) {
+function populateTimezoneDatalist(zones, aliases, metadataByZone) {
   timezoneList.innerHTML = '';
 
   const fragment = document.createDocumentFragment();
   for (const zone of zones) {
     const option = document.createElement('option');
+    const metadata = metadataByZone?.get(zone);
+    const label = metadata?.label || metadata?.displayLabel || zone;
     option.value = zone;
-    option.textContent = zone;
-    option.label = zone;
+    option.textContent = label;
+    option.label = metadata ? `${label} (${zone})` : zone;
     option.dataset.zone = zone;
     fragment.append(option);
   }
@@ -242,7 +617,9 @@ function populateTimezoneDatalist(zones, aliases) {
     const option = document.createElement('option');
     option.value = alias;
     option.textContent = alias;
-    option.label = `${alias} (${canonical})`;
+    const canonicalMeta = metadataByZone?.get(canonical);
+    const canonicalLabel = canonicalMeta?.label || canonical;
+    option.label = `${alias} (${canonicalLabel})`;
     option.dataset.zone = canonical;
     fragment.append(option);
   }
@@ -595,6 +972,30 @@ async function initialize() {
     getFromStorage(STORAGE_KEYS.settings, DEFAULT_SETTINGS)
   ]);
 
+  const zoneList = Array.isArray(zones) ? zones : [];
+  const metadataResponse = await loadTimezoneMetadata(zoneList);
+  timezoneMetadataIndex = buildTimezoneMetadataIndex(
+    metadataResponse ?? FALLBACK_TIMEZONE_METADATA
+  );
+
+  populateTimezoneDatalist(
+    zoneList,
+    FALLBACK_TIMEZONE_ALIASES,
+    timezoneMetadataIndex.byZone
+  );
+
+  if (timezoneMetadataIndex.countries.length) {
+    populateGeographicSelector(timezoneMetadataIndex);
+    if (timezoneInput?.value) {
+      const canonical = normalizeTimezone(timezoneInput.value);
+      if (canonical && timezoneMetadataIndex.byZone.has(canonical)) {
+        syncSelectorsToTimezone(canonical);
+      }
+    }
+  } else if (timezoneBrowseContainer) {
+    timezoneBrowseContainer.hidden = true;
+  }
+
   const storedList = Array.isArray(storedPeople) ? storedPeople : [];
   const initializationReference = new Date();
   const normalizedPeople = getSortedPeople(initializationReference, storedList);
@@ -606,11 +1007,6 @@ async function initialize() {
     await setInStorage(STORAGE_KEYS.people, people);
   }
 
-  populateTimezoneDatalist(
-    Array.isArray(zones) ? zones : [],
-    FALLBACK_TIMEZONE_ALIASES
-  );
-
   hourFormatSelect.value = settings.hour12 ? '12' : '24';
   renderPeople(initializationReference, people);
 
@@ -619,10 +1015,17 @@ async function initialize() {
   }
 }
 
+timezoneInput.addEventListener('input', handleTimezoneInputLiveChange);
+
 timezoneInput.addEventListener('change', () => {
   const canonical = normalizeTimezone(timezoneInput.value);
   if (canonical) {
     timezoneInput.value = canonical;
+    if (timezoneMetadataIndex?.byZone?.has(canonical)) {
+      syncSelectorsToTimezone(canonical);
+    }
+  } else if (timezoneMetadataIndex) {
+    resetGeographicSelector();
   }
 });
 
@@ -630,7 +1033,20 @@ timezoneInput.addEventListener('blur', () => {
   const canonical = normalizeTimezone(timezoneInput.value);
   if (canonical) {
     timezoneInput.value = canonical;
+    if (timezoneMetadataIndex?.byZone?.has(canonical)) {
+      syncSelectorsToTimezone(canonical);
+    }
+  } else if (timezoneMetadataIndex) {
+    resetGeographicSelector();
   }
 });
+
+if (timezoneCountrySelect) {
+  timezoneCountrySelect.addEventListener('change', handleTimezoneCountryChange);
+}
+
+if (timezoneRegionSelect) {
+  timezoneRegionSelect.addEventListener('change', handleTimezoneRegionChange);
+}
 
 initialize();
