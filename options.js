@@ -120,6 +120,10 @@ const peopleList = document.getElementById('people-list');
 const hourFormatSelect = document.getElementById('hour-format');
 const timelineSection = document.getElementById('timeline-section');
 const timelineRows = document.getElementById('timeline-rows');
+const peopleExportButton = document.getElementById('people-export');
+const peopleImportButton = document.getElementById('people-import');
+const peopleImportInput = document.getElementById('people-import-input');
+const peopleFeedback = document.getElementById('people-feedback');
 
 const STORAGE_KEYS = {
   people: 'people',
@@ -714,6 +718,174 @@ function renderPeople(referenceDate, sortedEntries) {
   renderTimelines(entries, now);
 }
 
+function updatePeopleFeedback(message, status = 'info') {
+  if (!peopleFeedback) {
+    return;
+  }
+
+  peopleFeedback.textContent = message;
+  peopleFeedback.dataset.status = status;
+}
+
+function createDownload(filename, contents, mimeType = 'application/json') {
+  const blob = new Blob([contents], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.rel = 'noopener';
+  const parent = document.body || document.documentElement;
+  if (parent) {
+    parent.append(anchor);
+    anchor.click();
+    anchor.remove();
+  } else {
+    anchor.click();
+  }
+  window.setTimeout(() => {
+    URL.revokeObjectURL(url);
+  }, 1000);
+}
+
+async function exportPeopleRoster() {
+  try {
+    const reference = new Date();
+    const sorted = getSortedPeople(reference, people);
+    await setInStorage(STORAGE_KEYS.people, sorted);
+
+    const serialized = JSON.stringify(sorted, null, 2);
+    const timestamp = reference
+      .toISOString()
+      .replace(/[:]/g, '')
+      .replace(/\..+$/, '');
+    const filename = `teams-time-roster-${timestamp}.json`;
+
+    createDownload(filename, serialized);
+    updatePeopleFeedback(
+      `Exported ${sorted.length} teammate${sorted.length === 1 ? '' : 's'}.`,
+      'success'
+    );
+  } catch (error) {
+    console.error('Unable to export teammates', error);
+    updatePeopleFeedback('Unable to export roster. Please try again.', 'error');
+  }
+}
+
+function normalizeImportedEntry(rawEntry) {
+  if (!rawEntry || typeof rawEntry !== 'object') {
+    return null;
+  }
+
+  const id = typeof rawEntry.id === 'string' ? rawEntry.id.trim() : '';
+  const name = typeof rawEntry.name === 'string' ? rawEntry.name.trim() : '';
+  const note = typeof rawEntry.note === 'string' ? rawEntry.note.trim() : '';
+  const timezoneValue = typeof rawEntry.timezone === 'string' ? rawEntry.timezone.trim() : '';
+  const canonicalTimezone = normalizeTimezone(timezoneValue);
+
+  if (!id || !name || !canonicalTimezone) {
+    return null;
+  }
+
+  if (!validateTimezone(canonicalTimezone)) {
+    return null;
+  }
+
+  return {
+    id,
+    name,
+    note,
+    timezone: canonicalTimezone
+  };
+}
+
+async function handlePeopleImport(file) {
+  try {
+    const text = await file.text();
+    let parsed;
+
+    try {
+      parsed = JSON.parse(text);
+    } catch (error) {
+      updatePeopleFeedback('Import file is not valid JSON.', 'error');
+      return;
+    }
+
+    let entries = [];
+    let mode = 'merge';
+
+    if (Array.isArray(parsed)) {
+      entries = parsed;
+    } else if (parsed && typeof parsed === 'object') {
+      if (Array.isArray(parsed.people)) {
+        entries = parsed.people;
+      } else {
+        updatePeopleFeedback('Import file must include a "people" array.', 'error');
+        return;
+      }
+
+      if (typeof parsed.mode === 'string' && parsed.mode.toLowerCase() === 'replace') {
+        mode = 'replace';
+      }
+    } else {
+      updatePeopleFeedback('Import file does not match the expected format.', 'error');
+      return;
+    }
+
+    const normalizedEntries = [];
+    let skipped = 0;
+
+    for (const entry of entries) {
+      const normalized = normalizeImportedEntry(entry);
+      if (normalized) {
+        normalizedEntries.push(normalized);
+      } else {
+        skipped += 1;
+      }
+    }
+
+    if (!normalizedEntries.length) {
+      updatePeopleFeedback('No valid teammates found in the import file.', 'error');
+      return;
+    }
+
+    let nextPeople;
+    if (mode === 'replace') {
+      nextPeople = normalizedEntries;
+    } else {
+      const merged = new Map(people.map((person) => [person.id, person]));
+      for (const entry of normalizedEntries) {
+        merged.set(entry.id, entry);
+      }
+      nextPeople = Array.from(merged.values());
+    }
+
+    const reference = new Date();
+    const sorted = getSortedPeople(reference, nextPeople);
+    people = sorted;
+    await setInStorage(STORAGE_KEYS.people, people);
+    renderPeople(reference, people);
+
+    const summaryParts = [`Imported ${normalizedEntries.length} teammate${normalizedEntries.length === 1 ? '' : 's'}`];
+    if (mode === 'replace') {
+      summaryParts.push('and replaced the current roster');
+    } else {
+      summaryParts.push('and merged with existing teammates');
+    }
+    if (skipped > 0) {
+      summaryParts.push(`(${skipped} entr${skipped === 1 ? 'y was' : 'ies were'} skipped)`);
+    }
+
+    updatePeopleFeedback(`${summaryParts.join(' ')}.`, 'success');
+  } catch (error) {
+    console.error('Unable to import teammates', error);
+    updatePeopleFeedback('Unable to import roster. Check the file and try again.', 'error');
+  } finally {
+    if (peopleImportInput) {
+      peopleImportInput.value = '';
+    }
+  }
+}
+
 function getDayKey(date, formatter) {
   const parts = formatter.formatToParts(date);
   let year = '';
@@ -957,6 +1129,31 @@ personForm.addEventListener('submit', async (event) => {
   personForm.reset();
   nameInput.focus();
 });
+
+if (peopleExportButton) {
+  peopleExportButton.addEventListener('click', () => {
+    exportPeopleRoster();
+  });
+}
+
+if (peopleImportButton && peopleImportInput) {
+  peopleImportButton.addEventListener('click', () => {
+    peopleImportInput.click();
+  });
+
+  peopleImportInput.addEventListener('change', (event) => {
+    const input = event.target;
+    const files = input?.files;
+    const file = files && files.length ? files[0] : null;
+
+    if (!file) {
+      return;
+    }
+
+    updatePeopleFeedback('Importing roster…');
+    handlePeopleImport(file);
+  });
+}
 
 hourFormatSelect.addEventListener('change', async () => {
   const hour12 = hourFormatSelect.value === '12';

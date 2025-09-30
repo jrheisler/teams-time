@@ -30,6 +30,25 @@ Teams Time is a Chrome extension that helps distributed teams quickly see the cu
 - Teammates are automatically sorted by their current UTC offset so nearby time zones stay grouped together.
 - Time zone data backed by a curated list in `timezones.json`.
 
+## Share rosters between teammates
+
+The options page now includes **Export roster** and **Import roster** buttons in the Teammates card so groups can stay in sync:
+
+1. Click **Export roster** to download a JSON file that contains the current `people` array (each entry has `id`, `name`, optional `note`, and `timezone`). Share this file with another teammate or commit it to team docs.
+2. On another device or profile, open the options page and choose **Import roster**, then pick the shared JSON file. Valid entries are merged with the existing roster so no one is accidentally removed.
+3. To fully replace the current roster, wrap the exported data in an object before importing:
+
+   ```json
+   {
+     "mode": "replace",
+     "people": [
+       { "id": "abc", "name": "Ada", "note": "Engineering", "timezone": "Europe/London" }
+     ]
+   }
+   ```
+
+   The importer validates each entry’s ID, name, and time zone before saving. Any skipped entries are reported in the status message below the controls.
+
 ## Development notes
 
 - Extension metadata lives in `manifest.json` (Manifest V3).

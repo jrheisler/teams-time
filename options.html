@@ -87,6 +87,23 @@
           <h2 id="people-heading">Teammates</h2>
           <p class="section-subtitle">Remove someone when they no longer need tracking.</p>
         </div>
+        <div class="section-actions" aria-label="Teammate roster actions">
+          <button type="button" id="people-export">Export roster</button>
+          <button type="button" id="people-import">Import roster</button>
+          <input
+            type="file"
+            id="people-import-input"
+            accept="application/json"
+            hidden
+            aria-hidden="true"
+          />
+        </div>
+        <p
+          id="people-feedback"
+          class="status-message"
+          role="status"
+          aria-live="polite"
+        ></p>
         <div id="people-list" class="people-list" role="list"></div>
       </section>
 
