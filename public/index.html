@@ -13,66 +13,156 @@
     </header>
 
     <main class="page-content">
-      <section class="card card--current" aria-live="polite">
-        <h2>Current time</h2>
-        <p id="current-time" class="current-time" role="status"></p>
+      <div
+        id="main-tablist"
+        class="tablist"
+        role="tablist"
+        aria-label="Teams Time sections"
+      >
+        <button
+          type="button"
+          id="tab-overview"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-overview"
+          tabindex="0"
+        >
+          Overview
+        </button>
+        <button
+          type="button"
+          id="tab-add"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-add"
+          tabindex="-1"
+        >
+          Add teammate
+        </button>
+        <button
+          type="button"
+          id="tab-guide"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-guide"
+          tabindex="-1"
+        >
+          Guide
+        </button>
+      </div>
+
+      <section
+        id="panel-overview"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-overview"
+      >
+        <div class="panel-grid">
+          <section class="card card--current" aria-live="polite">
+            <h2>Current time</h2>
+            <p id="current-time" class="current-time" role="status"></p>
+          </section>
+
+          <section class="card" aria-labelledby="roster-heading">
+            <div class="section-header">
+              <h2 id="roster-heading">Teammates</h2>
+              <p class="section-subtitle">
+                Remove someone when they no longer need tracking.
+              </p>
+            </div>
+            <div class="section-actions" aria-label="Teammate roster actions">
+              <button type="button" id="roster-export" title="Export teammate roster">
+                Export roster
+              </button>
+              <button type="button" id="roster-import" title="Import teammate roster">
+                Import roster
+              </button>
+              <input
+                type="file"
+                id="roster-import-input"
+                accept="application/json"
+                hidden
+                aria-hidden="true"
+              />
+            </div>
+            <p
+              id="roster-feedback"
+              class="status-message"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <div id="roster-list" class="people-list" role="list" aria-live="polite"></div>
+          </section>
+        </div>
       </section>
 
-      <section class="card" aria-labelledby="add-teammate-heading">
-        <h2 id="add-teammate-heading">Add a teammate</h2>
-        <form id="teammate-form" autocomplete="off">
-          <div class="field">
-            <label for="teammate-name">Name</label>
-            <input type="text" id="teammate-name" name="name" required />
-          </div>
-          <div class="field">
-            <label for="teammate-note">Note</label>
-            <input
-              type="text"
-              id="teammate-note"
-              name="note"
-              placeholder="e.g., role, meeting focus"
-            />
-          </div>
-          <div class="field">
-            <label for="teammate-timezone">Time zone</label>
-            <input
-              type="text"
-              id="teammate-timezone"
-              name="timezone"
-              list="timezone-list"
-              placeholder="Search by city or zone"
-              required
-            />
-          </div>
-          <button type="submit" title="Add teammate">Add teammate</button>
-        </form>
-        <datalist id="timezone-list"></datalist>
+      <section
+        id="panel-add"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-add"
+        hidden
+      >
+        <div class="panel-grid">
+          <section class="card" aria-labelledby="add-teammate-heading">
+            <h2 id="add-teammate-heading">Add a teammate</h2>
+            <form id="teammate-form" autocomplete="off">
+              <div class="field">
+                <label for="teammate-name">Name</label>
+                <input type="text" id="teammate-name" name="name" required />
+              </div>
+              <div class="field">
+                <label for="teammate-note">Note</label>
+                <input
+                  type="text"
+                  id="teammate-note"
+                  name="note"
+                  placeholder="e.g., role, meeting focus"
+                />
+              </div>
+              <div class="field">
+                <label for="teammate-timezone">Time zone</label>
+                <input
+                  type="text"
+                  id="teammate-timezone"
+                  name="timezone"
+                  list="timezone-list"
+                  placeholder="Search by city or zone"
+                  required
+                />
+              </div>
+              <button type="submit" title="Add teammate">Add teammate</button>
+            </form>
+            <datalist id="timezone-list"></datalist>
+          </section>
+        </div>
       </section>
 
-      <section class="card" aria-labelledby="roster-heading">
-        <div class="section-header">
-          <h2 id="roster-heading">Teammates</h2>
-          <p class="section-subtitle">Remove someone when they no longer need tracking.</p>
+      <section
+        id="panel-guide"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-guide"
+        hidden
+      >
+        <div class="panel-grid">
+          <section class="card" aria-labelledby="guide-heading">
+            <h2 id="guide-heading">Using Teams Time</h2>
+            <p>
+              Monitor teammates across time zones, add new collaborators, and export
+              or import rosters when your lineup changes.
+            </p>
+            <ul>
+              <li>Use the Overview tab to keep track of the current time and roster.</li>
+              <li>Add teammates with notes and time zones from the Add teammate tab.</li>
+              <li>Import and export rosters to stay in sync with your team.</li>
+            </ul>
+            <p>
+              Everything runs locally in your browser so you can keep sensitive scheduling
+              details in your control.
+            </p>
+          </section>
         </div>
-        <div class="section-actions" aria-label="Teammate roster actions">
-          <button type="button" id="roster-export" title="Export teammate roster">Export roster</button>
-          <button type="button" id="roster-import" title="Import teammate roster">Import roster</button>
-          <input
-            type="file"
-            id="roster-import-input"
-            accept="application/json"
-            hidden
-            aria-hidden="true"
-          />
-        </div>
-        <p
-          id="roster-feedback"
-          class="status-message"
-          role="status"
-          aria-live="polite"
-        ></p>
-        <div id="roster-list" class="people-list" role="list" aria-live="polite"></div>
       </section>
     </main>
 
