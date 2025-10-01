@@ -1,0 +1,324 @@
+:root {
+  --tt-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tt-color-background: #f4f6fb;
+  --tt-color-text: #1f2933;
+  --tt-color-card: #ffffff;
+  --tt-color-card-muted: #f1f5f9;
+  --tt-color-muted-text: #6b7a89;
+  --tt-color-border: #cbd5f5;
+  --tt-color-accent: #2563eb;
+  --tt-color-accent-strong: #1d4ed8;
+  --tt-color-accent-soft: rgba(37, 99, 235, 0.1);
+  --tt-color-accent-contrast: #ffffff;
+  font-family: var(--tt-font-family);
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2.5rem 1.75rem 3.5rem;
+  background: var(--tt-color-background);
+  color: var(--tt-color-text);
+}
+
+.page-header,
+.page-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 2vw + 1rem, 2.5rem);
+  font-weight: 700;
+}
+
+.page-header p,
+.page-footer p {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--tt-color-muted-text);
+  font-size: 1rem;
+}
+
+.page-content {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+
+.card {
+  background: var(--tt-color-card);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card > h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.card--current {
+  gap: 0.75rem;
+}
+
+.current-time {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.25rem);
+  font-weight: 700;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.section-subtitle {
+  margin: 0;
+  color: var(--tt-color-muted-text);
+  font-size: 0.95rem;
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.status-message {
+  min-height: 1.25em;
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--tt-color-muted-text);
+}
+
+.status-message[data-status='success'] {
+  color: #047857;
+}
+
+.status-message[data-status='error'] {
+  color: #b91c1c;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.field > label {
+  font-size: 0.95rem;
+  color: var(--tt-color-text);
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--tt-color-border);
+  background: var(--tt-color-card);
+  color: var(--tt-color-text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--tt-color-accent);
+  box-shadow: 0 0 0 3px var(--tt-color-accent-soft);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.65rem 1.2rem;
+  background: var(--tt-color-accent);
+  color: var(--tt-color-accent-contrast);
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+button:hover,
+button:focus-visible {
+  background: var(--tt-color-accent-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px var(--tt-color-accent-soft);
+  outline: none;
+}
+
+.people-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.people-list[role='list'] .empty-message {
+  text-align: center;
+  padding: 1.2rem 0;
+  color: var(--tt-color-muted-text);
+  background: var(--tt-color-card-muted);
+  border-radius: 0.65rem;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.65rem;
+  background: var(--tt-color-card);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+}
+
+.person-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.person-name {
+  font-weight: 700;
+}
+
+.person-note {
+  margin: 0;
+  color: var(--tt-color-muted-text);
+  font-size: 0.9rem;
+}
+
+.person-timezone {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--tt-color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.person-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.person-actions button {
+  background: transparent;
+  border: 1px solid var(--tt-color-accent);
+  color: var(--tt-color-accent);
+  padding: 0.45rem 0.9rem;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.person-actions button:hover,
+.person-actions button:focus-visible {
+  background: var(--tt-color-accent);
+  color: var(--tt-color-accent-contrast);
+  box-shadow: 0 8px 16px var(--tt-color-accent-soft);
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tt-color-background: #111827;
+    --tt-color-text: #f9fafb;
+    --tt-color-card: #1f2937;
+    --tt-color-card-muted: #111827;
+    --tt-color-muted-text: #9ca3af;
+    --tt-color-border: #374151;
+    --tt-color-accent: #60a5fa;
+    --tt-color-accent-strong: #3b82f6;
+    --tt-color-accent-soft: rgba(96, 165, 250, 0.18);
+  }
+
+  body {
+    background: var(--tt-color-background);
+    color: var(--tt-color-text);
+  }
+
+  .card,
+  .person {
+    box-shadow: none;
+  }
+
+  .people-list[role='list'] .empty-message {
+    background: var(--tt-color-card);
+    color: var(--tt-color-muted-text);
+  }
+
+  .person-actions button {
+    border-color: var(--tt-color-accent);
+    color: var(--tt-color-accent);
+  }
+
+  .person-actions button:hover,
+  .person-actions button:focus-visible {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  .person {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .person-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 720px) {
+  .page-content {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.25rem;
+  }
+}
+
+@media (min-width: 960px) {
+  body {
+    gap: 2.5rem;
+    padding: 3rem 3vw 4rem;
+  }
+
+  .page-content {
+    gap: 2.5rem;
+  }
+
+  .card {
+    padding: 2.25rem 2.75rem;
+  }
+}
+
+.page-footer {
+  margin-top: auto;
+}
+
