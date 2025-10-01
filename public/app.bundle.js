@@ -745,6 +745,7 @@
 
   const currentTimeElement = document.getElementById('current-time');
   const rosterListElement = document.getElementById('roster-list');
+  const overviewPeopleListElement = document.getElementById('overview-people-list');
   const teammateForm = document.getElementById('teammate-form');
   const teammateNameInput = document.getElementById('teammate-name');
   const teammateNoteInput = document.getElementById('teammate-note');
@@ -1318,14 +1319,18 @@
     currentTimeElement.innerHTML = `${escapeHtml(currentTime)} • ${escapeHtml(timezoneLabel)}`;
   }
 
-  function renderRoster(now, baseTimeZone, sortMode, hour12) {
+  function renderRoster(now, baseTimeZone, sortMode, hour12, sortedPeople) {
     if (!rosterListElement) {
       return;
     }
 
     rosterListElement.innerHTML = '';
 
-    if (!state.people.length) {
+    const people = Array.isArray(sortedPeople)
+      ? sortedPeople
+      : sortPeople(state.people, sortMode, now);
+
+    if (!people.length) {
       const emptyMessage = document.createElement('div');
       emptyMessage.className = 'empty-message';
       emptyMessage.textContent = 'No teammates added yet. Use the form above to add one.';
@@ -1333,9 +1338,7 @@
       return;
     }
 
-    const sorted = sortPeople(state.people, sortMode, now);
-
-    for (const person of sorted) {
+    for (const person of people) {
       const item = document.createElement('div');
       item.className = 'person';
       item.dataset.personId = person.id;
@@ -1393,19 +1396,75 @@
     }
   }
 
+  function renderOverviewRoster(now, baseTimeZone, sortMode, hour12, sortedPeople) {
+    if (!overviewPeopleListElement) {
+      return;
+    }
+
+    overviewPeopleListElement.innerHTML = '';
+
+    const people = Array.isArray(sortedPeople)
+      ? sortedPeople
+      : sortPeople(state.people, sortMode, now);
+
+    if (!people.length) {
+      const empty = document.createElement('li');
+      empty.className = 'people-list__empty';
+      empty.textContent = 'Add teammates to see their local time here.';
+      overviewPeopleListElement.append(empty);
+      return;
+    }
+
+    for (const person of people) {
+      const delta = dayDelta(now, person.timezone, baseTimeZone);
+      const timezoneLabel = getDisplayLabel(person.timezone, {
+        includeOffset: true,
+        metadata: state.metadata
+      });
+      const item = document.createElement('li');
+      item.className = 'person';
+      item.innerHTML = `
+        <div class="person__header">
+          <h3 class="person__name">${escapeHtml(person.name)}</h3>
+          <span class="person__time">${escapeHtml(fmtTime(now, person.timezone, { hour12 }))}</span>
+        </div>
+        <div class="person__meta">
+          <span class="person__delta">${escapeHtml(describeDayDelta(delta))}</span>
+          <span class="person__timezone">${escapeHtml(timezoneLabel)}</span>
+        </div>
+      `;
+
+      const timezoneElement = item.querySelector('.person__timezone');
+      if (timezoneElement && person.timezone) {
+        timezoneElement.dataset.zoneId = person.timezone;
+        timezoneElement.title = person.timezone;
+        if (timezoneLabel !== person.timezone) {
+          timezoneElement.setAttribute('aria-label', `${timezoneLabel} (${person.timezone})`);
+        }
+      }
+
+      overviewPeopleListElement.append(item);
+    }
+  }
+
   function render() {
     const now = new Date();
     const baseTimeZone = state.settings.baseTimeZone || DEFAULT_SETTINGS.baseTimeZone;
     const sortMode = state.settings.sortMode || DEFAULT_SETTINGS.sortMode;
     const hour12 =
       typeof state.settings.hour12 === 'boolean' ? state.settings.hour12 : DEFAULT_SETTINGS.hour12;
+    const sortedPeople = sortPeople(state.people, sortMode, now);
 
     if (isElementInActivePanel(currentTimeElement)) {
       renderCurrentTime(now, baseTimeZone, hour12);
     }
 
     if (isElementInActivePanel(rosterListElement)) {
-      renderRoster(now, baseTimeZone, sortMode, hour12);
+      renderRoster(now, baseTimeZone, sortMode, hour12, sortedPeople);
+    }
+
+    if (overviewPeopleListElement && isElementInActivePanel(overviewPeopleListElement)) {
+      renderOverviewRoster(now, baseTimeZone, sortMode, hour12, sortedPeople);
     }
 
     if (timelineRowsElement) {
