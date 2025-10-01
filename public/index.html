@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teams Time</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Teams Time</h1>
+      <p>Check the current time and manage teammates from the web.</p>
+    </header>
+
+    <main class="page-content">
+      <section class="card card--current" aria-live="polite">
+        <h2>Current time</h2>
+        <p id="current-time" class="current-time" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="add-teammate-heading">
+        <h2 id="add-teammate-heading">Add a teammate</h2>
+        <form id="teammate-form" autocomplete="off">
+          <div class="field">
+            <label for="teammate-name">Name</label>
+            <input type="text" id="teammate-name" name="name" required />
+          </div>
+          <div class="field">
+            <label for="teammate-note">Note</label>
+            <input
+              type="text"
+              id="teammate-note"
+              name="note"
+              placeholder="e.g., role, meeting focus"
+            />
+          </div>
+          <div class="field">
+            <label for="teammate-timezone">Time zone</label>
+            <input
+              type="text"
+              id="teammate-timezone"
+              name="timezone"
+              list="timezone-list"
+              placeholder="Search by city or zone"
+              required
+            />
+          </div>
+          <button type="submit" title="Add teammate">Add teammate</button>
+        </form>
+        <datalist id="timezone-list"></datalist>
+      </section>
+
+      <section class="card" aria-labelledby="roster-heading">
+        <div class="section-header">
+          <h2 id="roster-heading">Teammates</h2>
+          <p class="section-subtitle">Remove someone when they no longer need tracking.</p>
+        </div>
+        <div class="section-actions" aria-label="Teammate roster actions">
+          <button type="button" id="roster-export" title="Export teammate roster">Export roster</button>
+          <button type="button" id="roster-import" title="Import teammate roster">Import roster</button>
+          <input
+            type="file"
+            id="roster-import-input"
+            accept="application/json"
+            hidden
+            aria-hidden="true"
+          />
+        </div>
+        <p
+          id="roster-feedback"
+          class="status-message"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <div id="roster-list" class="people-list" role="list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
