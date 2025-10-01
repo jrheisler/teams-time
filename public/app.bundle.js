@@ -733,6 +733,7 @@
     baseTimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     hour12: true
   };
+  const TIMELINE_REFRESH_INTERVAL = 5 * 60 * 1000;
 
   const tabListElement = document.getElementById('main-tablist');
   const tabElements = tabListElement
@@ -755,6 +756,8 @@
   const rosterImportInput = document.getElementById('roster-import-input');
   const rosterExportButton = document.getElementById('roster-export');
   const rosterFeedbackElement = document.getElementById('roster-feedback');
+  const timelineRowsElement = document.getElementById('timeline-rows');
+  const viewerTimezoneInfo = resolveViewerTimezone();
 
   let state = {
     people: DEFAULT_PEOPLE,
@@ -762,6 +765,7 @@
     metadata: null
   };
   let renderTimerId = null;
+  let timelineRefreshIntervalId = null;
   let generatedIdCounter = 0;
 
   function generateMemberId() {
@@ -919,6 +923,38 @@
     return `${Math.abs(delta)} days behind`;
   }
 
+  function resolveViewerTimezone() {
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (timezone && typeof timezone === 'string') {
+        return { timezone, isFallback: false };
+      }
+    } catch (error) {
+      console.warn('Unable to detect viewer time zone', error);
+    }
+
+    return { timezone: 'UTC', isFallback: true };
+  }
+
+  function getDayKey(date, formatter) {
+    const parts = formatter.formatToParts(date);
+    let year = '';
+    let month = '';
+    let day = '';
+
+    for (const part of parts) {
+      if (part.type === 'year') {
+        year = part.value;
+      } else if (part.type === 'month') {
+        month = part.value;
+      } else if (part.type === 'day') {
+        day = part.value;
+      }
+    }
+
+    return `${year}-${month}-${day}`;
+  }
+
   function sortPeople(people, sortMode, now) {
     const sorted = [...people];
     if (sortMode === 'name') {
@@ -935,6 +971,242 @@
       }
       return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
     });
+  }
+
+  function createTimelineRow(entry, referenceDate, options = {}) {
+    const { hour12, metadata } = options;
+    const personName =
+      typeof entry?.name === 'string' && entry.name ? entry.name : 'Teammate';
+    const note = typeof entry?.note === 'string' ? entry.note : '';
+    const timezone = typeof entry?.timezone === 'string' ? entry.timezone : '';
+    const trackLabel = entry?.trackLabel;
+    const extraClass = entry?.extraClass;
+
+    if (!timezone) {
+      return null;
+    }
+
+    const resolvedHour12 =
+      typeof hour12 === 'boolean'
+        ? hour12
+        : typeof state.settings.hour12 === 'boolean'
+          ? state.settings.hour12
+          : DEFAULT_SETTINGS.hour12;
+
+    let hourFormatter;
+    let dayLabelFormatter;
+    let dayKeyFormatter;
+
+    try {
+      hourFormatter = new Intl.DateTimeFormat(undefined, {
+        timeZone: timezone,
+        hour: 'numeric',
+        hour12: resolvedHour12
+      });
+
+      dayLabelFormatter = new Intl.DateTimeFormat(undefined, {
+        timeZone: timezone,
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+      });
+
+      dayKeyFormatter = new Intl.DateTimeFormat('en-CA', {
+        timeZone: timezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
+    } catch (error) {
+      console.warn('Unable to render timeline for entry', entry, error);
+      return null;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'timeline-row';
+    if (extraClass) {
+      row.classList.add(extraClass);
+    }
+    row.setAttribute('role', 'listitem');
+
+    const personInfo = document.createElement('div');
+    personInfo.className = 'timeline-person';
+
+    const nameElement = document.createElement('span');
+    nameElement.className = 'timeline-person-name';
+    nameElement.textContent = personName;
+    personInfo.append(nameElement);
+
+    if (note) {
+      const noteElement = document.createElement('span');
+      noteElement.className = 'timeline-person-note';
+      noteElement.textContent = note;
+      personInfo.append(noteElement);
+    }
+
+    const timezoneElement = document.createElement('span');
+    timezoneElement.className = 'timeline-person-timezone';
+    const timezoneLabel = getDisplayLabel(timezone, {
+      includeOffset: true,
+      metadata
+    });
+    timezoneElement.textContent = timezoneLabel;
+    timezoneElement.dataset.zoneId = timezone;
+    timezoneElement.title = timezone;
+    if (timezoneLabel && timezoneLabel !== timezone) {
+      timezoneElement.setAttribute(
+        'aria-label',
+        `${timezoneLabel} (${timezone})`
+      );
+    }
+    personInfo.append(timezoneElement);
+
+    const track = document.createElement('div');
+    track.className = 'timeline-track';
+    track.setAttribute('role', 'list');
+    const accessibleLabel =
+      typeof trackLabel === 'string' && trackLabel
+        ? trackLabel
+        : `${personName}'s next 24 hours`;
+    track.setAttribute('aria-label', accessibleLabel);
+
+    const baseDate = referenceDate instanceof Date ? referenceDate : new Date();
+    let previousDayKey = null;
+
+    for (let offset = 0; offset < 24; offset += 1) {
+      const segmentDate = new Date(baseDate.getTime() + offset * 60 * 60 * 1000);
+      const hourLabel = hourFormatter.format(segmentDate);
+      const dayKey = getDayKey(segmentDate, dayKeyFormatter);
+      const dayLabel = dayLabelFormatter.format(segmentDate);
+      const isCurrentHour = offset === 0;
+      const isDayChange = previousDayKey !== null && dayKey !== previousDayKey;
+
+      const hourElement = document.createElement('div');
+      hourElement.className = 'timeline-hour';
+      if (isCurrentHour) {
+        hourElement.classList.add('is-current');
+      }
+      if (isDayChange) {
+        hourElement.classList.add('is-day-change');
+      }
+      hourElement.setAttribute('role', 'listitem');
+      hourElement.setAttribute(
+        'aria-label',
+        `${personName}: ${hourLabel} (${dayLabel})`
+      );
+      hourElement.title = `${dayLabel} • ${hourLabel}`;
+
+      const hourLabelElement = document.createElement('span');
+      hourLabelElement.className = 'timeline-hour-label';
+      hourLabelElement.textContent = hourLabel;
+      hourElement.append(hourLabelElement);
+
+      if (isDayChange || offset === 0) {
+        const dayLabelElement = document.createElement('span');
+        dayLabelElement.className = 'timeline-day-label';
+        dayLabelElement.textContent = dayLabel;
+        hourElement.append(dayLabelElement);
+      }
+
+      track.append(hourElement);
+      previousDayKey = dayKey;
+    }
+
+    row.append(personInfo, track);
+    return row;
+  }
+
+  function renderTimeline(referenceDate, options = {}) {
+    if (!timelineRowsElement) {
+      return;
+    }
+
+    const now = referenceDate instanceof Date ? referenceDate : new Date();
+    const metadata =
+      options.metadata && typeof options.metadata === 'object'
+        ? options.metadata
+        : state.metadata;
+    const hour12 =
+      typeof options.hour12 === 'boolean'
+        ? options.hour12
+        : typeof state.settings.hour12 === 'boolean'
+          ? state.settings.hour12
+          : DEFAULT_SETTINGS.hour12;
+    const sortMode =
+      typeof options.sortMode === 'string' && options.sortMode
+        ? options.sortMode
+        : state.settings.sortMode || DEFAULT_SETTINGS.sortMode;
+
+    timelineRowsElement.innerHTML = '';
+
+    const viewerRow = createTimelineRow(
+      {
+        name: 'You',
+        note: viewerTimezoneInfo.isFallback ? 'Defaulting to UTC' : 'Your local time',
+        timezone: viewerTimezoneInfo.timezone,
+        trackLabel: 'Your next 24 hours',
+        extraClass: 'is-viewer'
+      },
+      now,
+      { hour12, metadata }
+    );
+
+    if (viewerRow) {
+      timelineRowsElement.append(viewerRow);
+    }
+
+    if (!state.people.length) {
+      const message = document.createElement('div');
+      message.className = 'empty-message';
+      message.textContent = 'Timelines will appear after you add teammates.';
+      message.setAttribute('role', 'listitem');
+      timelineRowsElement.append(message);
+      return;
+    }
+
+    const sorted = sortPeople(state.people, sortMode, now);
+
+    for (const person of sorted) {
+      const row = createTimelineRow(
+        {
+          name: person.name,
+          note: person.note,
+          timezone: person.timezone
+        },
+        now,
+        { hour12, metadata }
+      );
+
+      if (row) {
+        timelineRowsElement.append(row);
+      }
+    }
+  }
+
+  function startTimelineRefresh() {
+    if (timelineRefreshIntervalId !== null) {
+      return;
+    }
+
+    if (!timelineRowsElement || typeof window === 'undefined') {
+      return;
+    }
+
+    timelineRefreshIntervalId = window.setInterval(() => {
+      if (!isElementInActivePanel(timelineRowsElement)) {
+        stopTimelineRefresh();
+        return;
+      }
+
+      renderTimeline(new Date());
+    }, TIMELINE_REFRESH_INTERVAL);
+  }
+
+  function stopTimelineRefresh() {
+    if (timelineRefreshIntervalId !== null) {
+      window.clearInterval(timelineRefreshIntervalId);
+      timelineRefreshIntervalId = null;
+    }
   }
 
   function isElementInActivePanel(element) {
@@ -1134,6 +1406,15 @@
 
     if (isElementInActivePanel(rosterListElement)) {
       renderRoster(now, baseTimeZone, sortMode, hour12);
+    }
+
+    if (timelineRowsElement) {
+      if (isElementInActivePanel(timelineRowsElement)) {
+        renderTimeline(now, { hour12, sortMode, metadata: state.metadata });
+        startTimelineRefresh();
+      } else {
+        stopTimelineRefresh();
+      }
     }
   }
 
@@ -1716,5 +1997,6 @@
 
   window.addEventListener('beforeunload', () => {
     stopRenderTimer();
+    stopTimelineRefresh();
   });
 })();
