@@ -743,6 +743,8 @@
   const timezoneListElement = document.getElementById('timezone-list');
   const hourFormatControl = document.getElementById('hour-format');
   const baseTimezoneControl = document.getElementById('base-timezone');
+  const rosterImportButton = document.getElementById('roster-import');
+  const rosterImportInput = document.getElementById('roster-import-input');
   const rosterExportButton = document.getElementById('roster-export');
   const rosterFeedbackElement = document.getElementById('roster-feedback');
 
@@ -1061,6 +1063,233 @@
     }
   }
 
+  function resetRosterImportInput() {
+    if (rosterImportInput) {
+      rosterImportInput.value = '';
+    }
+  }
+
+  function formatList(items) {
+    if (!items.length) {
+      return '';
+    }
+
+    if (items.length === 1) {
+      return items[0];
+    }
+
+    const initial = items.slice(0, -1);
+    const last = items[items.length - 1];
+
+    if (initial.length === 1) {
+      return `${initial[0]} and ${last}`;
+    }
+
+    return `${initial.join(', ')}, and ${last}`;
+  }
+
+  function readFileText(file) {
+    if (!file) {
+      return Promise.resolve('');
+    }
+
+    if (typeof file.text === 'function') {
+      return file.text();
+    }
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result;
+        resolve(typeof result === 'string' ? result : String(result ?? ''));
+      };
+      reader.onerror = () => {
+        reject(reader.error || new Error('Unable to read file.'));
+      };
+      reader.onabort = () => {
+        reject(new Error('File reading was aborted.'));
+      };
+      reader.readAsText(file);
+    });
+  }
+
+  async function applyImportedRoster(people, { mode = 'replace' } = {}) {
+    const now = new Date();
+    const sortMode = state.settings.sortMode || DEFAULT_SETTINGS.sortMode;
+    let nextPeople;
+
+    if (mode === 'merge') {
+      const existingById = new Map(state.people.map((person) => [person.id, person]));
+      for (const person of people) {
+        existingById.set(person.id, person);
+      }
+      nextPeople = Array.from(existingById.values());
+    } else {
+      nextPeople = [...people];
+    }
+
+    const sorted = sortPeople(nextPeople, sortMode, now);
+
+    state = {
+      ...state,
+      people: sorted
+    };
+
+    await setStoredValue('people', sorted);
+    render();
+  }
+
+  async function handleRosterImportChange(event) {
+    const input = event?.target ?? rosterImportInput;
+    const files = input?.files;
+
+    if (!files || !files.length) {
+      resetRosterImportInput();
+      return;
+    }
+
+    const [file] = files;
+    const requestedMode =
+      rosterImportInput?.dataset?.importMode || rosterImportInput?.dataset?.mode || 'replace';
+    const importMode = requestedMode === 'merge' ? 'merge' : 'replace';
+    let text;
+
+    try {
+      text = await readFileText(file);
+    } catch (error) {
+      console.error('Unable to read roster file', error);
+      setRosterFeedback('Unable to read the selected file. Please try again.', 'error');
+      resetRosterImportInput();
+      return;
+    }
+
+    let parsed;
+
+    try {
+      parsed = JSON.parse(text);
+    } catch (error) {
+      setRosterFeedback('Unable to parse roster file. Please select a valid JSON file.', 'error');
+      resetRosterImportInput();
+      return;
+    }
+
+    let entries = [];
+
+    if (Array.isArray(parsed)) {
+      entries = parsed;
+    } else if (parsed && typeof parsed === 'object' && Array.isArray(parsed.people)) {
+      entries = parsed.people;
+    } else {
+      setRosterFeedback('Roster file must contain an array of people to import.', 'error');
+      resetRosterImportInput();
+      return;
+    }
+
+    const totalEntries = entries.length;
+
+    if (!totalEntries) {
+      setRosterFeedback('Roster file does not include any entries to import.', 'error');
+      resetRosterImportInput();
+      return;
+    }
+
+    const { list: normalizedList } = normalizePeople(entries);
+    const missingRequiredCount = totalEntries - normalizedList.length;
+    const deduped = [];
+    const seenIds = new Set();
+    let invalidTimezoneCount = 0;
+    let duplicateIdCount = 0;
+
+    for (const person of normalizedList) {
+      const timezone = canonicalizeTimezone(person.timezone);
+      if (!isValidTimeZone(timezone)) {
+        invalidTimezoneCount += 1;
+        continue;
+      }
+
+      if (seenIds.has(person.id)) {
+        duplicateIdCount += 1;
+        continue;
+      }
+
+      seenIds.add(person.id);
+      deduped.push({ ...person, timezone });
+    }
+
+    if (!deduped.length) {
+      const skippedTotal = missingRequiredCount + invalidTimezoneCount + duplicateIdCount;
+      const reasonDetails = [];
+
+      if (missingRequiredCount) {
+        const label = missingRequiredCount === 1 ? 'entry' : 'entries';
+        reasonDetails.push(`${missingRequiredCount} ${label} missing required information`);
+      }
+
+      if (invalidTimezoneCount) {
+        const label = invalidTimezoneCount === 1 ? 'entry' : 'entries';
+        reasonDetails.push(`${invalidTimezoneCount} ${label} with invalid time zones`);
+      }
+
+      if (duplicateIdCount) {
+        const label = duplicateIdCount === 1 ? 'entry' : 'entries';
+        reasonDetails.push(`${duplicateIdCount} ${label} with duplicate identifiers`);
+      }
+
+      const reasonSuffix = reasonDetails.length ? ` (${formatList(reasonDetails)})` : '';
+      setRosterFeedback(
+        `No valid roster entries were found in the selected file${reasonSuffix}.`,
+        'error'
+      );
+      resetRosterImportInput();
+      return;
+    }
+
+    try {
+      await applyImportedRoster(deduped, { mode: importMode });
+    } catch (error) {
+      console.error('Unable to import roster', error);
+      setRosterFeedback('Unable to import roster. Please try again.', 'error');
+      resetRosterImportInput();
+      return;
+    }
+
+    const importedCount = deduped.length;
+    const skippedTotal = missingRequiredCount + invalidTimezoneCount + duplicateIdCount;
+    const summaryParts = [];
+    const actionVerb = importMode === 'merge' ? 'Merged' : 'Imported';
+    summaryParts.push(`${actionVerb} ${importedCount} roster ${importedCount === 1 ? 'entry' : 'entries'}.`);
+
+    if (skippedTotal > 0) {
+      const reasons = [];
+
+      if (missingRequiredCount) {
+        const label = missingRequiredCount === 1 ? 'entry' : 'entries';
+        reasons.push(`${missingRequiredCount} ${label} missing required information`);
+      }
+
+      if (invalidTimezoneCount) {
+        const label = invalidTimezoneCount === 1 ? 'entry' : 'entries';
+        reasons.push(`${invalidTimezoneCount} ${label} with invalid time zones`);
+      }
+
+      if (duplicateIdCount) {
+        const label = duplicateIdCount === 1 ? 'entry' : 'entries';
+        reasons.push(`${duplicateIdCount} ${label} with duplicate identifiers`);
+      }
+
+      const detail = reasons.length ? formatList(reasons) : 'invalid data';
+      summaryParts.push(`Skipped ${skippedTotal} due to ${detail}.`);
+    }
+
+    const finalCount = state.people.length;
+    summaryParts.push(
+      `Roster now contains ${finalCount} ${finalCount === 1 ? 'entry' : 'entries'}.`
+    );
+
+    setRosterFeedback(summaryParts.join(' '), 'success');
+    resetRosterImportInput();
+  }
+
   function exportRoster() {
     let downloadUrl = null;
     let link = null;
@@ -1343,6 +1572,23 @@
     if (rosterExportButton) {
       rosterExportButton.addEventListener('click', () => {
         exportRoster();
+      });
+    }
+
+    if (rosterImportButton && rosterImportInput) {
+      rosterImportButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        rosterImportInput.click();
+      });
+    }
+
+    if (rosterImportInput) {
+      rosterImportInput.addEventListener('change', (event) => {
+        handleRosterImportChange(event).catch((error) => {
+          console.error('Unable to import roster', error);
+          setRosterFeedback('Unable to import roster. Please try again.', 'error');
+          resetRosterImportInput();
+        });
       });
     }
   }
