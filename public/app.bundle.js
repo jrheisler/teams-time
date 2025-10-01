@@ -734,6 +734,14 @@
     hour12: true
   };
 
+  const tabListElement = document.getElementById('main-tablist');
+  const tabElements = tabListElement
+    ? Array.from(tabListElement.querySelectorAll('[role="tab"]'))
+    : [];
+  const tabPanelMap = new Map();
+  let activeTabElement = null;
+  let activePanelId = null;
+
   const currentTimeElement = document.getElementById('current-time');
   const rosterListElement = document.getElementById('roster-list');
   const teammateForm = document.getElementById('teammate-form');
@@ -929,6 +937,106 @@
     });
   }
 
+  function isElementInActivePanel(element) {
+    if (!element) {
+      return false;
+    }
+
+    const panel = element.closest('[role="tabpanel"]');
+    if (!panel) {
+      return true;
+    }
+
+    if (panel.hasAttribute('hidden')) {
+      return false;
+    }
+
+    if (!tabElements.length) {
+      return true;
+    }
+
+    if (!activePanelId) {
+      return true;
+    }
+
+    return panel.id === activePanelId;
+  }
+
+  function setActiveTab(nextTab, { focus = false } = {}) {
+    if (!nextTab || !tabElements.includes(nextTab)) {
+      return;
+    }
+
+    if (activeTabElement === nextTab) {
+      if (focus) {
+        nextTab.focus();
+      }
+      return;
+    }
+
+    activeTabElement = nextTab;
+    const nextPanel = tabPanelMap.get(nextTab) || null;
+    activePanelId = nextPanel?.id || null;
+
+    for (const tabElement of tabElements) {
+      const isSelected = tabElement === nextTab;
+      tabElement.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      tabElement.setAttribute('tabindex', isSelected ? '0' : '-1');
+
+      const panelElement = tabPanelMap.get(tabElement);
+      if (!panelElement) {
+        continue;
+      }
+
+      if (isSelected) {
+        panelElement.removeAttribute('hidden');
+      } else {
+        panelElement.setAttribute('hidden', '');
+      }
+    }
+
+    if (focus) {
+      nextTab.focus();
+    }
+  }
+
+  function setupTabInterface() {
+    if (!tabElements.length) {
+      return;
+    }
+
+    for (const tabElement of tabElements) {
+      const panelId = tabElement.getAttribute('aria-controls');
+      if (!panelId) {
+        continue;
+      }
+
+      const panelElement = document.getElementById(panelId);
+      if (panelElement) {
+        tabPanelMap.set(tabElement, panelElement);
+      }
+    }
+
+    let initialTab = tabElements.find(
+      (tabElement) => tabElement.getAttribute('aria-selected') === 'true'
+    );
+
+    if (!initialTab) {
+      [initialTab] = tabElements;
+    }
+
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+
+    for (const tabElement of tabElements) {
+      tabElement.addEventListener('click', () => {
+        setActiveTab(tabElement, { focus: true });
+        render();
+      });
+    }
+  }
+
   function renderCurrentTime(now, baseTimeZone, hour12) {
     if (!currentTimeElement) {
       return;
@@ -1020,8 +1128,13 @@
     const hour12 =
       typeof state.settings.hour12 === 'boolean' ? state.settings.hour12 : DEFAULT_SETTINGS.hour12;
 
-    renderCurrentTime(now, baseTimeZone, hour12);
-    renderRoster(now, baseTimeZone, sortMode, hour12);
+    if (isElementInActivePanel(currentTimeElement)) {
+      renderCurrentTime(now, baseTimeZone, hour12);
+    }
+
+    if (isElementInActivePanel(rosterListElement)) {
+      renderRoster(now, baseTimeZone, sortMode, hour12);
+    }
   }
 
   function startRenderTimer() {
@@ -1525,6 +1638,8 @@
   }
 
   async function initialize() {
+    setupTabInterface();
+
     const [storedPeople, storedSettings, metadata] = await Promise.all([
       getStoredValue('people', []),
       getStoredValue('settings', {}),

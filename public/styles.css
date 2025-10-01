@@ -55,6 +55,55 @@ body {
 .page-content {
   width: min(1100px, 100%);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tablist [role='tab'] {
+  border: 1px solid var(--tt-color-border);
+  border-radius: 0.75rem;
+  background: var(--tt-color-card-muted);
+  color: var(--tt-color-text);
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: none;
+  transform: none;
+}
+
+.tablist [role='tab'][aria-selected='true'] {
+  background: var(--tt-color-card);
+  border-color: var(--tt-color-accent);
+  color: var(--tt-color-accent-strong);
+  box-shadow: 0 6px 16px var(--tt-color-accent-soft);
+}
+
+.tablist [role='tab']:hover,
+.tablist [role='tab']:focus-visible {
+  background: var(--tt-color-card);
+  color: var(--tt-color-accent-strong);
+  box-shadow: 0 4px 12px var(--tt-color-accent-soft);
+  outline: none;
+  transform: none;
+}
+
+.tablist [role='tab']:focus-visible {
+  border-color: var(--tt-color-accent);
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.panel-grid {
   display: grid;
   gap: 2rem;
 }
@@ -297,7 +346,7 @@ button:focus-visible {
 }
 
 @media (min-width: 720px) {
-  .page-content {
+  .panel-grid {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.25rem;
   }
@@ -310,6 +359,10 @@ button:focus-visible {
   }
 
   .page-content {
+    gap: 2.5rem;
+  }
+
+  .panel-grid {
     gap: 2.5rem;
   }
 
