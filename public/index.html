@@ -80,37 +80,6 @@
               ></ul>
             </div>
           </section>
-
-          <section class="card" aria-labelledby="roster-heading">
-            <div class="section-header">
-              <h2 id="roster-heading">Teammates</h2>
-              <p class="section-subtitle">
-                Remove someone when they no longer need tracking.
-              </p>
-            </div>
-            <div class="section-actions" aria-label="Teammate roster actions">
-              <button type="button" id="roster-export" title="Export teammate roster">
-                Export roster
-              </button>
-              <button type="button" id="roster-import" title="Import teammate roster">
-                Import roster
-              </button>
-              <input
-                type="file"
-                id="roster-import-input"
-                accept="application/json"
-                hidden
-                aria-hidden="true"
-              />
-            </div>
-            <p
-              id="roster-feedback"
-              class="status-message"
-              role="status"
-              aria-live="polite"
-            ></p>
-            <div id="roster-list" class="people-list" role="list" aria-live="polite"></div>
-          </section>
         </div>
       </section>
 
@@ -152,6 +121,37 @@
               <button type="submit" title="Add teammate">Add teammate</button>
             </form>
             <datalist id="timezone-list"></datalist>
+          </section>
+
+          <section class="card" aria-labelledby="roster-heading">
+            <div class="section-header">
+              <h2 id="roster-heading">Teammates</h2>
+              <p class="section-subtitle">
+                Remove someone when they no longer need tracking.
+              </p>
+            </div>
+            <div class="section-actions" aria-label="Teammate roster actions">
+              <button type="button" id="roster-export" title="Export teammate roster">
+                Export roster
+              </button>
+              <button type="button" id="roster-import" title="Import teammate roster">
+                Import roster
+              </button>
+              <input
+                type="file"
+                id="roster-import-input"
+                accept="application/json"
+                hidden
+                aria-hidden="true"
+              />
+            </div>
+            <p
+              id="roster-feedback"
+              class="status-message"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <div id="roster-list" class="people-list" role="list" aria-live="polite"></div>
           </section>
         </div>
       </section>

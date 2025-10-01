@@ -106,6 +106,7 @@ body {
 .panel-grid {
   display: grid;
   gap: 2rem;
+  align-items: start;
 }
 
 .card {

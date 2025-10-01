@@ -1463,8 +1463,14 @@
       renderRoster(now, baseTimeZone, sortMode, hour12, sortedPeople);
     }
 
-    if (overviewPeopleListElement && isElementInActivePanel(overviewPeopleListElement)) {
-      renderOverviewRoster(now, baseTimeZone, sortMode, hour12, sortedPeople);
+    if (overviewPeopleListElement) {
+      const overviewShouldRender =
+        isElementInActivePanel(overviewPeopleListElement) ||
+        isElementInActivePanel(rosterListElement);
+
+      if (overviewShouldRender) {
+        renderOverviewRoster(now, baseTimeZone, sortMode, hour12, sortedPeople);
+      }
     }
 
     if (timelineRowsElement) {
