@@ -743,6 +743,8 @@
   const timezoneListElement = document.getElementById('timezone-list');
   const hourFormatControl = document.getElementById('hour-format');
   const baseTimezoneControl = document.getElementById('base-timezone');
+  const rosterExportButton = document.getElementById('roster-export');
+  const rosterFeedbackElement = document.getElementById('roster-feedback');
 
   let state = {
     people: DEFAULT_PEOPLE,
@@ -1045,6 +1047,60 @@
     render();
   }
 
+  function setRosterFeedback(message, status) {
+    if (!rosterFeedbackElement) {
+      return;
+    }
+
+    rosterFeedbackElement.textContent = message || '';
+
+    if (status) {
+      rosterFeedbackElement.dataset.status = status;
+    } else {
+      delete rosterFeedbackElement.dataset.status;
+    }
+  }
+
+  function exportRoster() {
+    let downloadUrl = null;
+    let link = null;
+    let appendTarget = null;
+
+    try {
+      if (!Array.isArray(state.people)) {
+        throw new Error('Roster data is unavailable.');
+      }
+
+      const serialized = JSON.stringify(state.people, null, 2);
+      const blob = new Blob([serialized], { type: 'application/json' });
+      downloadUrl = URL.createObjectURL(blob);
+      link = document.createElement('a');
+      link.href = downloadUrl;
+      const timestamp = new Date().toISOString().split('T')[0];
+      link.download = `teams-time-roster-${timestamp}.json`;
+
+      appendTarget = document.body || document.documentElement;
+      if (!appendTarget) {
+        throw new Error('Unable to access the document to trigger a download.');
+      }
+
+      appendTarget.append(link);
+      link.click();
+
+      setRosterFeedback('Roster exported successfully.', 'success');
+    } catch (error) {
+      console.error('Unable to export roster', error);
+      setRosterFeedback('Unable to export roster. Please try again.', 'error');
+    } finally {
+      if (link && link.isConnected) {
+        link.remove();
+      }
+      if (downloadUrl) {
+        URL.revokeObjectURL(downloadUrl);
+      }
+    }
+  }
+
   function canonicalizeTimezone(value) {
     const trimmed = value.trim();
     if (!trimmed) {
@@ -1281,6 +1337,12 @@
       });
       teammateTimezoneInput.addEventListener('change', () => {
         validateTimezoneInput(teammateTimezoneInput);
+      });
+    }
+
+    if (rosterExportButton) {
+      rosterExportButton.addEventListener('click', () => {
+        exportRoster();
       });
     }
   }
