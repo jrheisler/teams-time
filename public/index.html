@@ -41,6 +41,16 @@
         </button>
         <button
           type="button"
+          id="tab-timeline"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-timeline"
+          tabindex="-1"
+        >
+          Timelines
+        </button>
+        <button
+          type="button"
           id="tab-guide"
           role="tab"
           aria-selected="false"
@@ -134,6 +144,33 @@
               <button type="submit" title="Add teammate">Add teammate</button>
             </form>
             <datalist id="timezone-list"></datalist>
+          </section>
+        </div>
+      </section>
+
+      <section
+        id="panel-timeline"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-timeline"
+        hidden
+      >
+        <div class="panel-grid">
+          <section class="card" aria-labelledby="timeline-heading">
+            <div class="section-header">
+              <h2 id="timeline-heading">24-hour teammate timelines</h2>
+              <p class="section-subtitle">
+                Compare everyone’s local hours across the next day.
+              </p>
+            </div>
+            <div class="timeline-scroller">
+              <div
+                id="timeline-rows"
+                class="timeline-rows"
+                role="list"
+                aria-live="polite"
+              ></div>
+            </div>
           </section>
         </div>
       </section>
