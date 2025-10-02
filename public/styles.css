@@ -119,6 +119,32 @@ body {
   gap: 1.25rem;
 }
 
+.support-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--tt-color-accent);
+  background: var(--tt-color-card);
+  color: var(--tt-color-accent-strong);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.support-link:hover,
+.support-link:focus-visible {
+  background: var(--tt-color-accent);
+  border-color: var(--tt-color-accent-strong);
+  color: var(--tt-color-accent-contrast);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px var(--tt-color-accent-soft);
+  outline: none;
+}
+
 .card > h2 {
   margin: 0;
   font-size: 1.25rem;
